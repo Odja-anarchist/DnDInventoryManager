@@ -11,12 +11,23 @@
     padding: 2px;
 }
 
+.coinageInput {
+	text-align: center;
+	width: 9em;
+}
+
+hr {
+	border-top: 1px solid #ddd;
+}
+
 .inputWidth {
 	width: 5em;
+	margin-right: 20px;
 }
 
 .topBarLabel {
-	padding: 5px
+	padding: 5px;
+	padding-right: 20px;
 }
 
 .forceWhiteBackground {
@@ -28,6 +39,10 @@
 }
 .center {
 	text-align: center;
+}
+
+.coinageLabel {
+	vertical-align: middle !important;
 }
 
 .form-control.correctWeight {
@@ -55,7 +70,7 @@
 }
 
 .topButton {
-	width: 33%
+	width: 10em
 }
 
 .inputList {
