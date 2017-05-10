@@ -1,0 +1,119 @@
+
+.background{
+	height: 100vh;
+    width: 100vw;
+	padding: 40px;
+    background-repeat: round;
+}
+
+.icon {
+	border: 1px solid;
+    padding: 2px;
+}
+
+.inputWidth {
+	width: 5em;
+}
+
+.topBarLabel {
+	padding: 5px
+}
+
+.forceWhiteBackground {
+	background: white !important;
+}
+
+.end {
+	text-align: end;
+}
+.center {
+	text-align: center;
+}
+
+.form-control.correctWeight {
+	color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.form-control.incorrectWeight {
+	color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+.input-group-addon.incorrectWeight {
+	color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+.input-group-addon.correctWeight {
+	color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.topButton {
+	width: 33%
+}
+
+.inputList {
+	padding: 6px 12px;
+}
+
+.template-title {
+	padding: 5px;
+}
+
+.select2-container{
+	width: 40em !important;
+}
+
+.location {
+	min-width: 150px;
+	display: block;
+}
+
+.remove-button {
+	margin-right: 5px;
+}
+
+.count {
+	max-width: 100px;
+	min-width: 100px;
+}
+
+.addItemCell { 
+	padding: 5px;
+}
+
+.btn.btn-default.dropdown-toggle{
+	width: 120px;
+}
+
+.input-group {
+	width: 100%;
+}
+
+table td.shrink {
+	width: 15%;
+	white-space: nowrap;
+	vertical-align: baseline !important;
+}
+
+table th.shrink {
+    width: 10%
+}
+
+table td.expand {
+    width: 99%;
+	vertical-align: baseline !important;
+}
+
+table th.expand {
+    width: 99%
+}
+
+// background-image: url("../img/background.jpg");
+// font-family: Fantasy;
