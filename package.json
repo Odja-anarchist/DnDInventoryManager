@@ -2,10 +2,9 @@
   "main": "index.html",
   "name": "DnD_Inventory_Manager",
   "description": "Interactive DnD Inventory Manager",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "keywords": [],
   "dependencies": {
-    "browserify": "^14.3.0",
     "lodash": "~3.7.0",
     "moment": "~2.10.2",
     "shortid": "^2.2.8",

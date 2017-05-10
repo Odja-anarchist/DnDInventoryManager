@@ -1,11 +1,12 @@
 (function () {
 	var _ = require('lodash');
+	var pack = require('../package.json');
 
 	var Utils = require('./Utils');
 	var addItemPage = require('./addItemPage');
 	var InventoryManager = require('./inventoryManager');
 
-	var headerLayout = '<h1>Inventory Manager</h1>' +
+	var headerLayout = '<h1 style="display: inline-block;">Inventory Manager</h1> v' + pack.version +
 		'<div style="display: flex; align-items: center">' +
 		'<span class="topBarLabel">Strength:</span><input class="form-control inputWidth" value="0" type="number" id="strength-input" min="0" max="20"></input>' +
 		'<span class="topBarLabel">Carrying Capacity: </span>' +
