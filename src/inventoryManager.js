@@ -14,11 +14,11 @@ inventoryManager.getInventory = function () {
 	return returnArray;
 };
 
-inventoryManager.setStrength = function(strength){
+inventoryManager.setStrength = function (strength) {
 	localStorage['STRENGTH'] = strength;
 }
 
-inventoryManager.getStrength = function() {
+inventoryManager.getStrength = function () {
 	if (localStorage['STRENGTH']) {
 		return localStorage['STRENGTH'];
 	} else {
@@ -43,4 +43,39 @@ inventoryManager.addItem = function (item) {
 	localStorage['INVENTORY-' + item.id] = JSON.stringify(item);
 }
 
+// ------------------
+// Coinage Functions
+// ------------------
+
+function getCoinageKey(key) {
+	if (localStorage[key]) {
+		return localStorage[key];
+	} else {
+		return 0;
+	}
+}
+
+inventoryManager.getPlatinum = function () {
+	return getCoinageKey('COINAGE-PLATINUM');
+}
+
+inventoryManager.getGold = function () {
+	return getCoinageKey('COINAGE-GOLD');
+}
+
+inventoryManager.getElectrum = function () {
+	return getCoinageKey('COINAGE-ELECTRUM');
+}
+
+inventoryManager.getSilver = function () {
+	return getCoinageKey('COINAGE-SILVER');
+}
+
+inventoryManager.getCopper = function () {
+	return getCoinageKey('COINAGE-COPPER');
+}
+
+inventoryManager.setCoinageValue = function (type, value) {
+	localStorage['COINAGE-' + type] = value;
+}
 module.exports = inventoryManager;
