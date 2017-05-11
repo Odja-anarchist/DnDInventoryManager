@@ -14,5 +14,8 @@
     "browserify": "^14.3.0"
   },
   "license": "(GPL-3.0)",
-  "repository": ""
+  "repository": "",
+  "scripts": {
+    "build": "browserify src/main.js -o bundle.js"
+  }
 }

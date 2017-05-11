@@ -122,7 +122,7 @@
 
 	var pageLayout = '<div class="homePage">' + headerLayout + coinageLayout + inventoryLayout + '</div>';
 
-	var mainPage = {};
+	var mainPage = function () { };
 
 	var inventory = {};
 
@@ -170,7 +170,7 @@
 		setCurrentCapacityValue();
 	}
 
-	function editPressed() {}
+	function editPressed() { }
 
 	function populateRow(elementId) {
 		var countInput = document.getElementsByName("count-item" + elementId)[0];

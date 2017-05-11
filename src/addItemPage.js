@@ -1,16 +1,18 @@
 (function () {
+	var _ = require('lodash');
+
 	var Utils = require('./Utils');
 	var TemplateManager = require('./templateManager');
 	var InventoryManager = require('./inventoryManager');
 
 	var addItemLayout = '<div class="addItemPage">' +
 		'<h1>Add item</h1>' +
-		'<hr/>'+
+		'<hr/>' +
 		'<button type="button" class="btn btn-default alert-danger topButton" id="cancel-button">Cancel</button>' +
 		'<button type="button" class="btn btn-default alert-success topButton" id="add-button">Add +</button>' +
-		'<hr/>'+
+		'<hr/>' +
 		'<TEMPLATE>' +
-		'<hr/>'+
+		'<hr/>' +
 		'</br>' +
 		'<table>' +
 		'<tr>' +
@@ -81,12 +83,19 @@
 		backToHomeScreen();
 	}
 
-	function createTemplateDropDown() {
-		var templateString = '<span class="template-title">Template:</span><select class="js-example-basic-single">';
-		for (var i = 0; i < templates.length; i++) {
-			var template = templates[i];
-			templateString += '<option value="' + template.id + '">' + template.name + '</option>';
-		}
+	function createTemplateDropDown(templates) {
+		var templateString = '<span class="template-title">Template:</span>' +
+			'<select class="js-example-basic-single">';
+
+		var categories = Object.keys(templates);
+		_.each(categories, function (categoryTitle) {
+			var category = templates[categoryTitle];
+			templateString += '<optgroup label="' + categoryTitle + '">';
+			_.each(category, function (template) {
+				templateString += '<option value="' + template.id + '">' + template.name + '</option>';
+			});
+			templateString += '</optgroup>';
+		});
 		templateString += '</select>';
 		return templateString;
 	}
@@ -135,9 +144,9 @@
 
 	addItemPage.show = function () {
 		Utils.clearPage();
-		templates = TemplateManager.getListOfTemplates();
+		var templates = TemplateManager.getListOfTemplates();
 		var body = document.getElementById('body');
-		var fullHTML = addItemLayout.replace('<TEMPLATE>', createTemplateDropDown());
+		var fullHTML = addItemLayout.replace('<TEMPLATE>', createTemplateDropDown(templates));
 		body.innerHTML = fullHTML;
 		createBindings();
 		addTemplateChangeListener();

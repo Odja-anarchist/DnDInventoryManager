@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Crossbow",
+        "value": {
+            "num": 21,
+            "unit": "GP"
+        },
+        "weight": 8,
+        "category": "Weapon - Simple Ranged",
+        "description": "1d8 piercing, Ammunition (range 80/320), loading, two-handed"
+    },
+    {
+        "name": "Dart",
+        "value": {
+            "num": 5,
+            "unit": "CP"
+        },
+        "weight": 0.25,
+        "category": "Weapon - Simple Ranged",
+        "description": "Finesse, thrown (range 20/60)"
+    },
+    {
+        "name": "Crossbow bolts",
+        "value": {
+            "num": 0.1,
+            "unit": "GP"
+        },
+        "weight": 0.05,
+        "category": "Weapon - Ammunition",
+        "description": "Ammunition for crossbows of any variety"
+    }
+]
