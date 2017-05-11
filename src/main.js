@@ -1,7 +1,7 @@
 (function () {
 	var homePage = require('./homePage');
 
-	var main = {};
+	var main = function () { };
 	var a = 1;
 	main.start = function () {
 		homePage.show();

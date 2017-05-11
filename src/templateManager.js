@@ -1,30 +1,41 @@
-var templateManager = {};
+var _ = require('lodash');
+var shortid = require('shortid');
+var baseTemplates = require('../baseDnD5eTemplates.json');
 
-templateManager.getTemplate = function (id) {
-	for (var i = 0; i < localStorage.length; i++) {
-		var key = localStorage.key(i);
-		if (key.startsWith('TEMPLATE-' + id)) {
-			var value = localStorage.getItem(key);
-			var template = JSON.parse(value);
-			return template;
-		}
-	}
+var templateManager = function () {
+	var self = this;
+	this.templates = {};
+	_.each(baseTemplates, function (template) {
+		template.id = shortid.generate();
+		self.templates[template.id] = template;
+	});
+};
+
+templateManager.prototype.getTemplate = function (id) {
+	return this.templates[id];
 }
 
-templateManager.getListOfTemplates = function () {
-	var returnArray = [];
-	for (var i = 0; i < localStorage.length; i++) {
-		var key = localStorage.key(i);
-		if (key.startsWith('TEMPLATE-')) {
-			var value = localStorage.getItem(key);
-			var template = JSON.parse(value);
-			returnArray.push({
+templateManager.prototype.getListOfTemplates = function () {
+	var result = {}
+	_.map(this.templates, function (template) {
+		if (!result[template.category]) {
+			result[template.category] = [];
+		}
+		result[template.category].push(
+			{
 				id: template.id,
 				name: template.name
 			});
-		}
+	});
+	var categories = Object.keys(result);
+	function customCompare(a, b) {
+		return a.name.localeCompare(b.name);
 	}
-	return returnArray;
+	_.each(categories, function (category) {
+		result[category].sort(customCompare)
+	});
+	return result;
+
 }
 
-module.exports = templateManager;
+module.exports = new templateManager();
