@@ -1,14 +1,164 @@
 
+.header-bar {
+    padding: 5px;
+	color: white;
+    background: black;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.header-bar .title {
+	font-size: 3em;
+	padding-right: 10px;
+}
+
+.titleBar {
+	background: black;
+    color: white;
+    text-align: center;
+    font-size: 3em;
+    border-radius: 10px;
+    margin-bottom: 10px;
+	margin-top: 20px;
+	font-weight: initial;
+	display: flex;
+}
+
+.titleBar.subTitle {
+	font-size: 2.25em;
+}
+
+.titleBar .titleBarContainer {
+	flex: 1;
+	display: flex;
+    align-items: center;
+}
+
+.titleBar .titleBarContainer .button-container {
+	text-align: center;
+}
+
+.titleBar .titleBarContainer .button-container .button {
+	color:white;
+	text-decoration: none;
+	font-size: 0.5em;
+    border-radius: 5px;
+    padding: 4px;
+    height: 100%;
+    display: -webkit-box;
+}
+
+.titleBar .titleBarContainer .button:hover {
+	color:#555;
+}
+
+.titleBar .titleBarContainer .subtitle {
+	font-size: 0.5em;
+	flex: 1;
+	text-align: left;
+}
+
+.titleBar .titleBarContainer.right {
+	padding-right: 10px;
+	text-align: right;
+}
+
+.titleBar .titleBarContainer.left {
+	padding-left: 10px;
+	text-align: left;
+}
+
+.titleBar .header {
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+i {
+	padding-left: 10px;
+	padding-right: 10px
+}
+
+.inventoryPageHeader {
+	display: flex; 
+	align-items: center;
+}
+
+.subTitleBar {
+	padding-left: 10px;
+	padding-right: 10px;
+	display: flex;
+	background: black;
+    color: white;
+    text-align: center;
+    font-size: 2.25em;
+    border-radius: 10px;
+    margin-bottom: 10px;
+	font-weight: initial;
+}
+
+.subTitleBar .subtitleHeader {
+	width: 100%;
+}
+
+.subTitleBar a {
+	color: white;
+	display: inline-table;
+	text-decoration: none;
+}
+
+.icon-bar {
+    width: 100%;
+    overflow: auto;
+	margin-bottom: 10px;
+	border: 2px solid #000;
+}
+
+.icon-bar a {
+	display: grid;
+	text-decoration: none;
+    float: left;
+    width: 25%;
+    text-align: center;
+    padding: 12px 0;
+    transition: all 0.3s ease;
+    color: #000;
+    font-size: 2em;
+}
+
+.icon-bar a:hover {
+    color: #fff !important;
+    background-color: #555 !important;
+}
+
+.active {
+	color: #fff !important;
+    background-color: #000 !important;
+}
+
+.bottomBorder td {
+    border-bottom: 1px solid #ddd;
+}
+
 .background{
-	height: 100vh;
-    width: 100vw;
-	padding: 40px;
-    background-repeat: round;
+	padding: 20px;
+	margin: 20px;
+	border: 2px solid black;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.content {
+	font-weight: bold;
 }
 
 .icon {
 	border: 1px solid;
     padding: 2px;
+}
+
+.tooltip-inner {
+    white-space:pre-wrap;
 }
 
 .coinageInput {
@@ -45,30 +195,6 @@ hr {
 	vertical-align: middle !important;
 }
 
-.form-control.correctWeight {
-	color: #3c763d;
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-}
-
-.form-control.incorrectWeight {
-	color: #a94442;
-    background-color: #f2dede;
-    border-color: #ebccd1;
-}
-
-.input-group-addon.incorrectWeight {
-	color: #a94442;
-    background-color: #f2dede;
-    border-color: #ebccd1;
-}
-
-.input-group-addon.correctWeight {
-	color: #3c763d;
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-}
-
 .topButton {
 	width: 10em
 }
@@ -82,50 +208,5 @@ hr {
 }
 
 .select2-container{
-	width: 40em !important;
-}
-
-.location {
-	min-width: 150px;
-	display: block;
-}
-
-.remove-button {
-	margin-right: 5px;
-}
-
-.count {
-	max-width: 100px;
-	min-width: 100px;
-}
-
-.addItemCell { 
-	padding: 5px;
-}
-
-.btn.btn-default.dropdown-toggle{
-	width: 120px;
-}
-
-.input-group {
-	width: 100%;
-}
-
-table td.shrink {
-	width: 15%;
-	white-space: nowrap;
-	vertical-align: baseline !important;
-}
-
-table th.shrink {
-    width: 10%
-}
-
-table td.expand {
-    width: 99%;
-	vertical-align: baseline !important;
-}
-
-table th.expand {
-    width: 99%
+	width: 100% !important;
 }

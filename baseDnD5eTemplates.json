@@ -1,32 +1,912 @@
 [
-    {
-        "name": "Crossbow",
-        "value": {
-            "num": 21,
-            "unit": "GP"
-        },
-        "weight": 8,
-        "category": "Weapon - Simple Ranged",
-        "description": "1d8 piercing, Ammunition (range 80/320), loading, two-handed"
-    },
-    {
-        "name": "Dart",
-        "value": {
-            "num": 5,
-            "unit": "CP"
-        },
-        "weight": 0.25,
-        "category": "Weapon - Simple Ranged",
-        "description": "Finesse, thrown (range 20/60)"
-    },
-    {
-        "name": "Crossbow bolts",
-        "value": {
-            "num": 0.1,
-            "unit": "GP"
-        },
-        "weight": 0.05,
-        "category": "Weapon - Ammunition",
-        "description": "Ammunition for crossbows of any variety"
-    }
+	{
+		"name": "Padded Armor",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 8,
+		"category": "Armor - Light",
+		"description": "AC 11 + DEX, Disadvantage to stealth"
+	},
+	{
+		"name": "Leather Armor",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 10,
+		"category": "Armor - Light",
+		"description": "AC 11 + DEX"
+	},
+	{
+		"name": "Studded Leather Armor",
+		"value": {
+			"num": 45,
+			"unit": "GP"
+		},
+		"weight": 13,
+		"category": "Armor - Light",
+		"description": "AC 12 + DEX"
+	},
+	{
+		"name": "Hide Armor",
+		"value": {
+			"num": 40,
+			"unit": "GP"
+		},
+		"weight": 12,
+		"category": "Armor - Medium",
+		"description": "AC 12 + DEX (max 2)"
+	},
+	{
+		"name": "Chain Shirt Armor",
+		"value": {
+			"num": 50,
+			"unit": "GP"
+		},
+		"weight": 20,
+		"category": "Armor - Medium",
+		"description": "AC 13 + DEX (max 2)"
+	},
+	{
+		"name": "Scale Mail Armor",
+		"value": {
+			"num": 50,
+			"unit": "GP"
+		},
+		"weight": 45,
+		"category": "Armor - Medium",
+		"description": "AC 14 + DEX (max 2), Disadvantage to stealth"
+	},
+	{
+		"name": "Breastplate Armor",
+		"value": {
+			"num": 400,
+			"unit": "GP"
+		},
+		"weight": 20,
+		"category": "Armor - Medium",
+		"description": "AC 14 + DEX (max 2)"
+	},
+	{
+		"name": "Half Plate Armor",
+		"value": {
+			"num": 750,
+			"unit": "GP"
+		},
+		"weight": 40,
+		"category": "Armor - Medium",
+		"description": "AC 15 + DEX (max 2), Disadvantage to stealth"
+	},
+	{
+		"name": "Ring Mail Armor",
+		"value": {
+			"num": 30,
+			"unit": "GP"
+		},
+		"weight": 40,
+		"category": "Armor - Heavy",
+		"description": "AC 14, Disadvantage to stealth"
+	},
+	{
+		"name": "Chain Mail Armor",
+		"value": {
+			"num": 75,
+			"unit": "GP"
+		},
+		"weight": 55,
+		"category": "Armor - Heavy",
+		"description": "AC 16, Disadvantage to stealth, Str 13 required"
+	},
+	{
+		"name": "SLlint Armor",
+		"value": {
+			"num": 200,
+			"unit": "GP"
+		},
+		"weight": 60,
+		"category": "Armor - Heavy",
+		"description": "AC 17, Disadvantage to stealth, Str 15 required"
+	},
+	{
+		"name": "Plate Armor",
+		"value": {
+			"num": 1500,
+			"unit": "GP"
+		},
+		"weight": 65,
+		"category": "Armor - Heavy",
+		"description": "AC 18, Disadvantage to stealth, Str 15 required"
+	},
+	{
+		"name": "Shield",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 6,
+		"category": "Armor - Misc",
+		"description": "AC +2"
+	},
+	{
+		"name": "Club",
+		"value": {
+			"num": 1,
+			"unit": "SL"
+		},
+		"weight": 2,
+		"category": "Weapon - Simple Melee",
+		"description": "1d4 bludgeoning, Light"
+	},
+	{
+		"name": "Dagger",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Weapon - Simple Melee",
+		"description": "1d4 piercing, Finesse, Light, Thrown (range 20/60)"
+	},
+	{
+		"name": "Greatclub",
+		"value": {
+			"num": 2,
+			"unit": "SL"
+		},
+		"weight": 10,
+		"category": "Weapon - Simple Melee",
+		"description": "1d8 bludgeoning, Two-handed"
+	},
+	{
+		"name": "Handaxe",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Weapon - Simple Melee",
+		"description": "1d6 slashing, Light, Thrown (range 20/60)"
+	},
+	{
+		"name": "Javelin",
+		"value": {
+			"num": 5,
+			"unit": "SL"
+		},
+		"weight": 2,
+		"category": "Weapon - Simple Melee",
+		"description": "1d6 piercing, Thrown (range 30/120)"
+	},
+	{
+		"name": "Light Hammer",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Weapon - Simple Melee",
+		"description": "1d4 bludgeoning, Light, Thrown (range 20/60)"
+	},
+	{
+		"name": "Mace",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 4,
+		"category": "Weapon - Simple Melee",
+		"description": "1d6 bludgeoning"
+	},
+	{
+		"name": "Quarterstaff",
+		"value": {
+			"num": 2,
+			"unit": "SL"
+		},
+		"weight": 4,
+		"category": "Weapon - Simple Melee",
+		"description": "1d6 bludgeoning, Versatile (1d8)"
+	},
+	{
+		"name": "Sickle",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Weapon - Simple Melee",
+		"description": "1d4 slashing, Light"
+	},
+	{
+		"name": "SLear",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 3,
+		"category": "Weapon - Simple Melee",
+		"description": "1d6 piercing, Thrown (range 20/60), Versatile (1d8)"
+	},
+	{
+		"name": "Crossbow, light",
+		"value": {
+			"num": 25,
+			"unit": "GP"
+		},
+		"weight": 5,
+		"category": "Weapon - Simple Ranged",
+		"description": "1d8 piercing, Ammunition (range 80/320), Loading, Two-handed"
+	},
+	{
+		"name": "Dart",
+		"value": {
+			"num": 5,
+			"unit": "CP"
+		},
+		"weight": 0.25,
+		"category": "Weapon - Simple Ranged",
+		"description": "1d4 piercing, Finesse, Thrown (20/60)"
+	},
+	{
+		"name": "Shortbow",
+		"value": {
+			"num": 25,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Weapon - Simple Ranged",
+		"description": "1d6 piercing, Ammunition (range 80/320), Two-handed"
+	},
+	{
+		"name": "Sling",
+		"value": {
+			"num": 1,
+			"unit": "SL"
+		},
+		"weight": 0,
+		"category": "Weapon - Simple Ranged",
+		"description": "1d4 bludgeoning, Ammunition (range 30/120)"
+	},
+	{
+		"name": "Flail",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Weapon - Martial Melee",
+		"description": "1d8 bludgeoning"
+	},
+	{
+		"name": "Glaive",
+		"value": {
+			"num": 20,
+			"unit": "GP"
+		},
+		"weight": 6,
+		"category": "Weapon - Martial Melee",
+		"description": "1d10 slashing, Heavy, Reach, Two-handed"
+	},
+	{
+		"name": "Greataxe",
+		"value": {
+			"num": 30,
+			"unit": "GP"
+		},
+		"weight": 7,
+		"category": "Weapon - Martial Melee",
+		"description": "1d12 slashing, Heavy, Two-handed"
+	},
+	{
+		"name": "Greataxe",
+		"value": {
+			"num": 30,
+			"unit": "GP"
+		},
+		"weight": 7,
+		"category": "Weapon - Martial Melee",
+		"description": "1d12 slashing, Heavy, Two-handed"
+	},
+	{
+		"name": "Greatsword",
+		"value": {
+			"num": 50,
+			"unit": "GP"
+		},
+		"weight": 6,
+		"category": "Weapon - Martial Melee",
+		"description": "2d6 slashing, Heavy, Two-handed"
+	},
+	{
+		"name": "Halberd",
+		"value": {
+			"num": 20,
+			"unit": "GP"
+		},
+		"weight": 6,
+		"category": "Weapon - Martial Melee",
+		"description": "1d10 slashing, Heavy, Reach, Two-handed"
+	},
+	{
+		"name": "Lance",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 6,
+		"category": "Weapon - Martial Melee",
+		"description": "1d12 piercing, Reach, SLecial"
+	},
+	{
+		"name": "Longsword",
+		"value": {
+			"num": 15,
+			"unit": "GP"
+		},
+		"weight": 3,
+		"category": "Weapon - Martial Melee",
+		"description": "1d8 slashing, Versatile (1d10)"
+	},
+	{
+		"name": "Maul",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 10,
+		"category": "Weapon - Martial Melee",
+		"description": "2d6 bludgeoning, Heavy, Two-handed"
+	},
+	{
+		"name": "Morningstar",
+		"value": {
+			"num": 15,
+			"unit": "GP"
+		},
+		"weight": 4,
+		"category": "Weapon - Martial Melee",
+		"description": "1d8 piercing"
+	},
+	{
+		"name": "Pike",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 18,
+		"category": "Weapon - Martial Melee",
+		"description": "1d10 piercing, Heavy, Reach, Two-handed"
+	},
+	{
+		"name": "Rapier",
+		"value": {
+			"num": 25,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Weapon - Martial Melee",
+		"description": "1d8 piercing, Finesse"
+	},
+	{
+		"name": "Scimitar",
+		"value": {
+			"num": 3,
+			"unit": "GP"
+		},
+		"weight": 3,
+		"category": "Weapon - Martial Melee",
+		"description": "1d6 slashing, Finesse, Light"
+	},
+	{
+		"name": "Shortsword",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Weapon - Martial Melee",
+		"description": "1d6 piercing, Finesse, Light"
+	},
+	{
+		"name": "Trident",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 4,
+		"category": "Weapon - Martial Melee",
+		"description": "1d6 piercing, Thrown (range 20/60), Versatile (1d8)"
+	},
+	{
+		"name": "War Pick",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Weapon - Martial Melee",
+		"description": "1d8 piercing"
+	},
+	{
+		"name": "Warhammer",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Weapon - Martial Melee",
+		"description": "1d8 piercing"
+	},
+	{
+		"name": "Whip",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 3,
+		"category": "Weapon - Martial Melee",
+		"description": "1d4 slashing, Finesse, Reach"
+	},
+	{
+		"name": "Blowgun",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Weapon - Martial Ranged",
+		"description": "1 piercing, Ammunition (range 25/100), Loading"
+	},
+	{
+		"name": "Crossbow, hand",
+		"value": {
+			"num": 75,
+			"unit": "GP"
+		},
+		"weight": 3,
+		"category": "Weapon - Martial Ranged",
+		"description": "1d6 piercing, Ammunition (range 30/120), Light, Loading"
+	},
+	{
+		"name": "Crossbow, heavy",
+		"value": {
+			"num": 50,
+			"unit": "GP"
+		},
+		"weight": 18,
+		"category": "Weapon - Martial Ranged",
+		"description": "1d10 piercing, Ammunition (range 100/400), Heavy, Loading, Two-handed"
+	},
+	{
+		"name": "Longbow",
+		"value": {
+			"num": 50,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Weapon - Martial Ranged",
+		"description": "1d8 piercing, Ammunition (range 150/600), Heavy, Two-handed"
+	},
+	{
+		"name": "Net",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 3,
+		"category": "Weapon - Martial Ranged",
+		"description": "SLecial, Thrown (range 5/15)"
+	},
+	{
+		"name": "Arrows",
+		"value": {
+			"num": 5,
+			"unit": "CP"
+		},
+		"weight": 0.05,
+		"category": "Ammunition",
+		"description": ""
+	},
+	{
+		"name": "Blowgun needles",
+		"value": {
+			"num": 2,
+			"unit": "CP"
+		},
+		"weight": 0.02,
+		"category": "Ammunition",
+		"description": ""
+	},
+	{
+		"name": "Crossbow bolts",
+		"value": {
+			"num": 5,
+			"unit": "CP"
+		},
+		"weight": 0.075,
+		"category": "Ammunition",
+		"description": ""
+	},
+	{
+		"name": "Sling bullets",
+		"value": {
+			"num": 4,
+			"unit": "CP"
+		},
+		"weight": 0.075,
+		"category": "Ammunition",
+		"description": ""
+	},
+	{
+		"name": "Ale (Gallon)",
+		"value": {
+			"num": 2,
+			"unit": "SL"
+		},
+		"weight": 8,
+		"category": "Food and Drink",
+		"description": ""
+	},
+	{
+		"name": "Ale (Mug)",
+		"value": {
+			"num": 4,
+			"unit": "CP"
+		},
+		"weight": 1,
+		"category": "Food and Drink",
+		"description": ""
+	},
+	{
+		"name": "Banquet",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 10,
+		"category": "Food and Drink",
+		"description": ""
+	},
+	{
+		"name": "Bread, loaf",
+		"value": {
+			"num": 2,
+			"unit": "CP"
+		},
+		"weight": 1,
+		"category": "Food and Drink",
+		"description": ""
+	},
+	{
+		"name": "Cheese, hunk",
+		"value": {
+			"num": 1,
+			"unit": "SL"
+		},
+		"weight": 1,
+		"category": "Food and Drink",
+		"description": ""
+	},
+	{
+		"name": "Meat, chunk",
+		"value": {
+			"num": 3,
+			"unit": "SL"
+		},
+		"weight": 1,
+		"category": "Food and Drink",
+		"description": ""
+	},
+	{
+		"name": "Wine (Common)",
+		"value": {
+			"num": 2,
+			"unit": "SL"
+		},
+		"weight": 1,
+		"category": "Food and Drink",
+		"description": ""
+	},
+	{
+		"name": "Wine (Fine)",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Food and Drink",
+		"description": ""
+	},
+	{
+		"name": "Rations (1 day)",
+		"value": {
+			"num": 5,
+			"unit": "SL"
+		},
+		"weight": 2,
+		"category": "Food and Drink",
+		"description": ""
+	},
+	{
+		"name": "Wheat",
+		"value": {
+			"num": 1,
+			"unit": "CP"
+		},
+		"weight": 1,
+		"category": "Trade Goods",
+		"description": ""
+	},
+	{
+		"name": "Flour",
+		"value": {
+			"num": 2,
+			"unit": "CP"
+		},
+		"weight": 1,
+		"category": "Trade Goods",
+		"description": ""
+	},
+	{
+		"name": "Chicken",
+		"value": {
+			"num": 2,
+			"unit": "CP"
+		},
+		"weight": 2,
+		"category": "Trade Goods",
+		"description": ""
+	},
+	{
+		"name": "Salt",
+		"value": {
+			"num": 5,
+			"unit": "CP"
+		},
+		"weight": 1,
+		"category": "Trade Goods",
+		"description": ""
+	},
+	{
+		"name": "Iron",
+		"value": {
+			"num": 1,
+			"unit": "SL"
+		},
+		"weight": 1,
+		"category": "Trade Goods",
+		"description": ""
+	},
+	{
+		"name": "1 sq. yd. of canvas",
+		"value": {
+			"num": 1,
+			"unit": "SL"
+		},
+		"weight": 1,
+		"category": "Trade Goods",
+		"description": ""
+	},
+	{
+		"name": "Copper",
+		"value": {
+			"num": 5,
+			"unit": "SL"
+		},
+		"weight": 1,
+		"category": "Trade Goods",
+		"description": ""
+	},
+	{
+		"name": "1 sq. yd. of cotton cloth",
+		"value": {
+			"num": 5,
+			"unit": "SL"
+		},
+		"weight": 1,
+		"category": "Trade Goods",
+		"description": ""
+	},
+	{
+		"name": "Ginger",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Trade Goods",
+		"description": ""
+	},
+	{
+		"name": "Goat",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 60,
+		"category": "Trade Goods",
+		"description": ""
+	},
+	{
+		"name": "Cinnamon",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Trade Goods",
+		"description": ""
+	},
+	{
+		"name": "Pepper",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Trade Goods",
+		"description": ""
+	},
+	{
+		"name": "Sheep",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 60,
+		"category": "Trade Goods",
+		"description": ""
+	},
+	{
+		"name": "Cloves",
+		"value": {
+			"num": 3,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Trade Goods",
+		"description": ""
+	},
+	{
+		"name": "Pig",
+		"value": {
+			"num": 3,
+			"unit": "GP"
+		},
+		"weight": 90,
+		"category": "Trade Goods",
+		"description": ""
+	},
+	{
+		"name": "Silver",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Trade Goods",
+		"description": ""
+	},
+	{
+		"name": "1 sq. yd. of linen",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Trade Goods",
+		"description": ""
+	},
+	{
+		"name": "1 sq. yd. of silk",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Trade Goods",
+		"description": ""
+	},
+	{
+		"name": "Cow",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 200,
+		"category": "Trade Goods",
+		"description": ""
+	},
+	{
+		"name": "saffron",
+		"value": {
+			"num": 15,
+			"unit": "GP"
+		},
+		"weight": 200,
+		"category": "Trade Goods",
+		"description": ""
+	},
+	{
+		"name": "Ox",
+		"value": {
+			"num": 15,
+			"unit": "GP"
+		},
+		"weight": 300,
+		"category": "Trade Goods",
+		"description": ""
+	},
+	{
+		"name": "Gold",
+		"value": {
+			"num": 50,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Trade Goods",
+		"description": ""
+	},
+	{
+		"name": "Platinuum",
+		"value": {
+			"num": 500,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Trade Goods",
+		"description": ""
+	},
+	{
+		"name": "Clothes, common",
+		"value": {
+			"num": 5,
+			"unit": "SL"
+		},
+		"weight": 3,
+		"category": "Clothes",
+		"description": ""
+	},
+	{
+		"name": "Clothes, costume",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 4,
+		"category": "Clothes",
+		"description": ""
+	},
+	{
+		"name": "Clothes, fine",
+		"value": {
+			"num": 15,
+			"unit": "GP"
+		},
+		"weight": 6,
+		"category": "Clothes",
+		"description": ""
+	},
+	{
+		"name": "Clothes, traveler's",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 4,
+		"category": "Clothes",
+		"description": ""
+	},
+	{
+		"name": "Robes",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 4,
+		"category": "Clothes",
+		"description": ""
+	}
 ]

@@ -2,10 +2,10 @@
   "main": "index.html",
   "name": "DnD_Inventory_Manager",
   "description": "Interactive DnD Inventory Manager",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "keywords": [],
   "dependencies": {
-    "lodash": "~3.7.0",
+    "lodash": "^4.17.4",
     "moment": "~2.10.2",
     "shortid": "^2.2.8",
     "when": "^3.7.3"
@@ -16,6 +16,6 @@
   "license": "(GPL-3.0)",
   "repository": "",
   "scripts": {
-    "build": "browserify src/main.js -o bundle.js"
+    "build": "node build.js > bundle.js"
   }
 }
