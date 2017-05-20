@@ -20516,6 +20516,8 @@ var spellsPage = require('./View/spellsPage');
 var Button = require('./Components/Button');
 var TitleBar = require('./Components/TitleBar');
 
+var DATABASE_VERSION = 1;
+
 var main = {
 	layout: '<div class="icon-bar" id="tab-bar"></div>' +
 	'<div class="content" id="content"></div>',
@@ -20549,7 +20551,7 @@ var main = {
 		this._clearContent();
 
 		if (this.tabBarClickMap[target]) {
-			localStorage['lastPageIndex'] = parseInt(index);
+			localStorage['LAST_PAGE_INDEX'] = parseInt(index);
 			var currentTab = this.tabBarClickMap[target];
 			currentTab.entry.apply(currentTab.scope, [this._getContent()]);
 		}
@@ -20578,8 +20580,8 @@ var main = {
 			child.addEventListener('click', onTabBarClickListener);
 		}
 		var pageIndex = 0;
-		if (localStorage['lastPageIndex']) {
-			var value = localStorage['lastPageIndex'];
+		if (localStorage['LAST_PAGE_INDEX']) {
+			var value = localStorage['LAST_PAGE_INDEX'];
 			if (tabBar.children.length > value) {
 				pageIndex = value;
 			}
@@ -20608,7 +20610,19 @@ var main = {
 		}
 	},
 
+	checkLocalStorageVersion: function () {
+		if (localStorage['DBVERSION']) {
+			if (localStorage['DBVERSION'] != DATABASE_VERSION) {
+				localStorage.clear();
+			}
+		} else {
+			localStorage.clear();
+		}
+		localStorage['DBVERSION'] = DATABASE_VERSION;
+	},
+
 	start: function () {
+		this.checkLocalStorageVersion();
 		this.tabBarClickMap = {};
 		var body = document.getElementById('body');
 		body.innerHTML = '';
