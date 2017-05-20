@@ -18362,7 +18362,6 @@ var button = function (config) {
     this.listener = config.listener;
     this.flipOrder = config.flipOrder || false;
     this.id = shortid.generate();
-
     _.bind(this.getElement, this);
 }
 
@@ -18377,14 +18376,14 @@ button.prototype.getElement = function () {
     var icon = '<i class="fa ' + (this.icon ? this.icon : '') + '" style="' + iconStyle + '" aria-hidden="true"></i>';
     var title = '<span>' + (this.title ? this.title : '') + '</span>';
 
-    var element = '<a href="#" class="button" id="button-' + this.id + '">';
+    var element = '<div class="button" id="button-' + this.id + '">';
     if (!this.flipOrder) {
         element += icon + title;
     } else {
         element += title + icon;
     }
 
-    element += '</a>';
+    element += '</div>';
     buttonDiv.innerHTML = element;
     if (this.listener) {
         buttonDiv.addEventListener('click', this.listener);
@@ -18402,6 +18401,288 @@ button.prototype.setFlipOrder = function (flipOrder) {
 
 module.exports = button;
 },{"lodash":2,"shortid":3}],15:[function(require,module,exports){
+var _ = require('lodash');
+
+var CenterFloat = function (element) {
+    this.containedElement = element;
+}
+
+CenterFloat.prototype.getElement = function () {
+    var containerDiv = document.createElement('div');
+    containerDiv.setAttribute('style', "display: flex;");
+    var rightDiv = document.createElement('div');
+    rightDiv.setAttribute('style', "flex: 1;");
+    containerDiv.appendChild(rightDiv);
+    if (this.containedElement && _.isFunction(this.containedElement.getElement)) {
+        this.containedElement = this.containedElement.getElement()
+    }
+    containerDiv.appendChild(this.containedElement);
+    var leftDiv = document.createElement('div');
+    leftDiv.setAttribute('style', "flex: 1;");
+    containerDiv.appendChild(leftDiv);
+    return containerDiv;
+}
+
+module.exports = CenterFloat;
+},{"lodash":2}],16:[function(require,module,exports){
+var shortid = require('shortid');
+var _ = require('lodash');
+var EventHandler = require('../EventHandler');
+
+var checkbox = function (config) {
+    config = config || {};
+    this.title = config.title;
+    this.icon = config.icon;
+    this.iconStyle = config.iconStyle;
+    this.checked = config.checked || false;
+    this.isSticky = config.isSticky || false;
+    this.id = shortid.generate();
+    this.eventHandler = new EventHandler(['CHANGE']);
+    _.bindAll(this, _.functionsIn(this));
+}
+
+checkbox.prototype.getElement = function () {
+    if (this.element) {
+        return this.element;
+    }
+    var checkboxDiv = document.createElement('div');
+    checkboxDiv.setAttribute('id', 'checkboxDiv-' + this.id);
+    checkboxDiv.setAttribute('class', 'checkboxContainer');
+    checkboxDiv.addEventListener('click', this.onMouseClick);
+    checkboxDiv.addEventListener('mousedown', this.onMouseDown);
+    checkboxDiv.addEventListener('mouseup', this.onMouseUp);
+
+    var bothItems = this.title && this.icon;
+
+    var innerHTML = "<table>" + '<tr>';
+    var rowSpan = bothItems ? 2 : 1;
+    var style = this.checked ? 'fa-check-square-o' : 'fa-square-o';
+    var iconStyle = this.iconStyle ? 'style="' + this.iconStyle + '"' : '';
+    innerHTML += '<td rowspan="' + rowSpan + '"><i class="fa ' + style + ' checkedIcon" aria-hidden="true" id="checkbox-area-' + this.id + '"></i></td>';
+    if (bothItems || this.icon) {
+        innerHTML += '<td style="text-align: center;">' + '<i class="fa ' + this.icon + '" ' + iconStyle + 'aria-hidden="true"></i>' + '</td>';
+    } else {
+        innerHTML += '<td>' + '<span>' + this.title + '</span>' + '</td>';
+    }
+    innerHTML += "</tr>";
+
+    if (bothItems) {
+        innerHTML += '<tr><td><span>' + this.title + '</span></td></tr>';
+    }
+    innerHTML += "</table>";
+    checkboxDiv.innerHTML = innerHTML;
+
+    this.element = checkboxDiv;
+    return checkboxDiv;
+}
+
+checkbox.prototype.onMouseDown = function () {
+    var divElement = document.getElementById("checkboxDiv-" + this.id);
+    if (divElement) {
+        divElement.classList.add('pressed');
+    }
+}
+
+checkbox.prototype.onMouseUp = function () {
+    var divElement = document.getElementById("checkboxDiv-" + this.id);
+    if (divElement) {
+        divElement.classList.remove('pressed');
+    }
+}
+
+checkbox.prototype.setChecked = function (checked) {
+    this.checked = checked;
+    var checkedElement = document.getElementById("checkbox-area-" + this.id);
+    if (checkedElement) {
+        var style = checked ? 'fa-check-square-o' : 'fa-square-o';
+        checkedElement.setAttribute('class', 'fa ' + style + ' checkedIcon');
+        this.eventHandler.fireEvent('CHANGE', this.checked);
+    }
+}
+
+checkbox.prototype.setIsSticky = function (isSticky) {
+    this.isSticky = isSticky;
+}
+
+checkbox.prototype.toggleChecked = function () {
+    this.setChecked(!this.checked);
+}
+
+checkbox.prototype.onMouseClick = function () {
+    if (this.checked && this.isSticky) {
+        return;
+    }
+    this.toggleChecked();
+}
+
+checkbox.prototype.addChangeListener = function (listener) {
+    this.eventHandler.addListener('CHANGE', listener);
+}
+
+checkbox.prototype.removeChangeListener = function (listener) {
+    this.eventHandler.removeListener('CHANGE', listener);
+}
+
+module.exports = checkbox;
+},{"../EventHandler":21,"lodash":2,"shortid":3}],17:[function(require,module,exports){
+var shortid = require('shortid');
+var _ = require('lodash');
+var EventHandler = require('../EventHandler');
+
+var CheckBoxGroup = function (config) {
+    if (!config || !config.buttons) {
+        throw new Error('Unable to create empty checkboxgroup');
+    }
+    this.buttons = config.buttons;
+    this.checked = config.checked || 0;
+    this.id = shortid.generate();
+    this.eventHandler = new EventHandler(['CHANGE']);
+    _.bindAll(this, _.functionsIn(this));
+}
+
+CheckBoxGroup.prototype.addChangeListener = function (listener) {
+    this.eventHandler.addListener('CHANGE', listener);
+}
+
+CheckBoxGroup.prototype.removeChangeListener = function (listener) {
+    this.eventHandler.removeListener('CHANGE', listener);
+}
+
+CheckBoxGroup.prototype.getElement = function () {
+    var containerDiv = document.createElement('div');
+    containerDiv.setAttribute('id', 'checkboxGroupContainer-' + this.id);
+    containerDiv.setAttribute('class', 'checkboxGroup');
+    var rightDiv = document.createElement('div');
+    rightDiv.setAttribute('style', "flex: 1;");
+    containerDiv.appendChild(rightDiv);
+
+    for (var i = 0; i < this.buttons.length; i++) {
+        var button = this.buttons[i];
+        button.setIsSticky(true);
+        button.setChecked(this.checked === i);
+        containerDiv.appendChild(button.getElement());
+        button.addChangeListener(_.partial(this.onButtonChanged, i));
+    }
+    var leftDiv = document.createElement('div');
+    leftDiv.setAttribute('style', "flex: 1;");
+    containerDiv.appendChild(leftDiv);
+    return containerDiv;
+}
+
+CheckBoxGroup.prototype.onButtonChanged = function (buttonInt, buttonState) {
+    if (buttonState === true) {
+        this.eventHandler.fireEvent('CHANGE', buttonInt);
+        for (var i = 0; i < this.buttons.length; i++) {
+            if (i != buttonInt) {
+                this.buttons[i].setChecked(false)
+            }
+        }
+    }
+}
+
+
+module.exports = CheckBoxGroup;
+},{"../EventHandler":21,"lodash":2,"shortid":3}],18:[function(require,module,exports){
+var shortid = require('shortid');
+var _ = require('lodash');
+
+var popupActionMenu = function (config) {
+    this.title = config.title;
+    this.buttons = config.buttons;
+    this.id = shortid.generate();
+    _.bindAll(this, _.functionsIn(this));
+}
+
+
+var buttonUI = '<div class="dropdown">' +
+    '<button class="dropbtn" id="dropdownButton">' +
+    '<i class="fa fa-ellipsis-v" aria-hidden="true"></i>' +
+    '</button>' +
+    '<div id="myDropdown" class="dropdown-content">' +
+    '<span class="title">Title</span>' +
+    '<a href="#">Link 1</a>' +
+    '<a href="#">Link 2</a>' +
+    '<a href="#">Link 3</a>' +
+    '</div>' +
+    '</div>';
+
+popupActionMenu.prototype.getElement = function () {
+    var actionMenuDiv = document.createElement('div');
+    actionMenuDiv.setAttribute('class', 'dropdown');
+    actionMenuDiv.setAttribute('id', 'actionMenuDiv-' + this.id);
+
+    var button = document.createElement('button');
+    button.setAttribute('id', 'dropdownButton-' + this.id);
+    button.setAttribute('class', 'dropbtn');
+    button.addEventListener('click', this.onDropdownClick);
+    button.addEventListener('mousedown', this.onMouseDown);
+    button.addEventListener('mouseup', this.onMouseUp);
+
+    var icon = document.createElement('i');
+    icon.setAttribute('class', 'fa fa-ellipsis-v dropicon');
+    icon.setAttribute('aria-hidden', 'true');
+    icon.setAttribute('id', 'dropdownIcon-' + this.id);
+
+    button.appendChild(icon);
+    actionMenuDiv.appendChild(button);
+
+    var contentDiv = document.createElement('div');
+    contentDiv.setAttribute('class', 'dropdown-content');
+    contentDiv.setAttribute('id', 'dropdownContent-' + this.id);
+
+    if (this.title) {
+        contentDiv.insertAdjacentHTML('beforeEnd', '<span class="title">' + this.title + '</span>');
+    }
+    _.each(this.buttons, function (button) {
+        var link = document.createElement('div');
+        link.setAttribute('class', 'popupElement');
+        if (button.icon) {
+            link.innerHTML = '<i class="fa ' + button.icon + '" aria-hidden="true"></i>' + button.title;
+        } else {
+            link.innerHTML = button.title;
+        }
+        link.addEventListener('click', function () {
+            if (button.listener) {
+                button.listener();
+            }
+        });
+        contentDiv.appendChild(link);
+    });
+    actionMenuDiv.appendChild(contentDiv);
+
+    return actionMenuDiv;
+}
+
+popupActionMenu.prototype.onDropdownClick = function (a, b, c, d, e, f, g, h) {
+    var backgroundElementWidth = $(".background").outerWidth();
+    var currentElementPosition = $("#actionMenuDiv-" + this.id).position();
+    var classesToAdd = (currentElementPosition.left > backgroundElementWidth - 230) ? "show-right" : "show";
+    var element = document.getElementById("dropdownContent-" + this.id);
+    if (element.classList.contains("show") || element.classList.contains("show-right")) {
+        element.classList.remove("show");
+        element.classList.remove("show-right");
+    } else {
+        element.classList.add(classesToAdd);
+        element.classList.add('shownOpacity');
+    }
+}
+
+popupActionMenu.prototype.onMouseDown = function () {
+    var buttonElement = document.getElementById("dropdownButton-" + this.id);
+    if (buttonElement) {
+        buttonElement.classList.add('pressed');
+    }
+}
+
+popupActionMenu.prototype.onMouseUp = function () {
+    var buttonElement = document.getElementById("dropdownButton-" + this.id);
+    if (buttonElement) {
+        buttonElement.classList.remove('pressed');
+    }
+}
+
+module.exports = popupActionMenu;
+},{"lodash":2,"shortid":3}],19:[function(require,module,exports){
 var _ = require('lodash');
 var shortid = require('shortid');
 
@@ -18460,17 +18741,40 @@ titleBar.TYPES = {
 }
 
 module.exports = titleBar;
-},{"./Button":14,"lodash":2,"shortid":3}],16:[function(require,module,exports){
+},{"./Button":14,"lodash":2,"shortid":3}],20:[function(require,module,exports){
 var constants = {
     inventoryPageActions: {
         ADD_EDIT_ITEM: "ADD_EDIT_ITEM",
         TRANSACTION: 'TRANSACTION',
-        RESET: 'RESET'
+        RESET: 'RESET',
+        CONVERT_COINAGE: 'CONVERT_COINAGE'
+    },
+    coinage: {
+        PLATINUM: {
+            NAME: "Platinum",
+            COPPER_VALUE: 1000
+        },
+        GOLD: {
+            NAME: "Gold",
+            COPPER_VALUE: 100
+        },
+        ELECTRUM: {
+            NAME: "Electrum",
+            COPPER_VALUE: 50
+        },
+        SILVER: {
+            NAME: "Silver",
+            COPPER_VALUE: 10
+        },
+        COPPER: {
+            NAME: "Copper",
+            COPPER_VALUE: 1
+        },
     }
 }
 
 module.exports = constants;
-},{}],17:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 var _ = require('lodash');
 
 var EventHandler = function (possibleEvents) {
@@ -18528,14 +18832,19 @@ EventHandler.prototype.fireEvent = function (type, data) {
 
 
 module.exports = EventHandler;
-},{"lodash":2}],18:[function(require,module,exports){
+},{"lodash":2}],22:[function(require,module,exports){
 var _ = require('lodash');
 
 var EventHandler = require('../EventHandler');
 
 var characterManager = function () {
-    this.attributes = {
-        strength: 0
+    this.abilities = {
+        strength: 0,
+        dexterity: 0,
+        constitution: 0,
+        intelligence: 0,
+        wisdom: 0,
+        charisma: 0
     }
     this.loadValuesFromStorage();
     this.eventHandler = new EventHandler();
@@ -18549,24 +18858,28 @@ characterManager.prototype.KEYS = {
 characterManager.prototype.loadValuesFromStorage = function () {
     if (localStorage['CHARACTER']) {
         var character = JSON.parse(localStorage['CHARACTER']);
-        this.attributes = character.attributes;
+        this.abilities = character.abilities;
     }
+}
+
+characterManager.prototype.getAbilities = function () {
+    return this.abilities;
 }
 
 characterManager.prototype.saveValuesToStorage = function () {
     var character = {
-        attributes: this.attributes
+        abilities: this.abilities
     };
     localStorage['CHARACTER'] = JSON.stringify(character);
 }
 
 characterManager.prototype.setStrength = function (strength) {
-    this.attributes.strength = strength;
+    this.abilities.strength = strength;
     this.fireEvent(this.KEYS.STRENGTH, strength);
 }
 
 characterManager.prototype.getStrength = function () {
-    return this.attributes.strength;
+    return this.abilities.strength;
 }
 
 characterManager.prototype.addListener = function (type, listener) {
@@ -18583,19 +18896,20 @@ characterManager.prototype.fireEvent = function (type, data) {
 }
 
 module.exports = new characterManager();
-},{"../EventHandler":17,"lodash":2}],19:[function(require,module,exports){
+},{"../EventHandler":21,"lodash":2}],23:[function(require,module,exports){
 var _ = require('lodash');
 
 var WEIGHT_PER_COIN = 0.02;
 
 var EventHandler = require('../EventHandler');
+var Constants = require('../Constants');
 
 var CoinageManager = function () {
-    this.platinum = 0;
-    this.gold = 0;
-    this.electrum = 0;
-    this.silver = 0;
-    this.copper = 0;
+    this.Platinum = 0;
+    this.Gold = 0;
+    this.Electrum = 0;
+    this.Silver = 0;
+    this.Copper = 0;
     this.eventHandler = new EventHandler();
     _.bindAll(this, _.functionsIn(this));
     this.loadValuesFromStorage();
@@ -18606,27 +18920,27 @@ CoinageManager.prototype.EVENTS = {
 }
 
 CoinageManager.prototype.setGold = function (newValue) {
-    this.gold = newValue;
+    this.Gold = newValue;
     this.onCoinChange();
 }
 
 CoinageManager.prototype.setPlatinum = function (newValue) {
-    this.platinum = newValue;
+    this.Platinum = newValue;
     this.onCoinChange();
 }
 
 CoinageManager.prototype.setElectrum = function (newValue) {
-    this.electrum = newValue;
+    this.Electrum = newValue;
     this.onCoinChange();
 }
 
 CoinageManager.prototype.setSilver = function (newValue) {
-    this.silver = newValue;
+    this.Silver = newValue;
     this.onCoinChange();
 }
 
 CoinageManager.prototype.setCopper = function (newValue) {
-    this.copper = newValue;
+    this.Copper = newValue;
     this.onCoinChange();
 }
 
@@ -18638,17 +18952,41 @@ CoinageManager.prototype.onCoinChange = function () {
 CoinageManager.prototype.loadValuesFromStorage = function () {
     if (localStorage['COINAGE']) {
         var coinageVales = JSON.parse(localStorage['COINAGE']);
-        this.platinum = coinageVales.platinum;
-        this.gold = coinageVales.gold;
-        this.electrum = coinageVales.electrum;
-        this.silver = coinageVales.silver;
-        this.copper = coinageVales.copper;
+        this.Platinum = coinageVales.Platinum;
+        this.Gold = coinageVales.Gold;
+        this.Electrum = coinageVales.Electrum;
+        this.Silver = coinageVales.Silver;
+        this.Copper = coinageVales.Copper;
         this.fireEvent(this.EVENTS.COINAGE_UPDATED, this.getCoinageData());
     }
 }
 
 CoinageManager.prototype.saveValuesToStorage = function () {
     localStorage['COINAGE'] = JSON.stringify(this.getSimpleCoinageData());
+}
+
+CoinageManager.prototype.getValue = function (type) {
+    var allowedValues = Constants.coinage,
+        self = this,
+        returnValue;
+    _.each(allowedValues, function (value) {
+        if (value.NAME === type) {
+            returnValue = self[value.NAME];
+        }
+    })
+    if (returnValue) {
+        return returnValue;
+    }
+}
+
+CoinageManager.prototype.setValue = function (type, value) {
+    var allowedValues = Constants.coinage,
+        self = this;
+    _.each(allowedValues, function (fullValue) {
+        if (fullValue.NAME === type) {
+            self['set' + fullValue.NAME](value);
+        }
+    })
 }
 
 CoinageManager.prototype.getCoinageData = function () {
@@ -18662,11 +19000,11 @@ CoinageManager.prototype.getCoinageData = function () {
 
 CoinageManager.prototype.getSimpleCoinageData = function () {
     return {
-        platinum: this.platinum,
-        gold: this.gold,
-        electrum: this.electrum,
-        silver: this.silver,
-        copper: this.copper
+        Platinum: this.Platinum,
+        Gold: this.Gold,
+        Electrum: this.Electrum,
+        Silver: this.Silver,
+        Copper: this.Copper
     }
 }
 
@@ -18675,7 +19013,7 @@ CoinageManager.prototype.getCurrentCoinageWeight = function () {
 }
 
 CoinageManager.prototype.getCurrentCoinCount = function () {
-    return (this.platinum + this.gold + this.electrum + this.silver + this.copper);
+    return (this.Platinum + this.Gold + this.Electrum + this.Silver + this.Copper);
 }
 
 CoinageManager.prototype.getCurrentValueInGold = function () {
@@ -18683,7 +19021,7 @@ CoinageManager.prototype.getCurrentValueInGold = function () {
 }
 
 CoinageManager.prototype.getCurrentValueInCopper = function () {
-    return (this.platinum * 1000) + (this.gold * 100) + (this.electrum * 50) + (this.silver * 10) + this.copper;
+    return (this.Platinum * 1000) + (this.Gold * 100) + (this.Electrum * 50) + (this.Silver * 10) + this.Copper;
 }
 
 CoinageManager.prototype.addListener = function (type, listener) {
@@ -18699,7 +19037,7 @@ CoinageManager.prototype.fireEvent = function (type, data) {
 }
 
 module.exports = new CoinageManager();
-},{"../EventHandler":17,"lodash":2}],20:[function(require,module,exports){
+},{"../Constants":20,"../EventHandler":21,"lodash":2}],24:[function(require,module,exports){
 var _ = require('lodash');
 var shortid = require('shortid');
 
@@ -18740,7 +19078,7 @@ inventoryManager.prototype.addItem = function (item) {
 }
 
 module.exports = new inventoryManager();
-},{"../EventHandler":17,"lodash":2,"shortid":3}],21:[function(require,module,exports){
+},{"../EventHandler":21,"lodash":2,"shortid":3}],25:[function(require,module,exports){
 var _ = require('lodash');
 var shortid = require('shortid');
 var baseTemplates = require('../../baseDnD5eTemplates.json');
@@ -18784,7 +19122,7 @@ templateManager.prototype.getListOfTemplates = function () {
 }
 
 module.exports = new templateManager();
-},{"../../baseDnD5eTemplates.json":1,"lodash":2,"shortid":3}],22:[function(require,module,exports){
+},{"../../baseDnD5eTemplates.json":1,"lodash":2,"shortid":3}],26:[function(require,module,exports){
 var Utils = {};
 Utils.clearPage = function () {
 	this.getContentContainer().innerHTML = "";
@@ -18861,8 +19199,25 @@ Utils.convertValueLongToShortCode = function (longCode) {
 	return valueLongCodes[longCode];
 }
 
+Utils.getAbilityModifierFromAbilityValue = function (value) {
+	if (value > 30) {
+		return "+10";
+	} else if (value < 1) {
+		return "-5";
+	} else {
+		var modifier = Math.floor((value / 2) - 5);
+		if (modifier > 0) {
+			return "+" + modifier;
+		} else if (modifier < 0) {
+			return "-" + modifier;
+		} else {
+			return modifier;
+		}
+	}
+}
+
 module.exports = Utils;
-},{}],23:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 var _ = require('lodash');
 
 var TitleBar = require('../../Components/TitleBar');
@@ -19025,94 +19380,17 @@ AddEditItem.prototype.goBack = function () {
 }
 
 module.exports = new AddEditItem();
-},{"../../Components/Button":14,"../../Components/TitleBar":15,"../../Constants":16,"../../EventHandler":17,"../../Managers/inventoryManager":20,"../../Managers/templateManager":21,"../../Utils":22,"lodash":2}],24:[function(require,module,exports){
+},{"../../Components/Button":14,"../../Components/TitleBar":19,"../../Constants":20,"../../EventHandler":21,"../../Managers/inventoryManager":24,"../../Managers/templateManager":25,"../../Utils":26,"lodash":2}],28:[function(require,module,exports){
 var _ = require('lodash');
 
 var TitleBar = require('../../Components/TitleBar');
 var Button = require('../../Components/Button');
+var PopupActionMenu = require('../../Components/PopupActionMenu');
 var EventHandler = require('../../EventHandler');
 var inventoryManager = require('../../Managers/inventoryManager');
 var CoinageManager = require('../../Managers/CoinageManager');
 var Utils = require('../../Utils');
 var Constants = require('../../Constants');
-
-var coinageLayout = '<table class="table bottomBorder">' +
-    '<tbody>' +
-
-    '<tr>' +
-    '<td class="coinageLabel">' +
-    'Platinum' +
-    '</td>' +
-    '<td>' +
-    '<input class="form-control coinageInput" value="0" type="number" id="PLATINUM-input" min="0" max="999999999"></input>' +
-    '</td>' +
-
-    '<td class="coinageLabel">' +
-    'Silver' +
-    '</td>' +
-    '<td>' +
-    '<input class="form-control coinageInput" value="0" type="number" id="SILVER-input" min="0" max="999999"></input>' +
-    '</td>' +
-
-    '<td class="coinageLabel">' +
-    'Total Value' +
-    '</td>' +
-    '<td>' +
-    '<div  data-toggle="tooltip" class="input-group" style="width: 8em !important" id="total-coinage-container">' +
-    '<input id="total-coinage-value" class="form-control forceWhiteBackground" value="0" type="text" aria-describedby="basic-addon2" readonly="true"></input>' +
-    '<span class="input-group-addon forceWhiteBackground" id="basic-addon2">GP</span>' +
-    '</div>' +
-    '</td>' +
-    '</tr>' +
-
-    '<tr>' +
-    '<td class="coinageLabel">' +
-    'Gold' +
-    '</td>' +
-    '<td>' +
-    '<input class="form-control coinageInput" value="0" type="number" id="GOLD-input" min="0" max="999999"></input>' +
-    '</td>' +
-
-    '<td class="coinageLabel">' +
-    'Copper' +
-    '</td>' +
-    '<td>' +
-    '<input class="form-control coinageInput" value="0" type="number" id="COPPER-input" min="0" max="999999"></input>' +
-    '</td>' +
-
-    '<td class="coinageLabel">' +
-    'Total Coins' +
-    '</td>' +
-    '<td>' +
-    '<input class="form-control coinageInput forceWhiteBackground" value="0" type="number" id="total-coinage-ammount" min="0" max="999999" readonly="true"></input>' +
-    '</td>' +
-    '</tr>' +
-
-    '<tr>' +
-    '<td class="coinageLabel">' +
-    'Electrum' +
-    '</td>' +
-    '<td>' +
-    '<input class="form-control coinageInput" value="0" type="number" id="ELECTRUM-input" min="0" max="999999"></input>' +
-    '</td>' +
-
-    '<td>' +
-    '</td>' +
-    '<td>' +
-    '</td>' +
-
-    '<td class="coinageLabel">' +
-    'Weight' +
-    '</td>' +
-    '<td>' +
-    '<div class="input-group" style="width: 8em !important">' +
-    '<input id="coinage-weight" class="form-control forceWhiteBackground" value="0" type="text" aria-describedby="basic-addon2" readonly="true"></input>' +
-    '<span class="input-group-addon forceWhiteBackground" id="basic-addon2">lbs</span>' +
-    '</div>' +
-    '</td>' +
-    '</tr>' +
-    '</tbody>' +
-    '</table>';
 
 var coinageSection = function () {
     _.bindAll(this, _.functionsIn(this));
@@ -19133,6 +19411,28 @@ coinageSection.prototype.onTransactionTap = function () {
     this.parentEventListener.fireEvent(Constants.inventoryPageActions.TRANSACTION);
 }
 
+coinageSection.prototype.onConvertTap = function (currentSection, targetSection) {
+    var orderedTargets = this.getOrderedTargets(currentSection, targetSection);
+    this.parentEventListener.fireEvent(Constants.inventoryPageActions.CONVERT_COINAGE, orderedTargets);
+}
+
+coinageSection.prototype.getOrderedTargets = function (title1, title2) {
+    var orderedTitles = this.getOrderedCoinageNames();
+    var title1Index = _.indexOf(orderedTitles, title1);
+    var title2Index = _.indexOf(orderedTitles, title2);
+    if (title1Index < title2Index) {
+        return [title1, title2];
+    } else {
+        return [title2, title1];
+    }
+}
+
+coinageSection.prototype.getOrderedCoinageNames = function () {
+    return _.map(_.values(Constants.coinage), function (coinageType) {
+        return coinageType.NAME;
+    });
+}
+
 coinageSection.prototype.createUI = function (contentDiv) {
     var transactionButton = new Button({
         title: 'Transaction',
@@ -19144,7 +19444,9 @@ coinageSection.prototype.createUI = function (contentDiv) {
         type: TitleBar.TYPES.SUB_TITLE,
         rightButton: transactionButton
     }).getElement());
-    contentDiv.insertAdjacentHTML('beforeEnd', coinageLayout);
+
+    this.createCoinageTable(contentDiv);
+
     $(".coinageInput").keypress(function (e) {
         if (e.which < 48 || e.which > 57) {
             return (false);
@@ -19152,9 +19454,92 @@ coinageSection.prototype.createUI = function (contentDiv) {
     });
 }
 
+coinageSection.prototype.createCoinageTable = function (contentDiv) {
+    var tableElement = document.createElement('table');
+    tableElement.setAttribute('class', 'table');
+    contentDiv.appendChild(tableElement);
+
+    var tbodyElement = document.createElement('tbody');
+    tableElement.appendChild(tbodyElement);
+
+    var firstRow = document.createElement('tr');
+    var secondRow = document.createElement('tr');
+    var thirdRow = document.createElement('tr');
+    tbodyElement.appendChild(firstRow);
+    tbodyElement.appendChild(secondRow);
+    tbodyElement.appendChild(thirdRow);
+    this.createCoinageSection(Constants.coinage.PLATINUM.NAME, false, firstRow);
+    this.createCoinageSection(Constants.coinage.SILVER.NAME, false, firstRow);
+    this.createUnitSection('Total Value', 'GP', 'total-coinage-value', firstRow, 'total-coinage-container');
+    this.createCoinageSection(Constants.coinage.GOLD.NAME, false, secondRow);
+    this.createCoinageSection(Constants.coinage.COPPER.NAME, false, secondRow);
+    this.createCoinageSection('Total Coins', true, secondRow);
+    this.createCoinageSection(Constants.coinage.ELECTRUM.NAME, false, thirdRow);
+    this.createEmptySection(thirdRow);
+    this.createUnitSection('Weight', 'lbs', 'coinage-weight', thirdRow);
+}
+
+coinageSection.prototype.createCoinageSection = function (title, readonly, tableRow, ) {
+    var inputCell = document.createElement('td');
+    inputCell.setAttribute('style', 'display: flex;');
+
+    var readonlyValue = readonly ? 'readonly="true"' : '';
+    inputCell.innerHTML = '<input class="form-control coinageInput forceWhiteBackground" style="margin-right: 5px;" value="0" type="number" id="' + title + '-input" min="0" max="999999999" ' + readonlyValue + '></input>';
+    if (!readonly) {
+        var popupMenu = new PopupActionMenu({
+            title: "Actions",
+            buttons: this.generateButtonTitles(title)
+        });
+        inputCell.appendChild(popupMenu.getElement());
+    }
+
+    tableRow.appendChild(this.generateLabelSection(title));
+    tableRow.appendChild(inputCell);
+}
+
+coinageSection.prototype.generateButtonTitles = function (title) {
+    var titles = _.without(this.getOrderedCoinageNames(), title),
+        self = this;
+    return _.map(titles, function (sectionTitle) {
+        return {
+            title: 'Convert to / from ' + sectionTitle,
+            listener: _.partial(self.onConvertTap, title, sectionTitle)
+        };
+    });
+}
+
+coinageSection.prototype.createUnitSection = function (title, unit, id, tableRow, sectionId) {
+    tableRow.appendChild(this.generateLabelSection(title));
+    var valueCell = document.createElement('td');
+
+    var inputDiv = document.createElement('div');
+    inputDiv.setAttribute('class', 'input-group');
+    inputDiv.setAttribute('style', 'width: 9em !important');
+    if (sectionId) {
+        inputDiv.setAttribute('id', sectionId);
+    }
+
+    inputDiv.innerHTML = '<input id="' + id + '" class="form-control forceWhiteBackground" value="0" type="text" aria-describedby="basic-addon2" readonly="true"></input>' +
+        '<span class="input-group-addon forceWhiteBackground" id="basic-addon2">' + unit + '</span>';
+    valueCell.appendChild(inputDiv);
+    tableRow.appendChild(valueCell);
+}
+
+coinageSection.prototype.createEmptySection = function (tableRow) {
+    tableRow.appendChild(document.createElement('td'));
+    tableRow.appendChild(document.createElement('td'));
+}
+
+coinageSection.prototype.generateLabelSection = function (title) {
+    var labelCell = document.createElement('td');
+    labelCell.innerHTML = title;
+    labelCell.setAttribute('class', 'coinageLabel');
+    return labelCell;
+}
+
 coinageSection.prototype.onCoinageChange = function (coinageData) {
     var totalValue = document.getElementById('total-coinage-value');
-    var totalCoins = document.getElementById('total-coinage-ammount');
+    var totalCoins = document.getElementById('Total Coins-input');
     var coinWeight = document.getElementById('coinage-weight');
     var totalCoinageContainer = document.getElementById('total-coinage-container');
     totalCoins.value = coinageData.count;
@@ -19163,47 +19548,164 @@ coinageSection.prototype.onCoinageChange = function (coinageData) {
     Utils.addCoinagePopupToElement(coinageData.copperValue, 'Copper', totalCoinageContainer);
 }
 
-coinageSection.prototype.setupCoinageFieldValuesAndListeners = function (coinageData) {
-    var coinageData = coinageData || CoinageManager.getCoinageData();
-    this.setupCoinageField('PLATINUM-input', coinageData.platinum);
-    this.setupCoinageField('GOLD-input', coinageData.gold);
-    this.setupCoinageField('ELECTRUM-input', coinageData.electrum);
-    this.setupCoinageField('SILVER-input', coinageData.silver);
-    this.setupCoinageField('COPPER-input', coinageData.copper);
-    this.onCoinageChange(coinageData);
+coinageSection.prototype.setupCoinageFieldValuesAndListeners = function () {
+    var coinageData = CoinageManager.getCoinageData(),
+        self = this;
+    _.each(Constants.coinage, function (coinageType) {
+        self.setupCoinageField(coinageType.NAME, coinageData[coinageType.NAME]);
+    });
+    self.onCoinageChange(coinageData);
 }
 
 coinageSection.prototype.setupCoinageField = function (fieldId, value) {
-    var inputField = document.getElementById(fieldId);
+    var inputField = document.getElementById(fieldId + '-input');
     inputField.value = value;
     inputField.addEventListener('input', _.partial(this.validateCoinageInput, fieldId));
 }
 
 coinageSection.prototype.validateCoinageInput = function (id) {
-    var inputField = document.getElementById(id);
+    var inputField = document.getElementById(id + '-input');
     var value = Utils.sanitiseNumberInput(inputField.value);
     inputField.value = value;
-    switch (id) {
-        case 'PLATINUM-input':
-            inputFunction = CoinageManager.setPlatinum(value);
-            break;
-        case 'GOLD-input':
-            inputFunction = CoinageManager.setGold(value);
-            break;
-        case 'ELECTRUM-input':
-            inputFunction = CoinageManager.setElectrum(value);
-            break;
-        case 'SILVER-input':
-            inputFunction = CoinageManager.setSilver(value);
-            break;
-        case 'COPPER-input':
-            inputFunction = CoinageManager.setCopper(value);
-            break;
-    }
+    CoinageManager.setValue(id, value);
 }
 
 module.exports = new coinageSection();
-},{"../../Components/Button":14,"../../Components/TitleBar":15,"../../Constants":16,"../../EventHandler":17,"../../Managers/CoinageManager":19,"../../Managers/inventoryManager":20,"../../Utils":22,"lodash":2}],25:[function(require,module,exports){
+},{"../../Components/Button":14,"../../Components/PopupActionMenu":18,"../../Components/TitleBar":19,"../../Constants":20,"../../EventHandler":21,"../../Managers/CoinageManager":23,"../../Managers/inventoryManager":24,"../../Utils":26,"lodash":2}],29:[function(require,module,exports){
+var _ = require('lodash');
+
+var TitleBar = require('../../Components/TitleBar');
+var Button = require('../../Components/Button');
+var Utils = require('../../Utils');
+var Constants = require('../../Constants');
+var CoinageManager = require('../../Managers/CoinageManager');
+var CenterFloat = require('../../Components/CenterFloat');
+
+var ConvertCoinage = function () {
+    _.bindAll(this, _.functionsIn(this));
+}
+
+
+ConvertCoinage.prototype.showInside = function (contentDiv, eventListener, titles) {
+    this.types = titles;
+    this.parentEventListener = eventListener;
+    this.createHeaderBar(contentDiv);
+    this.createValueSection(contentDiv);
+}
+
+ConvertCoinage.prototype.createHeaderBar = function (contentDiv) {
+    var acceptButton = new Button({
+        title: 'Accept',
+        icon: 'fa-check',
+        listener: this.onAcceptTap
+    });
+    var cancelButton = new Button({
+        title: 'Cancel',
+        icon: 'fa-times',
+        listener: this.onCancelTap
+    })
+
+    contentDiv.appendChild(new TitleBar({
+        title: 'Convert Coinage',
+        type: TitleBar.TYPES.SUB_TITLE,
+        rightButton: acceptButton,
+        leftButton: cancelButton
+    }).getElement());
+}
+
+ConvertCoinage.prototype.getRange = function () {
+    var value1 = CoinageManager.getValue(this.types[0]),
+        value2 = CoinageManager.getValue(this.types[1]);
+    var ratio = this.getRatio();
+
+    var valueInLowest = (ratio * value1) + value2;
+    return Math.floor(valueInLowest / ratio);
+}
+
+ConvertCoinage.prototype.getRatio = function () {
+    var val1Multiplier = this.getMultiplier(this.types[0]),
+        val2Multiplier = this.getMultiplier(this.types[1]);
+    return val1Multiplier / val2Multiplier;
+}
+
+ConvertCoinage.prototype.getMultiplier = function (title) {
+    var multiplier = 1;
+    _.each(Constants.coinage, function (coinageValue) {
+        if (coinageValue.NAME === title) {
+            multiplier = coinageValue.COPPER_VALUE;
+        }
+    });
+    return multiplier;
+}
+
+ConvertCoinage.prototype.createValueSection = function (contentDiv, ) {
+    var value1 = CoinageManager.getValue(this.types[0]);
+    var value2 = CoinageManager.getValue(this.types[1]);
+    var topDiv = document.createElement('div');
+    topDiv.setAttribute('class', 'convertCoinageValues');
+    topDiv.innerHTML = '<span>' + this.types[0] + ':</span>' +
+        '<input class="form-control coinageInput forceWhiteBackground" style="margin: 5px;" value="' + value1 + '" type="number" id="a-input" readonly="true"></input>' +
+        '<span>' + this.types[1] + ':</span>' +
+        '<input class="form-control coinageInput forceWhiteBackground" style="margin: 5px;" value="' + value2 + '" type="number" id="b-input" readonly="true"></input>';
+    var valuesCenter = new CenterFloat(topDiv);
+    contentDiv.appendChild(valuesCenter.getElement());
+
+    var inputElement = document.createElement('input');
+    inputElement.setAttribute('type', 'range');
+    inputElement.setAttribute('id', 'rangeSelector');
+    inputElement.setAttribute('min', '0');
+    inputElement.setAttribute('max', this.getRange());
+    inputElement.setAttribute('value', value1);
+    inputElement.addEventListener('input', this.recalcValues)
+
+    var convertDiv = document.createElement('div');
+    convertDiv.setAttribute('class', 'convertCoinageInput');
+    convertDiv.innerHTML = this.types[0] + '<i class="fa fa-arrow-left" aria-hidden="true"></i>';
+    convertDiv.appendChild(inputElement);
+    convertDiv.insertAdjacentHTML('beforeEnd', '<i class="fa fa-arrow-right" aria-hidden="true"></i>' + this.types[1]);
+    contentDiv.appendChild(convertDiv);
+}
+
+ConvertCoinage.prototype.recalcValues = function () {
+    var rangeSelector = document.getElementById('rangeSelector');
+    var aInput = document.getElementById('a-input');
+    var bInput = document.getElementById('b-input');
+    var val = rangeSelector.value;
+
+    var value1 = CoinageManager.getValue(this.types[0]),
+        value2 = CoinageManager.getValue(this.types[1]);
+    var ratio = this.getRatio();
+    var valueInLowest = (ratio * value1) + value2;
+
+    var leftOver = valueInLowest - (val * ratio);
+
+    aInput.value = val;
+    bInput.value = leftOver
+}
+
+ConvertCoinage.prototype.hide = function () {
+}
+
+ConvertCoinage.prototype.onAcceptTap = function () {
+    var aInput = document.getElementById('a-input');
+    var bInput = document.getElementById('b-input');
+
+    CoinageManager.setValue(this.types[0], parseInt(aInput.value));
+    CoinageManager.setValue(this.types[1], parseInt(bInput.value));
+    this.goBack()
+}
+
+ConvertCoinage.prototype.onCancelTap = function () {
+    this.goBack()
+}
+
+ConvertCoinage.prototype.goBack = function () {
+    this.parentEventListener.fireEvent(Constants.inventoryPageActions.RESET);
+}
+
+
+module.exports = new ConvertCoinage();
+},{"../../Components/Button":14,"../../Components/CenterFloat":15,"../../Components/TitleBar":19,"../../Constants":20,"../../Managers/CoinageManager":23,"../../Utils":26,"lodash":2}],30:[function(require,module,exports){
 var _ = require('lodash');
 
 var TitleBar = require('../../Components/TitleBar');
@@ -19224,8 +19726,8 @@ var UI = '<div class="inventoryPageHeader">' +
     '</div>' +
     '<span class="topBarLabel">Total Current Weight: </span>' +
     '<div class="input-group" style="width: 10em !important">' +
-    '<input id="current-weight" class="form-control" value="0" type="number" min="0" aria-describedby="basic-addon2" readonly="true"></input>' +
-    '<span class="input-group-addon" id="current-weight-addon">lbs</span>' +
+    '<input id="current-weight" class="form-control forceWhiteBackground" value="0" type="number" min="0" aria-describedby="basic-addon2" readonly="true"></input>' +
+    '<span class="input-group-addon forceWhiteBackground" id="current-weight-addon">lbs</span>' +
     '</div>' +
     '</div>';
 
@@ -19289,7 +19791,7 @@ InventoryHeaderSection.prototype.setupStrenghtInput = function () {
 }
 
 module.exports = new InventoryHeaderSection();
-},{"../../Components/TitleBar":15,"../../Managers/CharacterManager":18,"../../Managers/CoinageManager":19,"../../Managers/inventoryManager":20,"../../Utils":22,"lodash":2}],26:[function(require,module,exports){
+},{"../../Components/TitleBar":19,"../../Managers/CharacterManager":22,"../../Managers/CoinageManager":23,"../../Managers/inventoryManager":24,"../../Utils":26,"lodash":2}],31:[function(require,module,exports){
 var _ = require('lodash');
 
 var TitleBar = require('../../Components/TitleBar');
@@ -19298,6 +19800,7 @@ var EventHandler = require('../../EventHandler');
 var Utils = require('../../Utils');
 var InventoryManager = require('../../Managers/inventoryManager');
 var Constants = require('../../Constants');
+var PopupActionMenu = require('../../Components/PopupActionMenu');
 
 var itemListLayout = '<table class="table table-hover">' +
     '<thead>' +
@@ -19369,16 +19872,17 @@ ItemListSection.prototype.constructRow = function (element, tbodyElement) {
 
     var actionCell = row.insertCell();
     actionCell.setAttribute('class', 'shrink end');
-    actionCell.innerHTML = '<div>' +
-        '<button type="button" class="btn btn-default glyphicon glyphicon-remove icon alert-danger remove-button" data-toggle="confirmation" itemTarget="' + element.id + '" name="delete-item' + element.id + '"></button>' +
-        '<button type="button" class="btn btn-default glyphicon glyphicon-pencil icon alert-info" itemTarget="' + element.id + '" name="edit-item' + element.id + '"></button>' +
-        '</div>';
-    //document.getElementsByName("edit-item" + element.id)[0].addEventListener('click', this.editPressed);
-    // var appliedFunction = _.partial(this.deletePressed, element.id);
-    // $('[data-toggle=confirmation]').confirmation({
-    //     rootSelector: '[data-toggle=confirmation]',
-    //     onConfirm: appliedFunction
-    // });
+
+    var popupMenu = new PopupActionMenu({
+        title: "Actions",
+        buttons: [
+            { title: 'Edit', icon: 'fa-pencil' },
+            { title: 'Sell', icon: 'fa-arrow-down' },
+            { title: 'Buy', icon: 'fa-arrow-up' },
+            { title: 'Delete', icon: 'fa-trash-o' }
+        ]
+    });
+    actionCell.appendChild(popupMenu.getElement());
     this.populateRow(element.id);
 }
 
@@ -19435,30 +19939,100 @@ ItemListSection.prototype.onAddItemTap = function () {
 }
 
 module.exports = new ItemListSection();
-},{"../../Components/Button":14,"../../Components/TitleBar":15,"../../Constants":16,"../../EventHandler":17,"../../Managers/inventoryManager":20,"../../Utils":22,"lodash":2}],27:[function(require,module,exports){
+},{"../../Components/Button":14,"../../Components/PopupActionMenu":18,"../../Components/TitleBar":19,"../../Constants":20,"../../EventHandler":21,"../../Managers/inventoryManager":24,"../../Utils":26,"lodash":2}],32:[function(require,module,exports){
 var _ = require('lodash');
 
 var TitleBar = require('../../Components/TitleBar');
 var Button = require('../../Components/Button');
+var CheckBox = require('../../Components/CheckBox');
+var CheckBoxGroup = require('../../Components/CheckBoxGroup');
+var CenterFloat = require('../../Components/CenterFloat');
 var EventHandler = require('../../EventHandler');
 var Utils = require('../../Utils');
 var Constants = require('../../Constants');
 var CoinageManager = require('../../Managers/CoinageManager');
 
-var ui = '<table>' +
+var transactionUI = '<table class="table table-hover bottomBorder transactionTable">' +
+    '<thead>' +
     '<tr>' +
-        '<td rowspan="2">' +
-            '<i class="fa fa-square-o" aria-hidden="true"></i>' +
-        '</td>' +
-        '<td>' +
-            '<i class="fa fa-free-code-camp" aria-hidden="true"></i>' +
-        '</td>' +
+    '<th>Type</th>' +
+    '<th>Value</th>' +
+    '<th>Current</th>' +
+    '<th>Final</th>' +
+    '</tr>' +
+    '</thead>' +
+    '<tbody id="transactionTable">' +
+    '<tr>' +
+    '<td>' +
+    '<span>Platinum</span>' +
+    '</td>' +
+    '<td>' +
+    '<input class="form-control coinageInput forceWhiteBackground" value="0" type="number" id="transaction-PLATINUM" min="0" max="999999999"></input>' +
+    '</td>' +
+    '<td>' +
+    '<input class="form-control coinageInput forceWhiteBackground" value="0" type="number" id="current-PLATINUM" min="0" max="999999999" readonly="true"></input>' +
+    '</td>' +
+    '<td>' +
+    '<input class="form-control coinageInput forceWhiteBackground" value="0" type="number" id="final-PLATINUM" min="0" max="999999999" readonly="true"></input>' +
+    '</td>' +
     '</tr>' +
     '<tr>' +
-        '<td>' +
-            'text' +
-        '</td>' +
+    '<td>' +
+    '<span>Gold</span>' +
+    '</td>' +
+    '<td>' +
+    '<input class="form-control coinageInput forceWhiteBackground" value="0" type="number" id="transaction-GOLD" min="0" max="999999999"></input>' +
+    '</td>' +
+    '<td>' +
+    '<input class="form-control coinageInput forceWhiteBackground" value="0" type="number" id="current-GOLD" min="0" max="999999999" readonly="true"></input>' +
+    '</td>' +
+    '<td>' +
+    '<input class="form-control coinageInput forceWhiteBackground" value="0" type="number" id="final-GOLD" min="0" max="999999999" readonly="true"></input>' +
+    '</td>' +
     '</tr>' +
+    '<tr>' +
+    '<td>' +
+    '<span>Electrum</span>' +
+    '</td>' +
+    '<td>' +
+    '<input class="form-control coinageInput forceWhiteBackground" value="0" type="number" id="transaction-ELECTRUM" min="0" max="999999999"></input>' +
+    '</td>' +
+    '<td>' +
+    '<input class="form-control coinageInput forceWhiteBackground" value="0" type="number" id="current-ELECTRUM" min="0" max="999999999" readonly="true"></input>' +
+    '</td>' +
+    '<td>' +
+    '<input class="form-control coinageInput forceWhiteBackground" value="0" type="number" id="final-ELECTRUM" min="0" max="999999999" readonly="true"></input>' +
+    '</td>' +
+    '</tr>' +
+    '<tr>' +
+    '<td>' +
+    '<span>Silver</span>' +
+    '</td>' +
+    '<td>' +
+    '<input class="form-control coinageInput forceWhiteBackground" value="0" type="number" id="transaction-SILVER" min="0" max="999999999"></input>' +
+    '</td>' +
+    '<td>' +
+    '<input class="form-control coinageInput forceWhiteBackground" value="0" type="number" id="current-SILVER" min="0" max="999999999" readonly="true"></input>' +
+    '</td>' +
+    '<td>' +
+    '<input class="form-control coinageInput forceWhiteBackground" value="0" type="number" id="final-SILVER" min="0" max="999999999" readonly="true"></input>' +
+    '</td>' +
+    '</tr>' +
+    '<tr>' +
+    '<td>' +
+    '<span>Copper</span>' +
+    '</td>' +
+    '<td>' +
+    '<input class="form-control coinageInput forceWhiteBackground" value="0" type="number" id="transaction-COPPER" min="0" max="999999999"></input>' +
+    '</td>' +
+    '<td>' +
+    '<input class="form-control coinageInput forceWhiteBackground" value="0" type="number" id="current-COPPER" min="0" max="999999999" readonly="true"></input>' +
+    '</td>' +
+    '<td>' +
+    '<input class="form-control coinageInput forceWhiteBackground" value="0" type="number" id="final-COPPER" min="0" max="999999999" readonly="true"></input>' +
+    '</td>' +
+    '</tr>' +
+    '</tbody>' +
     '</table>';
 
 var transaction = function () {
@@ -19467,6 +20041,7 @@ var transaction = function () {
 
 transaction.prototype.showInside = function (contentDiv, eventListener) {
     this.parentEventListener = eventListener;
+    this.isInSellMode = true;
     var addItemButton = new Button({
         title: 'Accept',
         icon: 'fa-check',
@@ -19485,45 +20060,147 @@ transaction.prototype.showInside = function (contentDiv, eventListener) {
         leftButton: cancelButton
     }).getElement());
 
+    var buyButton = new CheckBox({
+        icon: 'fa-arrow-up',
+        iconStyle: 'color: #c9302c;',
+        title: 'Give Coin'
+    });
+    var sellButton = new CheckBox({
+        icon: 'fa-arrow-down',
+        iconStyle: 'color: #5cb85c;',
+        title: 'Get Coin'
+    });
+    var allowCurrencySwitch = new CheckBox({
+        title: 'Allow transmuting currency on outgoings',
+        checked: true
+    });
+    this.checkBoxGroup = new CheckBoxGroup({
+        buttons: [sellButton, buyButton]
+    });
+    content.appendChild(this.checkBoxGroup.getElement());
+    contentDiv.insertAdjacentHTML('beforeEnd', transactionUI);
+    this.setupInputFields();
+    this.onMethodChange(0);
+    this.checkBoxGroup.addChangeListener(this.onMethodChange);
+    $(".coinageInput").keypress(function (e) {
+        if (e.which < 48 || e.which > 57) {
+            return (false);
+        }
+    });
+}
 
+transaction.prototype.onMethodChange = function (int) {
+    this.isInSellMode = int === 0;
+    var types = ["PLATINUM", "GOLD", "ELECTRUM", "SILVER", "COPPER"],
+        self = this;
+    _.each(types, function (type) {
+        self.recalcFinalField(type);
+    });
+}
 
-    contentDiv.insertAdjacentHTML('beforeEnd', ui);
+transaction.prototype.setupInputFields = function () {
+    var coinageData = CoinageManager.getCoinageData();
+    this.setupCoinageField("PLATINUM", coinageData.Platinum);
+    this.setupCoinageField('GOLD', coinageData.Gold);
+    this.setupCoinageField('ELECTRUM', coinageData.Electrum);
+    this.setupCoinageField('SILVER', coinageData.Silver);
+    this.setupCoinageField('COPPER', coinageData.Copper);
+}
+
+transaction.prototype.setupCoinageField = function (type, value) {
+    var inputField = document.getElementById('transaction-' + type);
+    var currentField = document.getElementById('current-' + type);
+    currentField.value = value;
+    inputField.addEventListener('input', _.partial(this.validateCoinageInput, type));
+}
+
+transaction.prototype.recalcFinalField = function (type) {
+    var inputField = document.getElementById('transaction-' + type);
+    var currentField = document.getElementById('current-' + type);
+    var finalField = document.getElementById('final-' + type);
+
+    var inputValue = parseInt(inputField.value);
+    var currentValue = parseInt(currentField.value);
+
+    var outputValue = this.isInSellMode ? currentValue + inputValue : currentValue - inputValue;
+    finalField.value = outputValue;
+}
+
+transaction.prototype.validateCoinageInput = function (id) {
+    var inputField = document.getElementById('transaction-' + id);
+    var value = Utils.sanitiseNumberInput(inputField.value);
+    inputField.value = value;
+    this.recalcFinalField(id);
 }
 
 transaction.prototype.hide = function () {
+    this.checkBoxGroup.removeChangeListener(this.onMethodChange);
+}
+
+transaction.prototype.areThereAnyNegativeFinalValues = function () {
+    var types = ["PLATINUM", "GOLD", "ELECTRUM", "SILVER", "COPPER"],
+        self = this,
+        anyNegativeValues = false;
+    _.each(types, function (type) {
+        var finalField = document.getElementById('final-' + type);
+        var value = parseInt(finalField.value);
+        if (value < 0) {
+            anyNegativeValues = true;
+        }
+    });
+    return anyNegativeValues;
+}
+
+transaction.prototype.saveNewFinalValues = function () {
+    this.saveNewFinalValue('PLATINUM', CoinageManager.setPlatinum);
+    this.saveNewFinalValue('GOLD', CoinageManager.setGold);
+    this.saveNewFinalValue('ELECTRUM', CoinageManager.setElectrum);
+    this.saveNewFinalValue('SILVER', CoinageManager.setSilver);
+    this.saveNewFinalValue('COPPER', CoinageManager.setCopper);
+};
+
+transaction.prototype.saveNewFinalValue = function (type, saveFunction) {
+    var finalElement = document.getElementById('final-' + type);
+    saveFunction(parseInt(finalElement.value));
 }
 
 transaction.prototype.onAcceptTap = function () {
+    if (!this.isInSellMode) {
+        if (this.areThereAnyNegativeFinalValues()) {
+            alert('Unable to complete transaction with negative final values');
+            return;
+        }
+    }
+    this.saveNewFinalValues();
     this.goBack()
 }
+
 transaction.prototype.onCancelTap = function () {
     this.goBack()
 }
+
 transaction.prototype.goBack = function () {
     this.parentEventListener.fireEvent(Constants.inventoryPageActions.RESET);
 }
 
 module.exports = new transaction();
-},{"../../Components/Button":14,"../../Components/TitleBar":15,"../../Constants":16,"../../EventHandler":17,"../../Managers/CoinageManager":19,"../../Utils":22,"lodash":2}],28:[function(require,module,exports){
+},{"../../Components/Button":14,"../../Components/CenterFloat":15,"../../Components/CheckBox":16,"../../Components/CheckBoxGroup":17,"../../Components/TitleBar":19,"../../Constants":20,"../../EventHandler":21,"../../Managers/CoinageManager":23,"../../Utils":26,"lodash":2}],33:[function(require,module,exports){
 (function () {
     var _ = require('lodash');
 
     var Utils = require('../Utils');
     var TitleBar = require('../Components/TitleBar');
+    var CharacterManager = require('../Managers/CharacterManager');
 
-    var ui = '<div>Character</div>'
+
+    var characterDetailsUI = '<span>Name:</span>' +
+        '<input></input>' +
+        '<span>Class:</input>' +
+        '<input></input>';
 
     var characterPage = function () {
         _.bindAll(this, _.functionsIn(this));
     };
-
-    characterPage.prototype.show = function (content) {
-        content.appendChild(new TitleBar({
-            title: 'Character',
-            type: TitleBar.TYPES.SUB_TITLE
-        }).getElement());
-    };
-
 
     characterPage.prototype.getButton = function () {
         return {
@@ -19533,9 +20210,75 @@ module.exports = new transaction();
         };
     };
 
+    characterPage.prototype.show = function (content) {
+        content.appendChild(new TitleBar({
+            title: 'Character',
+            type: TitleBar.TYPES.SUB_TITLE
+        }).getElement());
+
+        content.insertAdjacentHTML('beforeEnd', characterDetailsUI);
+        content.appendChild(new TitleBar({
+            title: 'Abilities',
+            type: TitleBar.TYPES.SUB_TITLE
+        }).getElement());
+
+
+        var abilityScores = CharacterManager.getAbilities();
+        var abilitySection = '<div class="abilityContent">';
+        abilitySection += this.getAbilitySection('STR', abilityScores.strength);
+        abilitySection += this.getAbilitySection('DEX', abilityScores.dexterity);
+        abilitySection += this.getAbilitySection('CON', abilityScores.constitution);
+        abilitySection += '</div><div class="abilityContent">';
+        abilitySection += this.getAbilitySection('INT', abilityScores.intelligence);
+        abilitySection += this.getAbilitySection('WIS', abilityScores.wisdom);
+        abilitySection += this.getAbilitySection('CHA', abilityScores.charisma);
+        abilitySection += "</div>"
+        content.insertAdjacentHTML('beforeEnd', abilitySection);
+        $(".integer").keypress(function (e) {
+            if (e.which < 48 || e.which > 57) {
+                return (false);
+            }
+        });
+    };
+
+    characterPage.prototype.getAbilitySection = function (title, value) {
+        return '<div class="abilitySection">' +
+            '<table>' +
+            this.getSection([value, '+1', 'SAVING THROWS', '+2', 'Athletics'], 0) +
+            this.getSection([Utils.getAbilityModifierFromAbilityValue(value), '+1', 'a', '0', 'b'], 1) +
+            this.getSection([title, '+1', 'a', '0', 'b'], 2) +
+            '</table>' +
+            "</div>";
+    }
+
+    characterPage.prototype.getSection = function (values, level) {
+        var classes = ["inputSection", "middleSection", "titleSection"]
+        var classText = classes[level] + " valueSection";
+        var value = level !== 0 ? values[0] : '<input class="form-control integer inputWidth" step="1" value="' + values[0] + '" type="number" id="strength-input" min="0" max="20"></input>';
+        return '<tr>' +
+            '<td rowspan="2" class="' + classText + '">' +
+            value +
+            '</td>' +
+            '<td class="modifierSection">' +
+            values[1] +
+            '</td>' +
+            '<td class="descriptionSection">' +
+            values[2] +
+            '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td class="modifierSection">' +
+            values[3] +
+            '</td>' +
+            '<td class="descriptionSection">' +
+            values[4] +
+            '</td>' +
+            '</tr>';
+    }
+
     module.exports = new characterPage();
 })();
-},{"../Components/TitleBar":15,"../Utils":22,"lodash":2}],29:[function(require,module,exports){
+},{"../Components/TitleBar":19,"../Managers/CharacterManager":22,"../Utils":26,"lodash":2}],34:[function(require,module,exports){
 (function () {
 	var _ = require('lodash');
 
@@ -19549,13 +20292,15 @@ module.exports = new transaction();
 	var ItemListSection = require('./InventoryPage/ItemListSection');
 	var AddEditItem = require('./InventoryPage/AddEditItem');
 	var InventoryHeaderSection = require('./InventoryPage/InventoryHeaderSection');
-	var Transaction = require('./Inventorypage/Transaction');
+	var Transaction = require('./InventoryPage/Transaction');
 	var EventHandler = require('../EventHandler');
+	var ConvertCoinage = require('./InventoryPage/ConvertCoinageSection');
 
 	var uiStates = {
 		MAIN_UI: 1,
 		ADD_ITEM: 2,
-		TRANSACTION: 3
+		TRANSACTION: 3,
+		CONVERT_COINAGE: 4
 	}
 
 	var inventoryPage = function () {
@@ -19571,19 +20316,22 @@ module.exports = new transaction();
 	inventoryPage.prototype.eventListenerTriggered = function (data, type) {
 		this.hide();
 		Utils.clearPage();
+		this.pendingData = data;
 		if (type === Constants.inventoryPageActions.TRANSACTION) {
 			this.currentUiState = uiStates.TRANSACTION;
 		} else if (type === Constants.inventoryPageActions.RESET) {
 			this.currentUiState = uiStates.MAIN_UI;
 		} else if (type === Constants.inventoryPageActions.ADD_EDIT_ITEM) {
 			this.currentUiState = uiStates.ADD_ITEM;
+		} else if (type === Constants.inventoryPageActions.CONVERT_COINAGE) {
+			this.currentUiState = uiStates.CONVERT_COINAGE;
 		}
 		this.show(Utils.getContentContainer());
 	}
 
 	inventoryPage.prototype.getButton = function () {
 		return {
-			title: 'inventory',
+			title: 'Inventory',
 			icon: 'fa-archive',
 			entry: this.show,
 			hide: this.hide,
@@ -19600,6 +20348,10 @@ module.exports = new transaction();
 	inventoryPage.prototype.isCurrentlyInTransaction = function () {
 		return this.currentUiState === uiStates.TRANSACTION;
 	}
+	inventoryPage.prototype.isCurrentlyInConvertCoins = function () {
+		return this.currentUiState === uiStates.CONVERT_COINAGE;
+	}
+
 
 	// -----------
 	// Show
@@ -19612,6 +20364,8 @@ module.exports = new transaction();
 			this.showAddEditUI(contentDiv);
 		} else if (this.isCurrentlyInTransaction()) {
 			this.showTransactionUI(contentDiv);
+		} else if (this.isCurrentlyInConvertCoins()) {
+			this.showConvertCoinageUI(contentDiv);
 		}
 	}
 
@@ -19636,6 +20390,10 @@ module.exports = new transaction();
 		Transaction.showInside(contentDiv, this.eventHandler);
 	}
 
+	inventoryPage.prototype.showConvertCoinageUI = function (contentDiv) {
+		ConvertCoinage.showInside(contentDiv, this.eventHandler, this.pendingData);
+	}
+
 	// -----------
 	// HIDE
 	// -----------
@@ -19647,6 +20405,8 @@ module.exports = new transaction();
 			this.hideAddItemUi();
 		} else if (this.isCurrentlyInTransaction()) {
 			this.hideTransactionUI();
+		} else if (this.isCurrentlyInConvertCoins()) {
+			this.hideConvertCoinageUI();
 		}
 		this.currentUiState = uiStates.MAIN_UI;
 	}
@@ -19665,9 +20425,14 @@ module.exports = new transaction();
 		Transaction.hide();
 	}
 
+	inventoryPage.prototype.hideConvertCoinageUI = function () {
+		ConvertCoinage.hide();
+	}
+
+
 	module.exports = new inventoryPage();
 })();
-},{"../Components/TitleBar":15,"../Constants":16,"../EventHandler":17,"../Managers/CharacterManager":18,"../Managers/CoinageManager":19,"../Managers/inventoryManager":20,"../Utils":22,"./InventoryPage/AddEditItem":23,"./InventoryPage/CoinageSection":24,"./InventoryPage/InventoryHeaderSection":25,"./InventoryPage/ItemListSection":26,"./Inventorypage/Transaction":27,"lodash":2}],30:[function(require,module,exports){
+},{"../Components/TitleBar":19,"../Constants":20,"../EventHandler":21,"../Managers/CharacterManager":22,"../Managers/CoinageManager":23,"../Managers/inventoryManager":24,"../Utils":26,"./InventoryPage/AddEditItem":27,"./InventoryPage/CoinageSection":28,"./InventoryPage/ConvertCoinageSection":29,"./InventoryPage/InventoryHeaderSection":30,"./InventoryPage/ItemListSection":31,"./InventoryPage/Transaction":32,"lodash":2}],35:[function(require,module,exports){
 (function () {
     var _ = require('lodash');
 
@@ -19677,11 +20442,28 @@ module.exports = new transaction();
         _.bindAll(this, _.functionsIn(this));
     };
 
+    var notesPageUI = '<div class="notesPage">' +
+        '<textarea rows="10" id="notesArea">' +
+        '</textarea>' +
+        '</div>';
+
     notesPage.prototype.show = function (content) {
         content.appendChild(new TitleBar({
             title: 'Notes',
             type: TitleBar.TYPES.SUB_TITLE
-		}).getElement());
+        }).getElement());
+
+        content.insertAdjacentHTML('beforeEnd', notesPageUI);
+
+        var notesArea = document.getElementById('notesArea');
+        notesArea.value = localStorage['NOTES'] || '';
+        notesArea.addEventListener('input', this.onInput);
+    };
+
+    notesPage.prototype.onInput = function () {
+        var notesArea = document.getElementById('notesArea');
+        var notesAreaValue = notesArea.value;
+        localStorage['NOTES'] = notesAreaValue;
     };
 
     notesPage.prototype.getButton = function () {
@@ -19694,7 +20476,7 @@ module.exports = new transaction();
 
     module.exports = new notesPage();
 })();
-},{"../Components/TitleBar":15,"../Utils":22,"lodash":2}],31:[function(require,module,exports){
+},{"../Components/TitleBar":19,"../Utils":26,"lodash":2}],36:[function(require,module,exports){
 (function () {
     var _ = require('lodash');
 
@@ -19722,7 +20504,7 @@ module.exports = new transaction();
 
     module.exports = new spellsPage();
 })();
-},{"../Components/TitleBar":15,"../Utils":22,"lodash":2}],32:[function(require,module,exports){
+},{"../Components/TitleBar":19,"../Utils":26,"lodash":2}],37:[function(require,module,exports){
 var _ = require('lodash');
 var pack = require('../package.json');
 
@@ -19746,7 +20528,7 @@ var main = {
 		this._getContent().innerHTML = '';
 	},
 
-	_changeTab: function (target) {
+	_changeTab: function (target, index) {
 		if (this.currentTab) {
 			if (this.currentTab === target) {
 				return;
@@ -19767,6 +20549,7 @@ var main = {
 		this._clearContent();
 
 		if (this.tabBarClickMap[target]) {
+			localStorage['lastPageIndex'] = parseInt(index);
 			var currentTab = this.tabBarClickMap[target];
 			currentTab.entry.apply(currentTab.scope, [this._getContent()]);
 		}
@@ -19775,15 +20558,18 @@ var main = {
 	_setupNavBar: function (contentPages) {
 		var self = this,
 			onTabBarClickListener = function () {
-				_.bind(self._changeTab, self, this.id)();
+				_.bind(self._changeTab, self, this.id, this.getAttribute('index'))();
+				return true;
 			};
 		tabBar = document.getElementById('tab-bar');
 		var tabBarInnerHtml = "";
 
+		var index = 0;
 		_.each(contentPages, function (contentPage) {
 			var buttonConfig = contentPage.getButton();
-			tabBarInnerHtml += '<a href="#" id="tab-bar-button-' + buttonConfig.title + '"><i class="fa ' + buttonConfig.icon + '" aria-hidden="true"></i><span>' + buttonConfig.title + '</span></a>';
+			tabBarInnerHtml += '<div class="titleBarButton" index="' + index + '" id="tab-bar-button-' + buttonConfig.title + '"><i class="fa ' + buttonConfig.icon + '" aria-hidden="true"></i><span>' + buttonConfig.title + '</span></div>';
 			self.tabBarClickMap['tab-bar-button-' + buttonConfig.title] = buttonConfig;
+			index++;
 		});
 		tabBar.innerHTML += tabBarInnerHtml;
 
@@ -19791,7 +20577,35 @@ var main = {
 			var child = tabBar.children[i];
 			child.addEventListener('click', onTabBarClickListener);
 		}
-		self._changeTab(tabBar.children[0].id);
+		var pageIndex = 0;
+		if (localStorage['lastPageIndex']) {
+			var value = localStorage['lastPageIndex'];
+			if (tabBar.children.length > value) {
+				pageIndex = value;
+			}
+		}
+		self._changeTab(tabBar.children[pageIndex].id, tabBar.children[pageIndex].getAttribute('index'));
+	},
+
+	setupInitListener: function () {
+		window.onclick = function (event) {
+			var excusedId;
+			if (event.target.id) {
+				if (event.target.id.startsWith('dropdownButton') || event.target.id.startsWith('dropdownIcon')) {
+					excusedId = event.target.id.substring(event.target.id.indexOf('-') + 1);
+				}
+			}
+			var dropdowns = document.getElementsByClassName("dropdown-content");
+			var i;
+			for (i = 0; i < dropdowns.length; i++) {
+				var openDropdown = dropdowns[i];
+				if (excusedId && (openDropdown.id == 'dropdownContent-' + excusedId)) {
+				} else {
+					openDropdown.classList.remove('show');
+					openDropdown.classList.remove('show-right');
+				}
+			}
+		}
 	},
 
 	start: function () {
@@ -19804,6 +20618,7 @@ var main = {
 		}).getElement());
 		body.insertAdjacentHTML('beforeend', this.layout);
 
+		this.setupInitListener();
 		var contentPages = [
 			characterPage,
 			spellsPage,
@@ -19817,4 +20632,4 @@ var main = {
 onload = function () {
 	main.start();
 };
-},{"../package.json":13,"./Components/Button":14,"./Components/TitleBar":15,"./View/characterpage":28,"./View/inventoryPage":29,"./View/notesPage":30,"./View/spellsPage":31,"lodash":2}]},{},[13,1,32,20,21]);
+},{"../package.json":13,"./Components/Button":14,"./Components/TitleBar":19,"./View/characterpage":33,"./View/inventoryPage":34,"./View/notesPage":35,"./View/spellsPage":36,"lodash":2}]},{},[13,1,37,24,25]);

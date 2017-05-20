@@ -6,6 +6,7 @@ var EventHandler = require('../../EventHandler');
 var Utils = require('../../Utils');
 var InventoryManager = require('../../Managers/inventoryManager');
 var Constants = require('../../Constants');
+var PopupActionMenu = require('../../Components/PopupActionMenu');
 
 var itemListLayout = '<table class="table table-hover">' +
     '<thead>' +
@@ -77,16 +78,17 @@ ItemListSection.prototype.constructRow = function (element, tbodyElement) {
 
     var actionCell = row.insertCell();
     actionCell.setAttribute('class', 'shrink end');
-    actionCell.innerHTML = '<div>' +
-        '<button type="button" class="btn btn-default glyphicon glyphicon-remove icon alert-danger remove-button" data-toggle="confirmation" itemTarget="' + element.id + '" name="delete-item' + element.id + '"></button>' +
-        '<button type="button" class="btn btn-default glyphicon glyphicon-pencil icon alert-info" itemTarget="' + element.id + '" name="edit-item' + element.id + '"></button>' +
-        '</div>';
-    //document.getElementsByName("edit-item" + element.id)[0].addEventListener('click', this.editPressed);
-    // var appliedFunction = _.partial(this.deletePressed, element.id);
-    // $('[data-toggle=confirmation]').confirmation({
-    //     rootSelector: '[data-toggle=confirmation]',
-    //     onConfirm: appliedFunction
-    // });
+
+    var popupMenu = new PopupActionMenu({
+        title: "Actions",
+        buttons: [
+            { title: 'Edit', icon: 'fa-pencil' },
+            { title: 'Sell', icon: 'fa-arrow-down' },
+            { title: 'Buy', icon: 'fa-arrow-up' },
+            { title: 'Delete', icon: 'fa-trash-o' }
+        ]
+    });
+    actionCell.appendChild(popupMenu.getElement());
     this.populateRow(element.id);
 }
 

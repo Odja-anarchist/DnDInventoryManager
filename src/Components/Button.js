@@ -8,7 +8,6 @@ var button = function (config) {
     this.listener = config.listener;
     this.flipOrder = config.flipOrder || false;
     this.id = shortid.generate();
-
     _.bind(this.getElement, this);
 }
 
@@ -23,14 +22,14 @@ button.prototype.getElement = function () {
     var icon = '<i class="fa ' + (this.icon ? this.icon : '') + '" style="' + iconStyle + '" aria-hidden="true"></i>';
     var title = '<span>' + (this.title ? this.title : '') + '</span>';
 
-    var element = '<a href="#" class="button" id="button-' + this.id + '">';
+    var element = '<div class="button" id="button-' + this.id + '">';
     if (!this.flipOrder) {
         element += icon + title;
     } else {
         element += title + icon;
     }
 
-    element += '</a>';
+    element += '</div>';
     buttonDiv.innerHTML = element;
     if (this.listener) {
         buttonDiv.addEventListener('click', this.listener);

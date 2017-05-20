@@ -74,4 +74,21 @@ Utils.convertValueLongToShortCode = function (longCode) {
 	return valueLongCodes[longCode];
 }
 
+Utils.getAbilityModifierFromAbilityValue = function (value) {
+	if (value > 30) {
+		return "+10";
+	} else if (value < 1) {
+		return "-5";
+	} else {
+		var modifier = Math.floor((value / 2) - 5);
+		if (modifier > 0) {
+			return "+" + modifier;
+		} else if (modifier < 0) {
+			return "-" + modifier;
+		} else {
+			return modifier;
+		}
+	}
+}
+
 module.exports = Utils;

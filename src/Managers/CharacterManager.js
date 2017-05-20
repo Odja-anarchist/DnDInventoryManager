@@ -3,8 +3,13 @@ var _ = require('lodash');
 var EventHandler = require('../EventHandler');
 
 var characterManager = function () {
-    this.attributes = {
-        strength: 0
+    this.abilities = {
+        strength: 0,
+        dexterity: 0,
+        constitution: 0,
+        intelligence: 0,
+        wisdom: 0,
+        charisma: 0
     }
     this.loadValuesFromStorage();
     this.eventHandler = new EventHandler();
@@ -18,24 +23,28 @@ characterManager.prototype.KEYS = {
 characterManager.prototype.loadValuesFromStorage = function () {
     if (localStorage['CHARACTER']) {
         var character = JSON.parse(localStorage['CHARACTER']);
-        this.attributes = character.attributes;
+        this.abilities = character.abilities;
     }
+}
+
+characterManager.prototype.getAbilities = function () {
+    return this.abilities;
 }
 
 characterManager.prototype.saveValuesToStorage = function () {
     var character = {
-        attributes: this.attributes
+        abilities: this.abilities
     };
     localStorage['CHARACTER'] = JSON.stringify(character);
 }
 
 characterManager.prototype.setStrength = function (strength) {
-    this.attributes.strength = strength;
+    this.abilities.strength = strength;
     this.fireEvent(this.KEYS.STRENGTH, strength);
 }
 
 characterManager.prototype.getStrength = function () {
-    return this.attributes.strength;
+    return this.abilities.strength;
 }
 
 characterManager.prototype.addListener = function (type, listener) {

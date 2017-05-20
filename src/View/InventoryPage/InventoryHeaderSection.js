@@ -18,8 +18,8 @@ var UI = '<div class="inventoryPageHeader">' +
     '</div>' +
     '<span class="topBarLabel">Total Current Weight: </span>' +
     '<div class="input-group" style="width: 10em !important">' +
-    '<input id="current-weight" class="form-control" value="0" type="number" min="0" aria-describedby="basic-addon2" readonly="true"></input>' +
-    '<span class="input-group-addon" id="current-weight-addon">lbs</span>' +
+    '<input id="current-weight" class="form-control forceWhiteBackground" value="0" type="number" min="0" aria-describedby="basic-addon2" readonly="true"></input>' +
+    '<span class="input-group-addon forceWhiteBackground" id="current-weight-addon">lbs</span>' +
     '</div>' +
     '</div>';
 

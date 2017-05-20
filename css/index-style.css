@@ -8,6 +8,13 @@
     text-align: center;
 }
 
+.notesPage textarea {
+	width: 100%;
+	resize: vertical;
+	height: 50vh;
+    outline: 0;
+}
+
 .header-bar .title {
 	font-size: 3em;
 	padding-right: 10px;
@@ -97,14 +104,25 @@ i {
 	font-weight: initial;
 }
 
+.button-container {
+    cursor: pointer;
+}
+
 .subTitleBar .subtitleHeader {
 	width: 100%;
 }
 
-.subTitleBar a {
+.subTitleBar .button {
 	color: white;
 	display: inline-table;
 	text-decoration: none;
+}
+
+.addItemCell {
+	padding: 5px;
+}
+.addItemCell .input-group {
+	width: 100%;
 }
 
 .icon-bar {
@@ -114,8 +132,9 @@ i {
 	border: 2px solid #000;
 }
 
-.icon-bar a {
+.icon-bar .titleBarButton {
 	display: grid;
+    cursor: pointer;
 	text-decoration: none;
     float: left;
     width: 25%;
@@ -126,7 +145,7 @@ i {
     font-size: 2em;
 }
 
-.icon-bar a:hover {
+.icon-bar .titleBarButton:hover {
     color: #fff !important;
     background-color: #555 !important;
 }
@@ -136,16 +155,60 @@ i {
     background-color: #000 !important;
 }
 
+.checkboxGroup {
+	display: flex;
+}
+
+.checkboxContainer {
+	cursor: pointer;
+	border: 2px solid black;
+	border-radius: 5px;
+	font-size: 2em;
+	display: inline-block;
+	padding: 10px;
+    padding-right: 20px;
+	margin: 10px;
+    transition: all 0.3s ease;
+}
+
+.checkboxContainer:hover {
+	border: 2px solid #555;
+	color: #555;
+}
+
+.checkboxContainer.pressed {
+	border: 2px solid white;
+	background: black;
+    color: white;
+}
+
+.checkboxContainer .checkedIcon {
+	width: 40px !important;
+}
+
 .bottomBorder td {
+	vertical-align: middle !important;
     border-bottom: 1px solid #ddd;
 }
 
+.transactionTable th {
+	text-align: center;
+}
+
+.transactionTable td {
+	text-align: center;
+}
+
+.transactionTable input {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .background{
-	padding: 20px;
-	margin: 20px;
+	padding: 10px;
+	margin: 10px;
 	border: 2px solid black;
 	border-radius: 10px;
-	overflow: hidden;
 }
 
 .content {
@@ -164,6 +227,7 @@ i {
 .coinageInput {
 	text-align: center;
 	width: 9em;
+	align-self: center;
 }
 
 hr {
@@ -177,7 +241,22 @@ hr {
 
 .topBarLabel {
 	padding: 5px;
-	padding-right: 20px;
+}
+
+.popupActionMenu {
+	padding: 5px;
+	cursor: pointer;
+	display: inline-block;
+	border: 2px solid black;
+	border-radius: 5px;
+}
+.popupActionMenu.pressed {
+	color: white;
+	background:black;
+}
+
+.popupActionMenu i {
+	padding: 0;
 }
 
 .forceWhiteBackground {
@@ -209,4 +288,244 @@ hr {
 
 .select2-container{
 	width: 100% !important;
+}
+
+
+/* Dropdown Button */
+.dropbtn {
+    padding: 5px;
+    border: 2px solid black;
+	border-radius: 5px;
+    cursor: pointer;
+	background: white;
+	outline: 0;
+}
+
+.dropbtn i {
+	padding: 0;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover {
+    background-color: #555;
+	color: white;
+	outline: 0;
+}
+
+.dropbtn:focus {
+	outline: 0;
+}
+
+.dropbtn.pressed {
+	background-color: black;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    transition: all .3s ease .15s;
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	border: 2px solid black;
+	border-radius: 5px;
+    z-index: 100;
+	transition: all 0.3s ease;
+}
+
+.dropdown-content .title {
+    display: block;
+    text-align: center;
+    padding-left: 16px;
+    background: black;
+    color: white;
+    padding: 5px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content .popupElement {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+	transition: all 0.3s ease;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content .popupElement:hover {
+	background-color: #555;
+	color: white;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+    display:block;
+}
+
+.show-right {
+    display:block;
+    right: 0px;
+}
+
+.show-right .popupElement {
+    text-align: left;
+}
+
+.convertCoinageValues {
+	display: inline-flex;
+	align-items: center;
+	padding: 10px;
+}
+
+.convertCoinageInput {
+	display: inline-flex;
+	align-items: center;
+	width: 100%;
+	padding: 10px;
+}
+
+.convertCoinageInput input {
+	flex: 1;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 18px 0;
+  width: 80%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: black;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -14px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: black;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: black;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: black;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+  background: black;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: black;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: black;
+}
+
+.abilitySection input[type='number']::-webkit-inner-spin-button, 
+.abilitySection input[type='number']::-webkit-outer-spin-button { 
+    opacity: 1;
+}
+
+.abilitySection .descriptionSection {
+	text-align: left;
+}
+
+.abilityContent {
+	display: flex;
+	margin-bottom: 5px;
+}
+
+.inputSection input {
+	font-size: 1em;
+	text-align: center;
+	height: initial;
+    width: 100%;
+}
+
+.abilitySection {
+	display: inline-block;
+	border: 2px solid black;
+	border-radius: 5px;
+	width: 33%;
+	margin: auto;
+}
+
+.middleSection {
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+}
+
+.valueSection {
+	font-size: 2em;
+	width: 40%;
+	border-right: 2px solid black;
+}
+
+.abilitySection td {
+	text-align: center;
+	padding: 5px;
 }

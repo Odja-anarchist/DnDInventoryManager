@@ -9,6 +9,8 @@ var spellsPage = require('./View/spellsPage');
 var Button = require('./Components/Button');
 var TitleBar = require('./Components/TitleBar');
 
+var DATABASE_VERSION = 1;
+
 var main = {
 	layout: '<div class="icon-bar" id="tab-bar"></div>' +
 	'<div class="content" id="content"></div>',
@@ -21,7 +23,7 @@ var main = {
 		this._getContent().innerHTML = '';
 	},
 
-	_changeTab: function (target) {
+	_changeTab: function (target, index) {
 		if (this.currentTab) {
 			if (this.currentTab === target) {
 				return;
@@ -42,6 +44,7 @@ var main = {
 		this._clearContent();
 
 		if (this.tabBarClickMap[target]) {
+			localStorage['LAST_PAGE_INDEX'] = parseInt(index);
 			var currentTab = this.tabBarClickMap[target];
 			currentTab.entry.apply(currentTab.scope, [this._getContent()]);
 		}
@@ -50,15 +53,18 @@ var main = {
 	_setupNavBar: function (contentPages) {
 		var self = this,
 			onTabBarClickListener = function () {
-				_.bind(self._changeTab, self, this.id)();
+				_.bind(self._changeTab, self, this.id, this.getAttribute('index'))();
+				return true;
 			};
 		tabBar = document.getElementById('tab-bar');
 		var tabBarInnerHtml = "";
 
+		var index = 0;
 		_.each(contentPages, function (contentPage) {
 			var buttonConfig = contentPage.getButton();
-			tabBarInnerHtml += '<a href="#" id="tab-bar-button-' + buttonConfig.title + '"><i class="fa ' + buttonConfig.icon + '" aria-hidden="true"></i><span>' + buttonConfig.title + '</span></a>';
+			tabBarInnerHtml += '<div class="titleBarButton" index="' + index + '" id="tab-bar-button-' + buttonConfig.title + '"><i class="fa ' + buttonConfig.icon + '" aria-hidden="true"></i><span>' + buttonConfig.title + '</span></div>';
 			self.tabBarClickMap['tab-bar-button-' + buttonConfig.title] = buttonConfig;
+			index++;
 		});
 		tabBar.innerHTML += tabBarInnerHtml;
 
@@ -66,10 +72,50 @@ var main = {
 			var child = tabBar.children[i];
 			child.addEventListener('click', onTabBarClickListener);
 		}
-		self._changeTab(tabBar.children[0].id);
+		var pageIndex = 0;
+		if (localStorage['LAST_PAGE_INDEX']) {
+			var value = localStorage['LAST_PAGE_INDEX'];
+			if (tabBar.children.length > value) {
+				pageIndex = value;
+			}
+		}
+		self._changeTab(tabBar.children[pageIndex].id, tabBar.children[pageIndex].getAttribute('index'));
+	},
+
+	setupInitListener: function () {
+		window.onclick = function (event) {
+			var excusedId;
+			if (event.target.id) {
+				if (event.target.id.startsWith('dropdownButton') || event.target.id.startsWith('dropdownIcon')) {
+					excusedId = event.target.id.substring(event.target.id.indexOf('-') + 1);
+				}
+			}
+			var dropdowns = document.getElementsByClassName("dropdown-content");
+			var i;
+			for (i = 0; i < dropdowns.length; i++) {
+				var openDropdown = dropdowns[i];
+				if (excusedId && (openDropdown.id == 'dropdownContent-' + excusedId)) {
+				} else {
+					openDropdown.classList.remove('show');
+					openDropdown.classList.remove('show-right');
+				}
+			}
+		}
+	},
+
+	checkLocalStorageVersion: function () {
+		if (localStorage['DBVERSION']) {
+			if (localStorage['DBVERSION'] != DATABASE_VERSION) {
+				localStorage.clear();
+			}
+		} else {
+			localStorage.clear();
+		}
+		localStorage['DBVERSION'] = DATABASE_VERSION;
 	},
 
 	start: function () {
+		this.checkLocalStorageVersion();
 		this.tabBarClickMap = {};
 		var body = document.getElementById('body');
 		body.innerHTML = '';
@@ -79,6 +125,7 @@ var main = {
 		}).getElement());
 		body.insertAdjacentHTML('beforeend', this.layout);
 
+		this.setupInitListener();
 		var contentPages = [
 			characterPage,
 			spellsPage,

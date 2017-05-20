@@ -11,13 +11,15 @@
 	var ItemListSection = require('./InventoryPage/ItemListSection');
 	var AddEditItem = require('./InventoryPage/AddEditItem');
 	var InventoryHeaderSection = require('./InventoryPage/InventoryHeaderSection');
-	var Transaction = require('./Inventorypage/Transaction');
+	var Transaction = require('./InventoryPage/Transaction');
 	var EventHandler = require('../EventHandler');
+	var ConvertCoinage = require('./InventoryPage/ConvertCoinageSection');
 
 	var uiStates = {
 		MAIN_UI: 1,
 		ADD_ITEM: 2,
-		TRANSACTION: 3
+		TRANSACTION: 3,
+		CONVERT_COINAGE: 4
 	}
 
 	var inventoryPage = function () {
@@ -33,19 +35,22 @@
 	inventoryPage.prototype.eventListenerTriggered = function (data, type) {
 		this.hide();
 		Utils.clearPage();
+		this.pendingData = data;
 		if (type === Constants.inventoryPageActions.TRANSACTION) {
 			this.currentUiState = uiStates.TRANSACTION;
 		} else if (type === Constants.inventoryPageActions.RESET) {
 			this.currentUiState = uiStates.MAIN_UI;
 		} else if (type === Constants.inventoryPageActions.ADD_EDIT_ITEM) {
 			this.currentUiState = uiStates.ADD_ITEM;
+		} else if (type === Constants.inventoryPageActions.CONVERT_COINAGE) {
+			this.currentUiState = uiStates.CONVERT_COINAGE;
 		}
 		this.show(Utils.getContentContainer());
 	}
 
 	inventoryPage.prototype.getButton = function () {
 		return {
-			title: 'inventory',
+			title: 'Inventory',
 			icon: 'fa-archive',
 			entry: this.show,
 			hide: this.hide,
@@ -62,6 +67,10 @@
 	inventoryPage.prototype.isCurrentlyInTransaction = function () {
 		return this.currentUiState === uiStates.TRANSACTION;
 	}
+	inventoryPage.prototype.isCurrentlyInConvertCoins = function () {
+		return this.currentUiState === uiStates.CONVERT_COINAGE;
+	}
+
 
 	// -----------
 	// Show
@@ -74,6 +83,8 @@
 			this.showAddEditUI(contentDiv);
 		} else if (this.isCurrentlyInTransaction()) {
 			this.showTransactionUI(contentDiv);
+		} else if (this.isCurrentlyInConvertCoins()) {
+			this.showConvertCoinageUI(contentDiv);
 		}
 	}
 
@@ -98,6 +109,10 @@
 		Transaction.showInside(contentDiv, this.eventHandler);
 	}
 
+	inventoryPage.prototype.showConvertCoinageUI = function (contentDiv) {
+		ConvertCoinage.showInside(contentDiv, this.eventHandler, this.pendingData);
+	}
+
 	// -----------
 	// HIDE
 	// -----------
@@ -109,6 +124,8 @@
 			this.hideAddItemUi();
 		} else if (this.isCurrentlyInTransaction()) {
 			this.hideTransactionUI();
+		} else if (this.isCurrentlyInConvertCoins()) {
+			this.hideConvertCoinageUI();
 		}
 		this.currentUiState = uiStates.MAIN_UI;
 	}
@@ -126,6 +143,11 @@
 	inventoryPage.prototype.hideTransactionUI = function () {
 		Transaction.hide();
 	}
+
+	inventoryPage.prototype.hideConvertCoinageUI = function () {
+		ConvertCoinage.hide();
+	}
+
 
 	module.exports = new inventoryPage();
 })();
