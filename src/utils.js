@@ -8,6 +8,8 @@ Utils.getContentContainer = function () {
 };
 
 Utils.sanitiseNumberInput = function (value, max, min) {
+	max = max || 9999;
+	min = min || 0;
 	if (value === '') {
 		value = 0;
 	} else {
@@ -84,9 +86,9 @@ Utils.getAbilityModifierFromAbilityValue = function (value) {
 		if (modifier > 0) {
 			return "+" + modifier;
 		} else if (modifier < 0) {
-			return "-" + modifier;
+			return "" + modifier;
 		} else {
-			return modifier;
+			return "+" + modifier;
 		}
 	}
 }

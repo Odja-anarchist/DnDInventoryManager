@@ -89,6 +89,7 @@
 	}
 
 	inventoryPage.prototype.showMainUI = function (contentDiv) {
+		delete this.pendingData;
 		contentDiv.appendChild(new TitleBar({
 			title: 'Inventory',
 			type: TitleBar.TYPES.SUB_TITLE
@@ -102,7 +103,7 @@
 	}
 
 	inventoryPage.prototype.showAddEditUI = function (contentDiv) {
-		AddEditItem.showInside(contentDiv, this.eventHandler);
+		AddEditItem.showInside(contentDiv, this.eventHandler, this.pendingData);
 	}
 
 	inventoryPage.prototype.showTransactionUI = function (contentDiv) {
@@ -128,6 +129,7 @@
 			this.hideConvertCoinageUI();
 		}
 		this.currentUiState = uiStates.MAIN_UI;
+		delete this.pendingData;
 	}
 
 	inventoryPage.prototype.hideMainUI = function () {

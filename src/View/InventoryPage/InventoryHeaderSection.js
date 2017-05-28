@@ -6,6 +6,7 @@ var inventoryManager = require('../../Managers/inventoryManager');
 var CoinageManager = require('../../Managers/CoinageManager');
 var CharacterManager = require('../../Managers/CharacterManager');
 var Utils = require('../../Utils');
+var Constants = require('../../Constants');
 
 var MAX_STRENGTH = 30;
 
@@ -46,18 +47,20 @@ InventoryHeaderSection.prototype.createUI = function (contentDiv) {
 }
 
 InventoryHeaderSection.prototype.hide = function (contentDiv) {
-    CharacterManager.removeListener(CharacterManager.KEYS.STRENGTH, this.onStrengthChange);
+    CharacterManager.removeListener(CharacterManager.KEYS.ABILITIES, this.onCharacterAbilitiesChange);
     CoinageManager.removeListener(CoinageManager.EVENTS.COINAGE_UPDATED, this.setupCurrentWeight);
+    inventoryManager.removeListener(this.setupCurrentWeight);
 }
 
 InventoryHeaderSection.prototype.validateStrengthInput = function () {
     var strengthInput = document.getElementById('strength-input');
     var value = Utils.sanitiseNumberInput(strengthInput.value);
     strengthInput.value = value;
-    CharacterManager.setStrength(value);
+    CharacterManager.setAbility(Constants.abilities.STR.NAME, value);
 }
 
-InventoryHeaderSection.prototype.onStrengthChange = function (strength) {
+InventoryHeaderSection.prototype.onCharacterAbilitiesChange = function (abilities) {
+    var strength = abilities[Constants.abilities.STR.NAME];
     var strengthInput = document.getElementById('strength-input');
     var carryCapacity = document.getElementById('carry-capacity');
     strengthInput.value = strength;
@@ -66,20 +69,22 @@ InventoryHeaderSection.prototype.onStrengthChange = function (strength) {
 InventoryHeaderSection.prototype.setupCurrentWeight = function () {
     var totalWeight = document.getElementById('current-weight');
     var currentCoinageWeight = CoinageManager.getCurrentCoinageWeight();
-    totalWeight.value = currentCoinageWeight;
+    var currentItemWeight = inventoryManager.getCarriedWeight();
+    totalWeight.value = currentCoinageWeight + currentItemWeight;
 };
 
 InventoryHeaderSection.prototype.setupStrenghtInput = function () {
     var strengthInput = document.getElementById('strength-input');
     strengthInput.addEventListener('input', this.validateStrengthInput);
-    CharacterManager.addListener(CharacterManager.KEYS.STRENGTH, this.onStrengthChange);
+    CharacterManager.addListener(CharacterManager.KEYS.ABILITIES, this.onCharacterAbilitiesChange);
 
-    var currentStrength = CharacterManager.getStrength();
+    var currentStrength = CharacterManager.getAbility(Constants.abilities.STR.NAME);
     var carryCapacity = document.getElementById('carry-capacity');
     carryCapacity.value = currentStrength * 15;
     strengthInput.value = currentStrength;
 
     CoinageManager.addListener(CoinageManager.EVENTS.COINAGE_UPDATED, this.setupCurrentWeight);
+    inventoryManager.addUpdateListener(this.setupCurrentWeight);
 }
 
 module.exports = new InventoryHeaderSection();

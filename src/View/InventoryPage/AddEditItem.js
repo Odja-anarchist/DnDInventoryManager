@@ -21,7 +21,7 @@ var addEditItemLayout = '<table style="width: 100%">' +
     '<td class="addItemCell">Weight:</td>' +
     '<td class="addItemCell" colspan=2>' +
     '<div class="input-group">' +
-    '<input id="weight-input" class="form-control" value="0" type="number" min="0" aria-describedby="basic-addon2"></input>' +
+    '<input id="weight-input" class="form-control numberInput" value="0" type="number" min="0" aria-describedby="basic-addon2"></input>' +
     '<span class="input-group-addon" id="basic-addon2">lbs</span>' +
     '</div>' +
     '</td>' +
@@ -30,7 +30,7 @@ var addEditItemLayout = '<table style="width: 100%">' +
     '<td class="addItemCell">Value:</td>' +
     '<td class="addItemCell">' +
     '<div class="input-group">' +
-    '<input type="number" id="value-input" value="0" class="form-control" aria-label="..." min="0">' +
+    '<input type="number" id="value-input" value="0" class="form-control numberInput" aria-label="..." min="0">' +
     '<div class="input-group-btn">' +
     '<button type="button" id="value-type-input" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gold <span class="caret"></span></button>' +
     '<ul class="dropdown-menu dropdown-menu-right">' +
@@ -60,11 +60,12 @@ AddEditItem.prototype.showInside = function (contentDiv, eventListener, editItem
     this.editItem = editItem;
     this.createUI(contentDiv);
     this.addTemplateChangeListener();
+    this.setupValueTypeChangeListener();
+    this.setupNumericInputChangeListeners();
 }
 
 AddEditItem.prototype.createUI = function (contentDiv) {
-    var title = this.editItem ? 'Edit Item -' + this.editItem.name : 'Add Item';
-
+    var title = this.editItem ? 'Edit Item - ' + this.editItem.name : 'Add Item';
     var addItemButton = new Button({
         title: this.editItem ? 'Save' : 'Add',
         icon: 'fa-check',
@@ -84,9 +85,49 @@ AddEditItem.prototype.createUI = function (contentDiv) {
     }).getElement());
     var fullHTML = addEditItemLayout.replace('<TEMPLATE>', this.createTemplateDropDown());
     contentDiv.insertAdjacentHTML('beforeEnd', fullHTML);
+    if (this.editItem) {
+        this.setupEditItemFields();
+    }
+    $(".numberInput").keypress(function (e) {
+        if (e.which < 48 || e.which > 57) {
+            return (false);
+        }
+    });
+}
+
+AddEditItem.prototype.onNumericInput = function (e) {
+    var inputField = e.target;
+    var value = Utils.sanitiseNumberInput(inputField.value, 9999, 0);
+    inputField.value = value;
+}
+
+AddEditItem.prototype.setupNumericInputChangeListeners = function () {
+    document.getElementById('weight-input').addEventListener('input', this.onNumericInput);
+    document.getElementById('value-input').addEventListener('input', this.onNumericInput);
+}
+
+
+AddEditItem.prototype.valueTypeChangedListener = function (e) {
+    document.getElementById("value-type-input").innerHTML = e.target.innerHTML + ' <span class="caret">';
+}
+
+AddEditItem.prototype.setupValueTypeChangeListener = function () {
+    document.getElementById('platinum-type').addEventListener('click', this.valueTypeChangedListener);
+    document.getElementById('gold-type').addEventListener('click', this.valueTypeChangedListener);
+    document.getElementById('electrum-type').addEventListener('click', this.valueTypeChangedListener);
+    document.getElementById('silver-type').addEventListener('click', this.valueTypeChangedListener);
+    document.getElementById('copper-type').addEventListener('click', this.valueTypeChangedListener);
 }
 
 AddEditItem.prototype.hide = function () {
+}
+
+AddEditItem.prototype.setupEditItemFields = function () {
+    document.getElementById('name-input').value = this.editItem.name;
+    document.getElementById('description-input').value = this.editItem.description;
+    document.getElementById('weight-input').value = this.editItem.baseWeight;
+    document.getElementById('value-input').value = this.editItem.baseValue;
+    document.getElementById('value-type-input').innerHTML = this.editItem.baseValueType + ' <span class="caret">';
 }
 
 AddEditItem.prototype.createTemplateDropDown = function () {
@@ -147,8 +188,15 @@ AddEditItem.prototype.onAddTap = function () {
         baseValueType: valueType,
         location: '',
         description: description
+    };
+    if (this.editItem) {
+        item.count = this.editItem.count;
+        item.id = this.editItem.id;
+        InventoryManager.updateItem(item);
+    } else {
+        InventoryManager.addItem(item);
     }
-    InventoryManager.addItem(item);
+
     this.goBack();
 }
 AddEditItem.prototype.onCancelTap = function () {

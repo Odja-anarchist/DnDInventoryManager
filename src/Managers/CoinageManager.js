@@ -75,7 +75,7 @@ CoinageManager.prototype.getValue = function (type) {
             returnValue = self[value.NAME];
         }
     })
-    if (returnValue) {
+    if (!_.isNil(returnValue)) {
         return returnValue;
     }
 }

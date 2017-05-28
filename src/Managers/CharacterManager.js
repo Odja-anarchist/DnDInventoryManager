@@ -1,34 +1,40 @@
 var _ = require('lodash');
 
 var EventHandler = require('../EventHandler');
+var Constants = require('../Constants');
 
 var characterManager = function () {
-    this.abilities = {
-        strength: 0,
-        dexterity: 0,
-        constitution: 0,
-        intelligence: 0,
-        wisdom: 0,
-        charisma: 0
-    }
     this.loadValuesFromStorage();
     this.eventHandler = new EventHandler();
     _.bindAll(this, _.functionsIn(this));
 }
 
 characterManager.prototype.KEYS = {
-    STRENGTH: "STRENGTH",
+    ABILITES: "ABILITES",
+    NAME: "NAME"
 }
 
 characterManager.prototype.loadValuesFromStorage = function () {
     if (localStorage['CHARACTER']) {
         var character = JSON.parse(localStorage['CHARACTER']);
         this.abilities = character.abilities;
+    } else {
+        this.abilities = {},
+            self = this;
+        _.each(Constants.abilities, function (ability) {
+            self.abilities[ability.NAME] = 10;
+        });
+
+        this.skills = {};
     }
 }
 
+characterManager.prototype.getModifierForSkill = function (skillName, abilityMod) {
+
+}
+
 characterManager.prototype.getAbilities = function () {
-    return this.abilities;
+    return _.clone(this.abilities);
 }
 
 characterManager.prototype.saveValuesToStorage = function () {
@@ -38,13 +44,17 @@ characterManager.prototype.saveValuesToStorage = function () {
     localStorage['CHARACTER'] = JSON.stringify(character);
 }
 
-characterManager.prototype.setStrength = function (strength) {
-    this.abilities.strength = strength;
-    this.fireEvent(this.KEYS.STRENGTH, strength);
+characterManager.prototype.setAbility = function (type, value) {
+    if (!_.isNil(this.abilities[type])) {
+        this.abilities[type] = value;
+        this.fireEvent(this.KEYS.ABILITES, this.abilities);
+    }
 }
 
-characterManager.prototype.getStrength = function () {
-    return this.abilities.strength;
+characterManager.prototype.getAbility = function (type) {
+    if (!_.isNil(this.abilities[type])) {
+        return this.abilities[type];
+    }
 }
 
 characterManager.prototype.addListener = function (type, listener) {

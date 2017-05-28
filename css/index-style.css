@@ -1,3 +1,26 @@
+.main {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+	overflow-y: scroll;
+}
+
+.popupMask {
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: 100;
+    opacity: 0.6;
+    display: none;
+}
+
+.popupMask .show{
+	display: block;
+}
 
 .header-bar {
     padding: 5px;
@@ -268,6 +291,7 @@ hr {
 }
 .center {
 	text-align: center;
+	vertical-align: middle !important;
 }
 
 .coinageLabel {
@@ -499,6 +523,10 @@ input[type=range]:focus::-ms-fill-upper {
 	margin-bottom: 5px;
 }
 
+.abilitySection .modifierSection {
+    width: 10%;
+}
+
 .inputSection input {
 	font-size: 1em;
 	text-align: center;
@@ -529,3 +557,74 @@ input[type=range]:focus::-ms-fill-upper {
 	text-align: center;
 	padding: 5px;
 }
+
+.itemListHeader {
+	display: flex;
+	margin-bottom: 10px;
+}
+
+/* Inventory Item */
+
+.itemContainer {
+	display: flex;
+	border: 2px solid black;
+    border-radius: 5px;
+	margin-bottom: 1em;
+}
+
+.itemCount {
+	align-self: center;
+    padding: 5px;
+	width: 6em;
+}
+
+.nameContainer {
+	flex: 1;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.itemName {
+	padding: 5px;
+    border-bottom: 1px solid black;
+}
+
+.itemDescription {
+	font-style: italic;
+	padding: 5px;
+	font-size: 0.8em;
+    height: 31px;
+    line-height: 1.7;
+}
+
+.propertiesContainer {
+	border-right: 1px solid black;
+	width: 20%;
+}
+
+.weightDescription {
+	padding: 5px;
+    border-bottom: 1px solid black;
+    text-align: center;
+	white-space: nowrap;
+    text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.valueContainer {
+    padding: 5px;
+    text-align: center;
+	white-space: nowrap;
+    text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.itemContainer .dropbtn {
+	height: 100%;
+    border: none;
+    border-radius: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+	width: 2em;
+}
+

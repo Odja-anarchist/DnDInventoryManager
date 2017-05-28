@@ -220,7 +220,7 @@
 		"description": "1d4 slashing, Light"
 	},
 	{
-		"name": "SLear",
+		"name": "Spear",
 		"value": {
 			"num": 1,
 			"unit": "GP"
@@ -907,6 +907,936 @@
 		},
 		"weight": 4,
 		"category": "Clothes",
+		"description": ""
+	},
+	{
+		"name": "Crystal (Arcane focus)",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Arcane focus",
+		"description": ""
+	},
+	{
+		"name": "Orb (Arcane focus)",
+		"value": {
+			"num": 20,
+			"unit": "GP"
+		},
+		"weight": 3,
+		"category": "Arcane focus",
+		"description": ""
+	},
+	{
+		"name": "Rod (Arcane focus)",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Arcane focus",
+		"description": ""
+	},
+	{
+		"name": "Staff (Arcane focus)",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 4,
+		"category": "Arcane focus",
+		"description": ""
+	},
+	{
+		"name": "Wand (Arcane focus)",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Arcane focus",
+		"description": ""
+	},
+	{
+		"name": "Abacus",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Acid (vial)",
+		"value": {
+			"num": 25,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Alchemists fire (flask)",
+		"value": {
+			"num": 50,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Antitoxin (vial)",
+		"value": {
+			"num": 50,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Backpack",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 5,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Ball bearings (bag of 1000)",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Barrel",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 70,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Basket",
+		"value": {
+			"num": 4,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Bedroll",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 7,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Bell",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 0.1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Blanket",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 3,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Block and tackle",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 5,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Book",
+		"value": {
+			"num": 255,
+			"unit": "GP"
+		},
+		"weight": 5,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Glass bottle",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Bucket",
+		"value": {
+			"num": 5,
+			"unit": "CP"
+		},
+		"weight": 2,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Caltrops (bag of 20)",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Candle",
+		"value": {
+			"num": 1,
+			"unit": "CP"
+		},
+		"weight": 0.1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Case, crossbow bolt",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Case, map or scroll",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Chain (10 feet)",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 10,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Chalk (1 piece)",
+		"value": {
+			"num": 1,
+			"unit": "CP"
+		},
+		"weight": 0.1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Chest",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 25,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Climber's kit",
+		"value": {
+			"num": 25,
+			"unit": "GP"
+		},
+		"weight": 12,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Component pouch",
+		"value": {
+			"num": 25,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Crowbar",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 5,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Fishing tackle",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 4,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Flask",
+		"value": {
+			"num": 2,
+			"unit": "CP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Tankard",
+		"value": {
+			"num": 2,
+			"unit": "CP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Grappling hook",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 4,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Hammer",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 3,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Sledge Hammer",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 10,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Healer's kit",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 3,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Sprig of mistletoe",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 0,
+		"category": "Druidic focus",
+		"description": ""
+	},
+	{
+		"name": "Totem",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 0,
+		"category": "Druidic focus",
+		"description": ""
+	},
+	{
+		"name": "Wooden staff",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 4,
+		"category": "Druidic focus",
+		"description": ""
+	},
+	{
+		"name": "Yew wand",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Druidic focus",
+		"description": ""
+	},
+	{
+		"name": "Amulet",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Holy Symbol",
+		"description": ""
+	},
+	{
+		"name": "Emblem",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 0,
+		"category": "Holy Symbol",
+		"description": ""
+	},
+	{
+		"name": "Reliquary",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Holy Symbol",
+		"description": ""
+	},
+	{
+		"name": "Holy water (flask)",
+		"value": {
+			"num": 25,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Hourglass",
+		"value": {
+			"num": 25,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Hunting trap",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 25,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Ink (1 ounce bottle)",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 0.1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Ink pen",
+		"value": {
+			"num": 2,
+			"unit": "CP"
+		},
+		"weight": 0.1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Jug",
+		"value": {
+			"num": 2,
+			"unit": "CP"
+		},
+		"weight": 4,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Pitcher",
+		"value": {
+			"num": 2,
+			"unit": "CP"
+		},
+		"weight": 4,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Ladder (10-foot)",
+		"value": {
+			"num": 1,
+			"unit": "SL"
+		},
+		"weight": 25,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Lamp",
+		"value": {
+			"num": 5,
+			"unit": "SL"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Lantern, bullseye",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Lantern, hooded",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Lock",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Magnifying glass",
+		"value": {
+			"num": 100,
+			"unit": "GP"
+		},
+		"weight": 0.1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Manacles",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 6,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Mess kit",
+		"value": {
+			"num": 2,
+			"unit": "SL"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Mirror, steel",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 0.5,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Oil (flask)",
+		"value": {
+			"num": 1,
+			"unit": "SL"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Paper (one sheet)",
+		"value": {
+			"num": 2,
+			"unit": "SL"
+		},
+		"weight": 0.01,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Parchment (one sheet)",
+		"value": {
+			"num": 1,
+			"unit": "SL"
+		},
+		"weight": 0.01,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Perfume (vial)",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 0.01,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Miner's pick",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 10,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Piton",
+		"value": {
+			"num": 5,
+			"unit": "CP"
+		},
+		"weight": 0.25,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Poison, basic (vial)",
+		"value": {
+			"num": 100,
+			"unit": "GP"
+		},
+		"weight": 0.1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Pole (10-feet)",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 7,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Pot, iron",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 10,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Potion of healing",
+		"value": {
+			"num": 50,
+			"unit": "GP"
+		},
+		"weight": 0.5,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Pouch",
+		"value": {
+			"num": 5,
+			"unit": "SL"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Quiver",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Ram, portable",
+		"value": {
+			"num": 4,
+			"unit": "GP"
+		},
+		"weight": 35,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Rations (1 day)",
+		"value": {
+			"num": 5,
+			"unit": "SL"
+		},
+		"weight": 2,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Robes",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 4,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Rope, hempen (50-feet)",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 10,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Rope, silk (50-feet)",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 5,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Sack",
+		"value": {
+			"num": 1,
+			"unit": "CP"
+		},
+		"weight": 0.5,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Scale, merchant's",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 3,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Sealing wax",
+		"value": {
+			"num": 5,
+			"unit": "SL"
+		},
+		"weight": 0.1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Shovel",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 5,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Signal whistle",
+		"value": {
+			"num": 5,
+			"unit": "CP"
+		},
+		"weight": 0.01,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Signet ring",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 0.1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Soap",
+		"value": {
+			"num": 2,
+			"unit": "CP"
+		},
+		"weight": 0.1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Spellbook",
+		"value": {
+			"num": 50,
+			"unit": "GP"
+		},
+		"weight": 3,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Spikes, iron (10)",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 5,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Spyglass",
+		"value": {
+			"num": 1000,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Tent, two-person",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 20,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Tinderbox",
+		"value": {
+			"num": 5,
+			"unit": "SL"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Torch",
+		"value": {
+			"num": 1,
+			"unit": "CP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Vial",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 0.1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Waterskin",
+		"value": {
+			"num": 2,
+			"unit": "SL"
+		},
+		"weight": 5,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Whetstone",
+		"value": {
+			"num": 1,
+			"unit": "CP"
+		},
+		"weight": 1,
+		"category": "Gear",
 		"description": ""
 	}
 ]

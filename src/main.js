@@ -9,7 +9,7 @@ var spellsPage = require('./View/spellsPage');
 var Button = require('./Components/Button');
 var TitleBar = require('./Components/TitleBar');
 
-var DATABASE_VERSION = 1;
+var DATABASE_VERSION = 2;
 
 var main = {
 	layout: '<div class="icon-bar" id="tab-bar"></div>' +
@@ -117,13 +117,23 @@ var main = {
 	start: function () {
 		this.checkLocalStorageVersion();
 		this.tabBarClickMap = {};
-		var body = document.getElementById('body');
-		body.innerHTML = '';
-		body.appendChild(new TitleBar({
+		var main = document.getElementById('main');
+		main.innerHTML = '';
+
+		var popupMask = document.createElement('div');
+		popupMask.setAttribute('class', 'popupMask');
+		main.appendChild(popupMask);
+
+		var mainDiv = document.createElement('div');
+		mainDiv.setAttribute('class', 'background');
+		mainDiv.setAttribute('id', 'background');
+		main.appendChild(mainDiv);
+
+		mainDiv.appendChild(new TitleBar({
 			title: 'Inventory Manager',
 			subTitle: 'v' + pack.version
 		}).getElement());
-		body.insertAdjacentHTML('beforeend', this.layout);
+		mainDiv.insertAdjacentHTML('beforeend', this.layout);
 
 		this.setupInitListener();
 		var contentPages = [

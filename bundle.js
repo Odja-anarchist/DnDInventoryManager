@@ -221,7 +221,7 @@ module.exports=[
 		"description": "1d4 slashing, Light"
 	},
 	{
-		"name": "SLear",
+		"name": "Spear",
 		"value": {
 			"num": 1,
 			"unit": "GP"
@@ -908,6 +908,936 @@ module.exports=[
 		},
 		"weight": 4,
 		"category": "Clothes",
+		"description": ""
+	},
+	{
+		"name": "Crystal (Arcane focus)",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Arcane focus",
+		"description": ""
+	},
+	{
+		"name": "Orb (Arcane focus)",
+		"value": {
+			"num": 20,
+			"unit": "GP"
+		},
+		"weight": 3,
+		"category": "Arcane focus",
+		"description": ""
+	},
+	{
+		"name": "Rod (Arcane focus)",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Arcane focus",
+		"description": ""
+	},
+	{
+		"name": "Staff (Arcane focus)",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 4,
+		"category": "Arcane focus",
+		"description": ""
+	},
+	{
+		"name": "Wand (Arcane focus)",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Arcane focus",
+		"description": ""
+	},
+	{
+		"name": "Abacus",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Acid (vial)",
+		"value": {
+			"num": 25,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Alchemists fire (flask)",
+		"value": {
+			"num": 50,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Antitoxin (vial)",
+		"value": {
+			"num": 50,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Backpack",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 5,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Ball bearings (bag of 1000)",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Barrel",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 70,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Basket",
+		"value": {
+			"num": 4,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Bedroll",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 7,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Bell",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 0.1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Blanket",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 3,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Block and tackle",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 5,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Book",
+		"value": {
+			"num": 255,
+			"unit": "GP"
+		},
+		"weight": 5,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Glass bottle",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Bucket",
+		"value": {
+			"num": 5,
+			"unit": "CP"
+		},
+		"weight": 2,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Caltrops (bag of 20)",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Candle",
+		"value": {
+			"num": 1,
+			"unit": "CP"
+		},
+		"weight": 0.1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Case, crossbow bolt",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Case, map or scroll",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Chain (10 feet)",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 10,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Chalk (1 piece)",
+		"value": {
+			"num": 1,
+			"unit": "CP"
+		},
+		"weight": 0.1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Chest",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 25,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Climber's kit",
+		"value": {
+			"num": 25,
+			"unit": "GP"
+		},
+		"weight": 12,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Component pouch",
+		"value": {
+			"num": 25,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Crowbar",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 5,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Fishing tackle",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 4,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Flask",
+		"value": {
+			"num": 2,
+			"unit": "CP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Tankard",
+		"value": {
+			"num": 2,
+			"unit": "CP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Grappling hook",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 4,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Hammer",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 3,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Sledge Hammer",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 10,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Healer's kit",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 3,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Sprig of mistletoe",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 0,
+		"category": "Druidic focus",
+		"description": ""
+	},
+	{
+		"name": "Totem",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 0,
+		"category": "Druidic focus",
+		"description": ""
+	},
+	{
+		"name": "Wooden staff",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 4,
+		"category": "Druidic focus",
+		"description": ""
+	},
+	{
+		"name": "Yew wand",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Druidic focus",
+		"description": ""
+	},
+	{
+		"name": "Amulet",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Holy Symbol",
+		"description": ""
+	},
+	{
+		"name": "Emblem",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 0,
+		"category": "Holy Symbol",
+		"description": ""
+	},
+	{
+		"name": "Reliquary",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Holy Symbol",
+		"description": ""
+	},
+	{
+		"name": "Holy water (flask)",
+		"value": {
+			"num": 25,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Hourglass",
+		"value": {
+			"num": 25,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Hunting trap",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 25,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Ink (1 ounce bottle)",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 0.1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Ink pen",
+		"value": {
+			"num": 2,
+			"unit": "CP"
+		},
+		"weight": 0.1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Jug",
+		"value": {
+			"num": 2,
+			"unit": "CP"
+		},
+		"weight": 4,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Pitcher",
+		"value": {
+			"num": 2,
+			"unit": "CP"
+		},
+		"weight": 4,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Ladder (10-foot)",
+		"value": {
+			"num": 1,
+			"unit": "SL"
+		},
+		"weight": 25,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Lamp",
+		"value": {
+			"num": 5,
+			"unit": "SL"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Lantern, bullseye",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Lantern, hooded",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 2,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Lock",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Magnifying glass",
+		"value": {
+			"num": 100,
+			"unit": "GP"
+		},
+		"weight": 0.1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Manacles",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 6,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Mess kit",
+		"value": {
+			"num": 2,
+			"unit": "SL"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Mirror, steel",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 0.5,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Oil (flask)",
+		"value": {
+			"num": 1,
+			"unit": "SL"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Paper (one sheet)",
+		"value": {
+			"num": 2,
+			"unit": "SL"
+		},
+		"weight": 0.01,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Parchment (one sheet)",
+		"value": {
+			"num": 1,
+			"unit": "SL"
+		},
+		"weight": 0.01,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Perfume (vial)",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 0.01,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Miner's pick",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 10,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Piton",
+		"value": {
+			"num": 5,
+			"unit": "CP"
+		},
+		"weight": 0.25,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Poison, basic (vial)",
+		"value": {
+			"num": 100,
+			"unit": "GP"
+		},
+		"weight": 0.1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Pole (10-feet)",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 7,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Pot, iron",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 10,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Potion of healing",
+		"value": {
+			"num": 50,
+			"unit": "GP"
+		},
+		"weight": 0.5,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Pouch",
+		"value": {
+			"num": 5,
+			"unit": "SL"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Quiver",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Ram, portable",
+		"value": {
+			"num": 4,
+			"unit": "GP"
+		},
+		"weight": 35,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Rations (1 day)",
+		"value": {
+			"num": 5,
+			"unit": "SL"
+		},
+		"weight": 2,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Robes",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 4,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Rope, hempen (50-feet)",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 10,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Rope, silk (50-feet)",
+		"value": {
+			"num": 10,
+			"unit": "GP"
+		},
+		"weight": 5,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Sack",
+		"value": {
+			"num": 1,
+			"unit": "CP"
+		},
+		"weight": 0.5,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Scale, merchant's",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 3,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Sealing wax",
+		"value": {
+			"num": 5,
+			"unit": "SL"
+		},
+		"weight": 0.1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Shovel",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 5,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Signal whistle",
+		"value": {
+			"num": 5,
+			"unit": "CP"
+		},
+		"weight": 0.01,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Signet ring",
+		"value": {
+			"num": 5,
+			"unit": "GP"
+		},
+		"weight": 0.1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Soap",
+		"value": {
+			"num": 2,
+			"unit": "CP"
+		},
+		"weight": 0.1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Spellbook",
+		"value": {
+			"num": 50,
+			"unit": "GP"
+		},
+		"weight": 3,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Spikes, iron (10)",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 5,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Spyglass",
+		"value": {
+			"num": 1000,
+			"unit": "GP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Tent, two-person",
+		"value": {
+			"num": 2,
+			"unit": "GP"
+		},
+		"weight": 20,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Tinderbox",
+		"value": {
+			"num": 5,
+			"unit": "SL"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Torch",
+		"value": {
+			"num": 1,
+			"unit": "CP"
+		},
+		"weight": 1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Vial",
+		"value": {
+			"num": 1,
+			"unit": "GP"
+		},
+		"weight": 0.1,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Waterskin",
+		"value": {
+			"num": 2,
+			"unit": "SL"
+		},
+		"weight": 5,
+		"category": "Gear",
+		"description": ""
+	},
+	{
+		"name": "Whetstone",
+		"value": {
+			"num": 1,
+			"unit": "CP"
+		},
+		"weight": 1,
+		"category": "Gear",
 		"description": ""
 	}
 ]
@@ -18524,7 +19454,7 @@ checkbox.prototype.removeChangeListener = function (listener) {
 }
 
 module.exports = checkbox;
-},{"../EventHandler":21,"lodash":2,"shortid":3}],17:[function(require,module,exports){
+},{"../EventHandler":22,"lodash":2,"shortid":3}],17:[function(require,module,exports){
 var shortid = require('shortid');
 var _ = require('lodash');
 var EventHandler = require('../EventHandler');
@@ -18582,7 +19512,121 @@ CheckBoxGroup.prototype.onButtonChanged = function (buttonInt, buttonState) {
 
 
 module.exports = CheckBoxGroup;
-},{"../EventHandler":21,"lodash":2,"shortid":3}],18:[function(require,module,exports){
+},{"../EventHandler":22,"lodash":2,"shortid":3}],18:[function(require,module,exports){
+var _ = require('lodash');
+
+var PopupActionMenu = require('./PopupActionMenu');
+var Utils = require('../Utils');
+var Constants = require('../Constants');
+var InventoryManager = require('../Managers/inventoryManager');
+
+var InventoryItem = function (element, parentEventHandler) {
+    this.item = element;
+    this.id = element.id;
+    this.eventHandler = parentEventHandler;
+    _.bindAll(this, _.functionsIn(this));
+}
+
+InventoryItem.prototype.recalculateProperties = function () {
+    if (!this.element) {
+        return;
+    }
+    var weightField = this.element.getElementsByClassName('weightDescription')[0];
+    var valueField = this.element.getElementsByClassName('valueContainer')[0];
+
+    var totalWeight = this.item.baseWeight * this.item.count;
+    var totalValue = this.item.baseValue * this.item.count;
+
+    weightField.innerHTML = totalWeight + ' lbs (' + this.item.baseWeight + ' lbs)';
+    valueField.innerHTML = totalValue + ' ' + Utils.convertValueLongToShortCode(this.item.baseValueType) +
+        ' (' + this.item.baseValue + ' ' + Utils.convertValueLongToShortCode(this.item.baseValueType) + ')';
+}
+
+InventoryItem.prototype.onCountChange = function () {
+    var inputField = document.getElementById('countInput-' + this.id);
+    var value = Utils.sanitiseNumberInput(inputField.value, 999, 0);
+    inputField.value = value;
+    this.item.count = value;
+    this.recalculateProperties();
+    InventoryManager.updateItem(this.item);
+}
+
+InventoryItem.prototype.onDeletePressed = function () {
+    this.eventHandler.fireEvent(Constants.itemListAction.DELETE, this.id);
+}
+
+InventoryItem.prototype.onEditPressed = function () {
+    this.eventHandler.fireEvent(Constants.itemListAction.EDIT, this.id);
+}
+
+InventoryItem.prototype.getElement = function () {
+    var itemDiv = document.createElement('div');
+    itemDiv.setAttribute('class', 'itemContainer');
+    itemDiv.setAttribute('id', 'itemContainer-' + this.id);
+
+    var countDiv = document.createElement('div');
+    countDiv.setAttribute('class', 'itemCount');
+
+    var countDivInput = document.createElement('input');
+    countDivInput.setAttribute('class', 'form-control inventoryCountInput');
+    countDivInput.setAttribute('type', 'number');
+    countDivInput.setAttribute('min', '0');
+    countDivInput.setAttribute('max', '999');
+    countDivInput.setAttribute('id', 'countInput-' + this.id);
+    countDivInput.value = this.item.count;
+    countDivInput.addEventListener('input', this.onCountChange);
+
+    countDiv.appendChild(countDivInput);
+    itemDiv.appendChild(countDiv);
+
+    var nameContainer = document.createElement('div');
+    nameContainer.setAttribute('class', 'nameContainer');
+
+    var nameDiv = document.createElement('div');
+    nameDiv.setAttribute('class', 'itemName');
+    nameDiv.innerHTML = this.item.name;
+
+    var descriptionDiv = document.createElement('div');
+    descriptionDiv.setAttribute('class', 'itemDescription');
+    descriptionDiv.innerHTML = this.item.description;
+
+    nameContainer.appendChild(nameDiv);
+    nameContainer.appendChild(descriptionDiv);
+    itemDiv.appendChild(nameContainer);
+
+    var weightDiv = document.createElement('div');
+    weightDiv.setAttribute('class', 'weightDescription');
+    weightDiv.setAttribute('id', 'weight-' + this.id);
+
+    var valueDiv = document.createElement('div');
+    valueDiv.setAttribute('class', 'valueContainer');
+    valueDiv.setAttribute('id', 'value-' + this.id);
+
+    var propertiesContainer = document.createElement('div');
+    propertiesContainer.setAttribute('class', 'propertiesContainer');
+    propertiesContainer.appendChild(weightDiv);
+    propertiesContainer.appendChild(valueDiv);
+
+    itemDiv.appendChild(propertiesContainer);
+
+    var popupMenu = new PopupActionMenu({
+        title: "Actions",
+        buttons: [
+            //{ title: 'Move', icon: 'fa-arrows' },
+            { title: 'Edit', icon: 'fa-pencil', listener: this.onEditPressed },
+            //{ title: 'Sell', icon: 'fa-arrow-up' },
+            //{ title: 'Buy', icon: 'fa-arrow-down' },
+            { title: 'Delete', icon: 'fa-trash-o', listener: this.onDeletePressed }
+        ]
+    });
+    itemDiv.appendChild(popupMenu.getElement());
+    this.element = itemDiv;
+    this.recalculateProperties();
+    return itemDiv;
+}
+
+module.exports = InventoryItem;
+},{"../Constants":21,"../Managers/inventoryManager":25,"../Utils":28,"./PopupActionMenu":19,"lodash":2}],19:[function(require,module,exports){
 var shortid = require('shortid');
 var _ = require('lodash');
 
@@ -18682,7 +19726,7 @@ popupActionMenu.prototype.onMouseUp = function () {
 }
 
 module.exports = popupActionMenu;
-},{"lodash":2,"shortid":3}],19:[function(require,module,exports){
+},{"lodash":2,"shortid":3}],20:[function(require,module,exports){
 var _ = require('lodash');
 var shortid = require('shortid');
 
@@ -18741,13 +19785,17 @@ titleBar.TYPES = {
 }
 
 module.exports = titleBar;
-},{"./Button":14,"lodash":2,"shortid":3}],20:[function(require,module,exports){
+},{"./Button":14,"lodash":2,"shortid":3}],21:[function(require,module,exports){
 var constants = {
     inventoryPageActions: {
         ADD_EDIT_ITEM: "ADD_EDIT_ITEM",
         TRANSACTION: 'TRANSACTION',
         RESET: 'RESET',
         CONVERT_COINAGE: 'CONVERT_COINAGE'
+    },
+    itemListAction: {
+        DELETE: "DELETE",
+        EDIT: "EDIT"
     },
     coinage: {
         PLATINUM: {
@@ -18770,11 +19818,37 @@ var constants = {
             NAME: "Copper",
             COPPER_VALUE: 1
         },
+    },
+    abilities: {
+        STR: {
+            NAME: "Strength",
+            SHORT_NAME: "STR"
+        },
+        DEX: {
+            NAME: "Dexterity",
+            SHORT_NAME: "DEX"
+        },
+        CON: {
+            NAME: "Constitution",
+            SHORT_NAME: "CON"
+        },
+        INT: {
+            NAME: "Intelligence",
+            SHORT_NAME: "INT"
+        },
+        WIS: {
+            NAME: "Wisdom",
+            SHORT_NAME: "WIS"
+        },
+        CHA: {
+            NAME: "Charisma",
+            SHORT_NAME: "CHA"
+        }
     }
 }
 
 module.exports = constants;
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 var _ = require('lodash');
 
 var EventHandler = function (possibleEvents) {
@@ -18832,38 +19906,44 @@ EventHandler.prototype.fireEvent = function (type, data) {
 
 
 module.exports = EventHandler;
-},{"lodash":2}],22:[function(require,module,exports){
+},{"lodash":2}],23:[function(require,module,exports){
 var _ = require('lodash');
 
 var EventHandler = require('../EventHandler');
+var Constants = require('../Constants');
 
 var characterManager = function () {
-    this.abilities = {
-        strength: 0,
-        dexterity: 0,
-        constitution: 0,
-        intelligence: 0,
-        wisdom: 0,
-        charisma: 0
-    }
     this.loadValuesFromStorage();
     this.eventHandler = new EventHandler();
     _.bindAll(this, _.functionsIn(this));
 }
 
 characterManager.prototype.KEYS = {
-    STRENGTH: "STRENGTH",
+    ABILITES: "ABILITES",
+    NAME: "NAME"
 }
 
 characterManager.prototype.loadValuesFromStorage = function () {
     if (localStorage['CHARACTER']) {
         var character = JSON.parse(localStorage['CHARACTER']);
         this.abilities = character.abilities;
+    } else {
+        this.abilities = {},
+            self = this;
+        _.each(Constants.abilities, function (ability) {
+            self.abilities[ability.NAME] = 10;
+        });
+
+        this.skills = {};
     }
 }
 
+characterManager.prototype.getModifierForSkill = function (skillName, abilityMod) {
+
+}
+
 characterManager.prototype.getAbilities = function () {
-    return this.abilities;
+    return _.clone(this.abilities);
 }
 
 characterManager.prototype.saveValuesToStorage = function () {
@@ -18873,13 +19953,17 @@ characterManager.prototype.saveValuesToStorage = function () {
     localStorage['CHARACTER'] = JSON.stringify(character);
 }
 
-characterManager.prototype.setStrength = function (strength) {
-    this.abilities.strength = strength;
-    this.fireEvent(this.KEYS.STRENGTH, strength);
+characterManager.prototype.setAbility = function (type, value) {
+    if (!_.isNil(this.abilities[type])) {
+        this.abilities[type] = value;
+        this.fireEvent(this.KEYS.ABILITES, this.abilities);
+    }
 }
 
-characterManager.prototype.getStrength = function () {
-    return this.abilities.strength;
+characterManager.prototype.getAbility = function (type) {
+    if (!_.isNil(this.abilities[type])) {
+        return this.abilities[type];
+    }
 }
 
 characterManager.prototype.addListener = function (type, listener) {
@@ -18896,7 +19980,7 @@ characterManager.prototype.fireEvent = function (type, data) {
 }
 
 module.exports = new characterManager();
-},{"../EventHandler":21,"lodash":2}],23:[function(require,module,exports){
+},{"../Constants":21,"../EventHandler":22,"lodash":2}],24:[function(require,module,exports){
 var _ = require('lodash');
 
 var WEIGHT_PER_COIN = 0.02;
@@ -18974,7 +20058,7 @@ CoinageManager.prototype.getValue = function (type) {
             returnValue = self[value.NAME];
         }
     })
-    if (returnValue) {
+    if (!_.isNil(returnValue)) {
         return returnValue;
     }
 }
@@ -19037,7 +20121,7 @@ CoinageManager.prototype.fireEvent = function (type, data) {
 }
 
 module.exports = new CoinageManager();
-},{"../Constants":20,"../EventHandler":21,"lodash":2}],24:[function(require,module,exports){
+},{"../Constants":21,"../EventHandler":22,"lodash":2}],25:[function(require,module,exports){
 var _ = require('lodash');
 var shortid = require('shortid');
 
@@ -19046,9 +20130,23 @@ var EventHandler = require('../EventHandler');
 var inventoryManager = function () {
 	this.eventHandler = new EventHandler();
 	_.bindAll(this, _.functionsIn(this));
+	this.inventory = {};
+	this.loadInventory();
 }
 
-inventoryManager.prototype.getInventory = function () {
+inventoryManager.prototype.EVENTS = {
+	INVENTORY_UPDATED: "INVENTORY_UPDATED"
+}
+
+inventoryManager.prototype.addUpdateListener = function (listener) {
+	this.eventHandler.addListener(this.EVENTS.INVENTORY_UPDATED, listener);
+}
+
+inventoryManager.prototype.removeListener = function (listener) {
+	this.eventHandler.removeListener(this.EVENTS.INVENTORY_UPDATED, listener);
+}
+
+inventoryManager.prototype.loadInventory = function () {
 	var returnArray = {};
 	for (var i = 0; i < localStorage.length; i++) {
 		var key = localStorage.key(i);
@@ -19057,28 +20155,54 @@ inventoryManager.prototype.getInventory = function () {
 			returnArray[value.id] = value;
 		}
 	}
-	return returnArray;
+	this.inventory = returnArray;
 };
 
+inventoryManager.prototype.getCarriedWeight = function () {
+	var weight = 0;
+	_.each(_.values(this.inventory), function (item) {
+		weight += (item.count * item.baseWeight);
+	});
+	return weight;
+}
+
+inventoryManager.prototype.getItemCount = function () {
+	var itemCount = 0;
+	_.each(_.values(this.inventory), function (item) {
+		itemCount += item.count;
+	});
+	return itemCount;
+}
+
+inventoryManager.prototype.getInventory = function () {
+	return this.inventory;
+}
+
 inventoryManager.prototype.getItem = function (id) {
-	return localStorage['INVENTORY-' + id];
+	return this.inventory[id];
 }
 
 inventoryManager.prototype.removeItem = function (id) {
+	delete this.inventory[id];
 	localStorage.removeItem('INVENTORY-' + id);
+	this.eventHandler.fireEvent(this.EVENTS.INVENTORY_UPDATED);
 }
 
 inventoryManager.prototype.updateItem = function (item) {
+	this.inventory[item.id] = item;
 	localStorage['INVENTORY-' + item.id] = JSON.stringify(item);
+	this.eventHandler.fireEvent(this.EVENTS.INVENTORY_UPDATED);
 }
 
 inventoryManager.prototype.addItem = function (item) {
 	item.id = shortid.generate();
+	this.inventory[item.id] = item;
 	localStorage['INVENTORY-' + item.id] = JSON.stringify(item);
+	this.eventHandler.fireEvent(this.EVENTS.INVENTORY_UPDATED);
 }
 
 module.exports = new inventoryManager();
-},{"../EventHandler":21,"lodash":2,"shortid":3}],25:[function(require,module,exports){
+},{"../EventHandler":22,"lodash":2,"shortid":3}],26:[function(require,module,exports){
 var _ = require('lodash');
 var shortid = require('shortid');
 var baseTemplates = require('../../baseDnD5eTemplates.json');
@@ -19122,7 +20246,86 @@ templateManager.prototype.getListOfTemplates = function () {
 }
 
 module.exports = new templateManager();
-},{"../../baseDnD5eTemplates.json":1,"lodash":2,"shortid":3}],26:[function(require,module,exports){
+},{"../../baseDnD5eTemplates.json":1,"lodash":2,"shortid":3}],27:[function(require,module,exports){
+var constants = require('./Constants');
+
+var skills = {
+    ATHLETICS: {
+        NAME: "Athletics",
+        ABILITY: constants.abilities.STR.NAME
+    },
+    ACROBATICS: {
+        NAME: "Acrobatics",
+        ABILITY: constants.abilities.DEX.NAME
+    },
+    ANIMAL_HANDLING: {
+        NAME: "Animal Handling",
+        ABILITY: constants.abilities.WIS.NAME
+    },
+    ARCARNA: {
+        NAME: "Arcana",
+        ABILITY: constants.abilities.INT.NAME
+    },
+    DECEPTION: {
+        NAME: "Deception",
+        ABILITY: constants.abilities.CHA.NAME
+    },
+    HISTORY: {
+        NAME: "History",
+        ABILITY: constants.abilities.INT.NAME
+    },
+    INSIGHT: {
+        NAME: "Insight",
+        ABILITY: constants.abilities.WIS.NAME
+    },
+    INTIMIDATION: {
+        NAME: "Animal Handling",
+        ABILITY: constants.abilities.CHA.NAME
+    },
+    INVESTIGATION: {
+        NAME: "Investigation",
+        ABILITY: constants.abilities.INT.NAME
+    },
+    MEDICINE: {
+        NAME: "Medicine",
+        ABILITY: constants.abilities.WIS.NAME
+    },
+    NATURE: {
+        NAME: "Nature",
+        ABILITY: constants.abilities.INT.NAME
+    },
+    PERCEPTION: {
+        NAME: "Perception",
+        ABILITY: constants.abilities.WIS.NAME
+    },
+    PERFORMANCE: {
+        NAME: "Performance",
+        ABILITY: constants.abilities.CHA.NAME
+    },
+    PERSUASION: {
+        NAME: "Persuasion",
+        ABILITY: constants.abilities.CHA.NAME
+    },
+    RELIGION: {
+        NAME: "Religion",
+        ABILITY: constants.abilities.INT.NAME
+    },
+    STEALTH: {
+        NAME: "Stealth",
+        ABILITY: constants.abilities.DEX.NAME
+    },
+    SLEIGHT_OF_HAND: {
+        NAME: "Sleight of Hand",
+        ABILITY: constants.abilities.DEX.NAME
+    },
+    SURVIVAL: {
+        NAME: "Survival",
+        ABILITY: constants.abilities.WIS.NAME
+    }
+};
+
+module.exports = skills;
+},{"./Constants":21}],28:[function(require,module,exports){
 var Utils = {};
 Utils.clearPage = function () {
 	this.getContentContainer().innerHTML = "";
@@ -19133,6 +20336,8 @@ Utils.getContentContainer = function () {
 };
 
 Utils.sanitiseNumberInput = function (value, max, min) {
+	max = max || 9999;
+	min = min || 0;
 	if (value === '') {
 		value = 0;
 	} else {
@@ -19209,15 +20414,15 @@ Utils.getAbilityModifierFromAbilityValue = function (value) {
 		if (modifier > 0) {
 			return "+" + modifier;
 		} else if (modifier < 0) {
-			return "-" + modifier;
+			return "" + modifier;
 		} else {
-			return modifier;
+			return "+" + modifier;
 		}
 	}
 }
 
 module.exports = Utils;
-},{}],27:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 var _ = require('lodash');
 
 var TitleBar = require('../../Components/TitleBar');
@@ -19241,7 +20446,7 @@ var addEditItemLayout = '<table style="width: 100%">' +
     '<td class="addItemCell">Weight:</td>' +
     '<td class="addItemCell" colspan=2>' +
     '<div class="input-group">' +
-    '<input id="weight-input" class="form-control" value="0" type="number" min="0" aria-describedby="basic-addon2"></input>' +
+    '<input id="weight-input" class="form-control numberInput" value="0" type="number" min="0" aria-describedby="basic-addon2"></input>' +
     '<span class="input-group-addon" id="basic-addon2">lbs</span>' +
     '</div>' +
     '</td>' +
@@ -19250,7 +20455,7 @@ var addEditItemLayout = '<table style="width: 100%">' +
     '<td class="addItemCell">Value:</td>' +
     '<td class="addItemCell">' +
     '<div class="input-group">' +
-    '<input type="number" id="value-input" value="0" class="form-control" aria-label="..." min="0">' +
+    '<input type="number" id="value-input" value="0" class="form-control numberInput" aria-label="..." min="0">' +
     '<div class="input-group-btn">' +
     '<button type="button" id="value-type-input" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gold <span class="caret"></span></button>' +
     '<ul class="dropdown-menu dropdown-menu-right">' +
@@ -19280,11 +20485,12 @@ AddEditItem.prototype.showInside = function (contentDiv, eventListener, editItem
     this.editItem = editItem;
     this.createUI(contentDiv);
     this.addTemplateChangeListener();
+    this.setupValueTypeChangeListener();
+    this.setupNumericInputChangeListeners();
 }
 
 AddEditItem.prototype.createUI = function (contentDiv) {
-    var title = this.editItem ? 'Edit Item -' + this.editItem.name : 'Add Item';
-
+    var title = this.editItem ? 'Edit Item - ' + this.editItem.name : 'Add Item';
     var addItemButton = new Button({
         title: this.editItem ? 'Save' : 'Add',
         icon: 'fa-check',
@@ -19304,9 +20510,49 @@ AddEditItem.prototype.createUI = function (contentDiv) {
     }).getElement());
     var fullHTML = addEditItemLayout.replace('<TEMPLATE>', this.createTemplateDropDown());
     contentDiv.insertAdjacentHTML('beforeEnd', fullHTML);
+    if (this.editItem) {
+        this.setupEditItemFields();
+    }
+    $(".numberInput").keypress(function (e) {
+        if (e.which < 48 || e.which > 57) {
+            return (false);
+        }
+    });
+}
+
+AddEditItem.prototype.onNumericInput = function (e) {
+    var inputField = e.target;
+    var value = Utils.sanitiseNumberInput(inputField.value, 9999, 0);
+    inputField.value = value;
+}
+
+AddEditItem.prototype.setupNumericInputChangeListeners = function () {
+    document.getElementById('weight-input').addEventListener('input', this.onNumericInput);
+    document.getElementById('value-input').addEventListener('input', this.onNumericInput);
+}
+
+
+AddEditItem.prototype.valueTypeChangedListener = function (e) {
+    document.getElementById("value-type-input").innerHTML = e.target.innerHTML + ' <span class="caret">';
+}
+
+AddEditItem.prototype.setupValueTypeChangeListener = function () {
+    document.getElementById('platinum-type').addEventListener('click', this.valueTypeChangedListener);
+    document.getElementById('gold-type').addEventListener('click', this.valueTypeChangedListener);
+    document.getElementById('electrum-type').addEventListener('click', this.valueTypeChangedListener);
+    document.getElementById('silver-type').addEventListener('click', this.valueTypeChangedListener);
+    document.getElementById('copper-type').addEventListener('click', this.valueTypeChangedListener);
 }
 
 AddEditItem.prototype.hide = function () {
+}
+
+AddEditItem.prototype.setupEditItemFields = function () {
+    document.getElementById('name-input').value = this.editItem.name;
+    document.getElementById('description-input').value = this.editItem.description;
+    document.getElementById('weight-input').value = this.editItem.baseWeight;
+    document.getElementById('value-input').value = this.editItem.baseValue;
+    document.getElementById('value-type-input').innerHTML = this.editItem.baseValueType + ' <span class="caret">';
 }
 
 AddEditItem.prototype.createTemplateDropDown = function () {
@@ -19367,8 +20613,15 @@ AddEditItem.prototype.onAddTap = function () {
         baseValueType: valueType,
         location: '',
         description: description
+    };
+    if (this.editItem) {
+        item.count = this.editItem.count;
+        item.id = this.editItem.id;
+        InventoryManager.updateItem(item);
+    } else {
+        InventoryManager.addItem(item);
     }
-    InventoryManager.addItem(item);
+
     this.goBack();
 }
 AddEditItem.prototype.onCancelTap = function () {
@@ -19380,7 +20633,7 @@ AddEditItem.prototype.goBack = function () {
 }
 
 module.exports = new AddEditItem();
-},{"../../Components/Button":14,"../../Components/TitleBar":19,"../../Constants":20,"../../EventHandler":21,"../../Managers/inventoryManager":24,"../../Managers/templateManager":25,"../../Utils":26,"lodash":2}],28:[function(require,module,exports){
+},{"../../Components/Button":14,"../../Components/TitleBar":20,"../../Constants":21,"../../EventHandler":22,"../../Managers/inventoryManager":25,"../../Managers/templateManager":26,"../../Utils":28,"lodash":2}],30:[function(require,module,exports){
 var _ = require('lodash');
 
 var TitleBar = require('../../Components/TitleBar');
@@ -19502,6 +20755,7 @@ coinageSection.prototype.generateButtonTitles = function (title) {
         self = this;
     return _.map(titles, function (sectionTitle) {
         return {
+            icon: 'fa-retweet',
             title: 'Convert to / from ' + sectionTitle,
             listener: _.partial(self.onConvertTap, title, sectionTitle)
         };
@@ -19571,7 +20825,7 @@ coinageSection.prototype.validateCoinageInput = function (id) {
 }
 
 module.exports = new coinageSection();
-},{"../../Components/Button":14,"../../Components/PopupActionMenu":18,"../../Components/TitleBar":19,"../../Constants":20,"../../EventHandler":21,"../../Managers/CoinageManager":23,"../../Managers/inventoryManager":24,"../../Utils":26,"lodash":2}],29:[function(require,module,exports){
+},{"../../Components/Button":14,"../../Components/PopupActionMenu":19,"../../Components/TitleBar":20,"../../Constants":21,"../../EventHandler":22,"../../Managers/CoinageManager":24,"../../Managers/inventoryManager":25,"../../Utils":28,"lodash":2}],31:[function(require,module,exports){
 var _ = require('lodash');
 
 var TitleBar = require('../../Components/TitleBar');
@@ -19705,7 +20959,7 @@ ConvertCoinage.prototype.goBack = function () {
 
 
 module.exports = new ConvertCoinage();
-},{"../../Components/Button":14,"../../Components/CenterFloat":15,"../../Components/TitleBar":19,"../../Constants":20,"../../Managers/CoinageManager":23,"../../Utils":26,"lodash":2}],30:[function(require,module,exports){
+},{"../../Components/Button":14,"../../Components/CenterFloat":15,"../../Components/TitleBar":20,"../../Constants":21,"../../Managers/CoinageManager":24,"../../Utils":28,"lodash":2}],32:[function(require,module,exports){
 var _ = require('lodash');
 
 var TitleBar = require('../../Components/TitleBar');
@@ -19714,6 +20968,7 @@ var inventoryManager = require('../../Managers/inventoryManager');
 var CoinageManager = require('../../Managers/CoinageManager');
 var CharacterManager = require('../../Managers/CharacterManager');
 var Utils = require('../../Utils');
+var Constants = require('../../Constants');
 
 var MAX_STRENGTH = 30;
 
@@ -19754,18 +21009,20 @@ InventoryHeaderSection.prototype.createUI = function (contentDiv) {
 }
 
 InventoryHeaderSection.prototype.hide = function (contentDiv) {
-    CharacterManager.removeListener(CharacterManager.KEYS.STRENGTH, this.onStrengthChange);
+    CharacterManager.removeListener(CharacterManager.KEYS.ABILITIES, this.onCharacterAbilitiesChange);
     CoinageManager.removeListener(CoinageManager.EVENTS.COINAGE_UPDATED, this.setupCurrentWeight);
+    inventoryManager.removeListener(this.setupCurrentWeight);
 }
 
 InventoryHeaderSection.prototype.validateStrengthInput = function () {
     var strengthInput = document.getElementById('strength-input');
     var value = Utils.sanitiseNumberInput(strengthInput.value);
     strengthInput.value = value;
-    CharacterManager.setStrength(value);
+    CharacterManager.setAbility(Constants.abilities.STR.NAME, value);
 }
 
-InventoryHeaderSection.prototype.onStrengthChange = function (strength) {
+InventoryHeaderSection.prototype.onCharacterAbilitiesChange = function (abilities) {
+    var strength = abilities[Constants.abilities.STR.NAME];
     var strengthInput = document.getElementById('strength-input');
     var carryCapacity = document.getElementById('carry-capacity');
     strengthInput.value = strength;
@@ -19774,24 +21031,26 @@ InventoryHeaderSection.prototype.onStrengthChange = function (strength) {
 InventoryHeaderSection.prototype.setupCurrentWeight = function () {
     var totalWeight = document.getElementById('current-weight');
     var currentCoinageWeight = CoinageManager.getCurrentCoinageWeight();
-    totalWeight.value = currentCoinageWeight;
+    var currentItemWeight = inventoryManager.getCarriedWeight();
+    totalWeight.value = currentCoinageWeight + currentItemWeight;
 };
 
 InventoryHeaderSection.prototype.setupStrenghtInput = function () {
     var strengthInput = document.getElementById('strength-input');
     strengthInput.addEventListener('input', this.validateStrengthInput);
-    CharacterManager.addListener(CharacterManager.KEYS.STRENGTH, this.onStrengthChange);
+    CharacterManager.addListener(CharacterManager.KEYS.ABILITIES, this.onCharacterAbilitiesChange);
 
-    var currentStrength = CharacterManager.getStrength();
+    var currentStrength = CharacterManager.getAbility(Constants.abilities.STR.NAME);
     var carryCapacity = document.getElementById('carry-capacity');
     carryCapacity.value = currentStrength * 15;
     strengthInput.value = currentStrength;
 
     CoinageManager.addListener(CoinageManager.EVENTS.COINAGE_UPDATED, this.setupCurrentWeight);
+    inventoryManager.addUpdateListener(this.setupCurrentWeight);
 }
 
 module.exports = new InventoryHeaderSection();
-},{"../../Components/TitleBar":19,"../../Managers/CharacterManager":22,"../../Managers/CoinageManager":23,"../../Managers/inventoryManager":24,"../../Utils":26,"lodash":2}],31:[function(require,module,exports){
+},{"../../Components/TitleBar":20,"../../Constants":21,"../../Managers/CharacterManager":23,"../../Managers/CoinageManager":24,"../../Managers/inventoryManager":25,"../../Utils":28,"lodash":2}],33:[function(require,module,exports){
 var _ = require('lodash');
 
 var TitleBar = require('../../Components/TitleBar');
@@ -19801,21 +21060,9 @@ var Utils = require('../../Utils');
 var InventoryManager = require('../../Managers/inventoryManager');
 var Constants = require('../../Constants');
 var PopupActionMenu = require('../../Components/PopupActionMenu');
+var InventoryItem = require('../../Components/InventoryItem');
 
-var itemListLayout = '<table class="table table-hover">' +
-    '<thead>' +
-    '<tr>' +
-    '<th width="10%">Count</th>' +
-    '<th width="50%">Name</th>' +
-    '<th width="10%">Location</th>' +
-    '<th width="10%">Weight</th>' +
-    '<th width="10%">Value</th>' +
-    '<th width="10%">Actions</th>' +
-    '</tr>' +
-    '</thead>' +
-    '<tbody id="inventoryTable">' +
-    '</tbody>' +
-    '</table>';
+var itemListLayout = '<div class="itemList" id="itemList"></div>';
 
 var ItemListSection = function () {
     _.bindAll(this, _.functionsIn(this));
@@ -19827,98 +21074,74 @@ ItemListSection.prototype.EVENTS = {
 
 ItemListSection.prototype.showInside = function (contentDiv, eventListener) {
     this.parentEventListener = eventListener;
-    this.createUI(contentDiv);
+    this.setupEventListener();
     this.inventory = InventoryManager.getInventory();
+    this.createUI(contentDiv);
     this.generateTable();
-    // this.createBindings();
+    $(".inventoryCountInput").keypress(function (e) {
+        if (e.which < 48 || e.which > 57) {
+            return (false);
+        }
+    });
+}
+
+ItemListSection.prototype.setupEventListener = function () {
+    this.EventHandler = new EventHandler(_.values(Constants.itemListAction));
+    this.EventHandler.addListener(Constants.itemListAction.DELETE, this.onDeleteItemPressed);
+    this.EventHandler.addListener(Constants.itemListAction.EDIT, this.onEditItemPressed);
+}
+
+ItemListSection.prototype.onDeleteItemPressed = function (itemId) {
+    var parent = document.getElementById("itemList");
+    var child = document.getElementById('itemContainer-' + itemId);
+    parent.removeChild(child);
+    delete this.inventory[itemId];
+    InventoryManager.removeItem(itemId);
+}
+
+ItemListSection.prototype.onEditItemPressed = function (itemId) {
+    var element = this.inventory[itemId];
+    this.parentEventListener.fireEvent(Constants.inventoryPageActions.ADD_EDIT_ITEM, element);
 }
 
 ItemListSection.prototype.generateTable = function () {
-    var tbodyElement = document.getElementById("inventoryTable"),
+    var itemListLayout = document.getElementById("itemList"),
         self = this;
     _.each(_.values(this.inventory), function (inventoryItem) {
-        self.constructRow(inventoryItem, tbodyElement);
+        self.constructRow(inventoryItem, itemListLayout);
     });
 }
 
-ItemListSection.prototype.constructRow = function (element, tbodyElement) {
-    var row = tbodyElement.insertRow(tbodyElement.rows.length);
-    row.setAttribute('name', 'item' + element.id);
-
-    var countCell = row.insertCell();
-    countCell.innerHTML = '<input class="form-control" type="number" itemTarget="' + element.id + '" name="count-item' + element.id + '" id="example-number-input" min="0"></input>';
-    countCell.setAttribute('class', 'count');
-    document.getElementsByName("count-item" + element.id)[0].addEventListener('change', this.onCountChange);
-
-    var nameCell = row.insertCell();
-    nameCell.setAttribute('class', 'expand center');
-    nameCell.setAttribute('name', 'name-item' + element.id);
-    nameCell.innerHTML = '<a style="font-weight: bold;" data-toggle="tooltip" title="" id="name-element-' + element.id + '"></a>';
-
-    var locationCell = row.insertCell();
-    locationCell.setAttribute('class', 'location');
-    locationCell.innerHTML = '<input list="browsers" itemTarget="' + element.id + '" name="location-item' + element.id + '" class="form-control"></input>';
-    document.getElementsByName("location-item" + element.id)[0].addEventListener('change', this.onLocationChange);
-
-    var weightCell = row.insertCell();
-    weightCell.setAttribute('class', 'shrink center');
-    weightCell.setAttribute('name', 'weight-item' + element.id);
-
-    var valueCell = row.insertCell();
-    valueCell.setAttribute('class', 'shrink center');
-    valueCell.setAttribute('name', 'value-item' + element.id);
-    valueCell.innerHTML = '<a style="font-weight: bold;" data-toggle="tooltip" title="" id="value-total-' + element.id + '">0  GP</a>' +
-        ' (<a style="font-weight: bold;" data-toggle="tooltip" title="" id="value-single-' + element.id + '">0  GP</a>)';
-
-    var actionCell = row.insertCell();
-    actionCell.setAttribute('class', 'shrink end');
-
-    var popupMenu = new PopupActionMenu({
-        title: "Actions",
-        buttons: [
-            { title: 'Edit', icon: 'fa-pencil' },
-            { title: 'Sell', icon: 'fa-arrow-down' },
-            { title: 'Buy', icon: 'fa-arrow-up' },
-            { title: 'Delete', icon: 'fa-trash-o' }
-        ]
-    });
-    actionCell.appendChild(popupMenu.getElement());
-    this.populateRow(element.id);
+ItemListSection.prototype.constructRow = function (element, itemListLayout) {
+    var item = new InventoryItem(element, this.EventHandler);
+    itemListLayout.appendChild(item.getElement());
 }
 
-ItemListSection.prototype.getItem = function (id) {
-    return this.inventory[id];
-}
+ItemListSection.prototype.onInventoryUpdate = function () {
+    var carriedWeight = document.getElementById('carried-weight');
+    var carriedItems = document.getElementById('carried-items');
 
-ItemListSection.prototype.populateRow = function (elementId) {
-    var countInput = document.getElementsByName("count-item" + elementId)[0];
-    var name = document.getElementById("name-element-" + elementId);
-    var location = document.getElementsByName("location-item" + elementId)[0];
-    var weight = document.getElementsByName("weight-item" + elementId)[0];
-    var totalValue = document.getElementById("value-total-" + elementId);
-    var singleValue = document.getElementById("value-single-" + elementId);
-
-    var inventoryItem = this.getItem(elementId);
-    var valueType = Utils.convertValueLongToShortCode(inventoryItem.baseValueType);
-
-    countInput.value = inventoryItem.count;
-    name.innerHTML = inventoryItem.name;
-    weight.innerHTML = (inventoryItem.baseWeight * inventoryItem.count).toFixed(2) + ' lbs (' + inventoryItem.baseWeight + 'lbs)';
-    location.value = inventoryItem.location;
-    totalValue.innerHTML = (inventoryItem.baseValue * inventoryItem.count) + " " + valueType;
-    singleValue.innerHTML = inventoryItem.baseValue + ' ' + valueType;
-    // totalValue.setAttribute('data-original-title', this.convertToVariousCoinageValues((inventoryItem.baseValue * inventoryItem.count), valueType));
-    // totalValue.setAttribute('title', this.convertToVariousCoinageValues((inventoryItem.baseValue * inventoryItem.count), valueType));
-
-    // singleValue.setAttribute('data-original-title', this.convertToVariousCoinageValues(inventoryItem.baseValue, valueType));
-    // singleValue.setAttribute('title', this.convertToVariousCoinageValues(inventoryItem.baseValue, valueType));
-
-    // name.setAttribute('data-original-title', inventoryItem.description);
-    // name.setAttribute('title', inventoryItem.description);
+    carriedWeight.value = InventoryManager.getCarriedWeight();
+    carriedItems.value = InventoryManager.getItemCount();
 }
 
 ItemListSection.prototype.hide = function () {
+    InventoryManager.removeListener(this.onInventoryUpdate);
 }
+
+ItemListSection.prototype.setupInventoryListeners = function () {
+    InventoryManager.addUpdateListener(this.onInventoryUpdate);
+}
+
+var topUI = '<div class="itemListHeader">' +
+    '<span class="topBarLabel">Total Carried Weight: </span>' +
+    '<div class="input-group" style="width: 8em !important">' +
+    '<input id="carried-weight" class="form-control forceWhiteBackground" value="0" type="number" min="0" aria-describedby="basic-addon2" readonly="true"></input>' +
+    '<span class="input-group-addon forceWhiteBackground">lbs</span>' +
+    '</div>' +
+    '<span class="topBarLabel">Total number of items: </span>' +
+    '<input id="carried-items" class="form-control forceWhiteBackground" value="0" style="width: 6em" type="number" readonly="true"></input>' +
+    '</div>';
 
 ItemListSection.prototype.createUI = function (contentDiv) {
     var addItemButton = new Button({
@@ -19931,6 +21154,10 @@ ItemListSection.prototype.createUI = function (contentDiv) {
         type: TitleBar.TYPES.SUB_TITLE,
         rightButton: addItemButton
     }).getElement());
+
+    contentDiv.insertAdjacentHTML('beforeEnd', topUI);
+    this.setupInventoryListeners();
+    this.onInventoryUpdate();
     contentDiv.insertAdjacentHTML('beforeEnd', itemListLayout);
 }
 
@@ -19939,7 +21166,7 @@ ItemListSection.prototype.onAddItemTap = function () {
 }
 
 module.exports = new ItemListSection();
-},{"../../Components/Button":14,"../../Components/PopupActionMenu":18,"../../Components/TitleBar":19,"../../Constants":20,"../../EventHandler":21,"../../Managers/inventoryManager":24,"../../Utils":26,"lodash":2}],32:[function(require,module,exports){
+},{"../../Components/Button":14,"../../Components/InventoryItem":18,"../../Components/PopupActionMenu":19,"../../Components/TitleBar":20,"../../Constants":21,"../../EventHandler":22,"../../Managers/inventoryManager":25,"../../Utils":28,"lodash":2}],34:[function(require,module,exports){
 var _ = require('lodash');
 
 var TitleBar = require('../../Components/TitleBar');
@@ -20184,14 +21411,16 @@ transaction.prototype.goBack = function () {
 }
 
 module.exports = new transaction();
-},{"../../Components/Button":14,"../../Components/CenterFloat":15,"../../Components/CheckBox":16,"../../Components/CheckBoxGroup":17,"../../Components/TitleBar":19,"../../Constants":20,"../../EventHandler":21,"../../Managers/CoinageManager":23,"../../Utils":26,"lodash":2}],33:[function(require,module,exports){
+},{"../../Components/Button":14,"../../Components/CenterFloat":15,"../../Components/CheckBox":16,"../../Components/CheckBoxGroup":17,"../../Components/TitleBar":20,"../../Constants":21,"../../EventHandler":22,"../../Managers/CoinageManager":24,"../../Utils":28,"lodash":2}],35:[function(require,module,exports){
 (function () {
     var _ = require('lodash');
 
     var Utils = require('../Utils');
     var TitleBar = require('../Components/TitleBar');
     var CharacterManager = require('../Managers/CharacterManager');
-
+    var InventoryItem = require('../Components/InventoryItem');
+    var Constants = require('../Constants');
+    var Skills = require('../Skills');
 
     var characterDetailsUI = '<span>Name:</span>' +
         '<input></input>' +
@@ -20223,17 +21452,29 @@ module.exports = new transaction();
         }).getElement());
 
 
-        var abilityScores = CharacterManager.getAbilities();
-        var abilitySection = '<div class="abilityContent">';
-        abilitySection += this.getAbilitySection('STR', abilityScores.strength);
-        abilitySection += this.getAbilitySection('DEX', abilityScores.dexterity);
-        abilitySection += this.getAbilitySection('CON', abilityScores.constitution);
-        abilitySection += '</div><div class="abilityContent">';
-        abilitySection += this.getAbilitySection('INT', abilityScores.intelligence);
-        abilitySection += this.getAbilitySection('WIS', abilityScores.wisdom);
-        abilitySection += this.getAbilitySection('CHA', abilityScores.charisma);
-        abilitySection += "</div>"
-        content.insertAdjacentHTML('beforeEnd', abilitySection);
+        var abilityScores = CharacterManager.getAbilities(),
+            self = this;
+        _.each(Constants.abilities, function (ability) {
+            var currentValue = abilityScores[ability.NAME];
+            abilityScores[ability.NAME] = self.getAbilitySection(ability, currentValue);
+        })
+
+        var abilityContent1 = document.createElement('div');
+        abilityContent1.setAttribute('class', 'abilityContent');
+        abilityContent1.appendChild(abilityScores[Constants.abilities.STR.NAME]);
+        abilityContent1.appendChild(abilityScores[Constants.abilities.DEX.NAME]);
+        abilityContent1.appendChild(abilityScores[Constants.abilities.CON.NAME]);
+        content.appendChild(abilityContent1);
+
+        var abilityContent2 = document.createElement('div');
+        abilityContent2.setAttribute('class', 'abilityContent');
+        abilityContent2.appendChild(abilityScores[Constants.abilities.INT.NAME]);
+        abilityContent2.appendChild(abilityScores[Constants.abilities.WIS.NAME]);
+        abilityContent2.appendChild(abilityScores[Constants.abilities.CHA.NAME]);
+        content.appendChild(abilityContent2);
+
+        CharacterManager.addListener(CharacterManager.KEYS.ABILITES, this.onAbilityChange);
+
         $(".integer").keypress(function (e) {
             if (e.which < 48 || e.which > 57) {
                 return (false);
@@ -20241,44 +21482,117 @@ module.exports = new transaction();
         });
     };
 
-    characterPage.prototype.getAbilitySection = function (title, value) {
-        return '<div class="abilitySection">' +
-            '<table>' +
-            this.getSection([value, '+1', 'SAVING THROWS', '+2', 'Athletics'], 0) +
-            this.getSection([Utils.getAbilityModifierFromAbilityValue(value), '+1', 'a', '0', 'b'], 1) +
-            this.getSection([title, '+1', 'a', '0', 'b'], 2) +
-            '</table>' +
-            "</div>";
+    characterPage.prototype.hide = function () {
+        CharacterManager.removeListener(CharacterManager.KEYS.ABILITES, this.onAbilityChange);
     }
 
-    characterPage.prototype.getSection = function (values, level) {
-        var classes = ["inputSection", "middleSection", "titleSection"]
-        var classText = classes[level] + " valueSection";
-        var value = level !== 0 ? values[0] : '<input class="form-control integer inputWidth" step="1" value="' + values[0] + '" type="number" id="strength-input" min="0" max="20"></input>';
-        return '<tr>' +
-            '<td rowspan="2" class="' + classText + '">' +
-            value +
-            '</td>' +
-            '<td class="modifierSection">' +
-            values[1] +
-            '</td>' +
-            '<td class="descriptionSection">' +
-            values[2] +
-            '</td>' +
-            '</tr>' +
-            '<tr>' +
-            '<td class="modifierSection">' +
-            values[3] +
-            '</td>' +
-            '<td class="descriptionSection">' +
-            values[4] +
-            '</td>' +
-            '</tr>';
+    characterPage.prototype.onAbilityChange = function (abilities) {
+        var self;
+        _.each(_.keys(abilities), function (abilityName) {
+            var value = abilities[abilityName];
+            var inputSection = document.getElementById(abilityName + '-input');
+            var modifierSection = document.getElementById(abilityName + '-modifier');
+            inputSection.value = value;
+            modifierSection.innerHTML = Utils.getAbilityModifierFromAbilityValue(value);
+
+            var modifiers = document.getElementsByClassName('mod-' + abilityName);
+            _.each(modifiers, function (modifier) {
+                if (modifier.getAttribute('data-attribute')) {
+                    modifier.innerHTML = Utils.getAbilityModifierFromAbilityValue(value);
+                }
+            });
+        });
+    }
+
+    characterPage.prototype.getAbilitySection = function (abilityDescription, value) {
+        var abilitySection = document.createElement('div');
+        abilitySection.setAttribute('class', 'abilitySection');
+
+        var innerTable = document.createElement('table');
+        abilitySection.appendChild(innerTable);
+
+        var abilityNames = [];
+        _.each(_.keys(Skills), function (skillName) {
+            var skill = Skills[skillName];
+            if (skill.ABILITY === abilityDescription.NAME) {
+                abilityNames.push(skill.NAME);
+            }
+        });
+
+        var baseModifier = Utils.getAbilityModifierFromAbilityValue(value);
+
+        var inputSection = this.getInputSection(abilityDescription.NAME + '-input', abilityDescription.NAME, value);
+        var abilityModifierSection = this.createAbilityModifier(abilityDescription.NAME + '-modifier', baseModifier);
+        var titleSection = this.createAbilityModifier(abilityDescription.NAME, abilityDescription.SHORT_NAME);
+
+        this.createRow(inputSection, [baseModifier, 'SAVING THROWS', baseModifier, abilityNames[0]], innerTable, abilityDescription.NAME);
+        this.createRow(abilityModifierSection, [baseModifier, abilityNames[1], baseModifier, abilityNames[2]], innerTable, abilityDescription.NAME);
+        this.createRow(titleSection, [baseModifier, abilityNames[3], baseModifier, abilityNames[4]], innerTable, abilityDescription.NAME);
+
+        return abilitySection;
+    }
+
+    characterPage.prototype.createAbilityModifier = function (id, value) {
+        var cell = document.createElement('td');
+        cell.setAttribute('class', 'inputSection valueSection');
+        cell.setAttribute('rowspan', "2");
+        cell.setAttribute('id', id);
+        cell.innerHTML = value;
+        return cell;
+    }
+
+    characterPage.prototype.createRow = function (firstElement, values, table, id) {
+        var firstRow = document.createElement('tr');
+        firstRow.appendChild(firstElement);
+        this.createDescriptionSection(values[0], values[1], firstRow, id);
+
+        var secondRow = document.createElement('tr');
+        this.createDescriptionSection(values[2], values[3], secondRow, id);
+
+        table.appendChild(firstRow);
+        table.appendChild(secondRow);
+    }
+
+    characterPage.prototype.getInputSection = function (id, type, currentValue) {
+        var input = document.createElement('input');
+        input.setAttribute('class', 'form-control integer inputWidth');
+        input.setAttribute('step', "1");
+        input.setAttribute('value', currentValue);
+        input.setAttribute('type', 'number');
+        input.setAttribute('id', id);
+        input.addEventListener('input', function () {
+            var value = Utils.sanitiseNumberInput(this.value, 20, 0);
+            this.value = value;
+            CharacterManager.setAbility(type, value)
+        });
+        var cell = document.createElement('td');
+        cell.setAttribute('class', 'inputSection valueSection');
+        cell.setAttribute('rowspan', "2");
+        cell.appendChild(input);
+        return cell;
+    }
+
+    characterPage.prototype.createDescriptionSection = function (value1, value2, tableRow, id) {
+        if (_.isUndefined(value2) || value2 === '') {
+            value1 = ' ';
+        }
+        this.createCellWithValue(value1, 'modifierSection mod-' + id, tableRow, value2);
+        this.createCellWithValue(value2, 'descriptionSection ' + id, tableRow);
+    }
+
+    characterPage.prototype.createCellWithValue = function (value, tableClass, row, val) {
+        var tableCell = document.createElement('td');
+        tableCell.setAttribute('class', tableClass);
+        if (val && (value !== '' && value !== ' ')) {
+            tableCell.setAttribute('data-attribute', val);
+        }
+        tableCell.innerHTML = value || ' ';
+        row.appendChild(tableCell);
     }
 
     module.exports = new characterPage();
 })();
-},{"../Components/TitleBar":19,"../Managers/CharacterManager":22,"../Utils":26,"lodash":2}],34:[function(require,module,exports){
+},{"../Components/InventoryItem":18,"../Components/TitleBar":20,"../Constants":21,"../Managers/CharacterManager":23,"../Skills":27,"../Utils":28,"lodash":2}],36:[function(require,module,exports){
 (function () {
 	var _ = require('lodash');
 
@@ -20370,6 +21684,7 @@ module.exports = new transaction();
 	}
 
 	inventoryPage.prototype.showMainUI = function (contentDiv) {
+		delete this.pendingData;
 		contentDiv.appendChild(new TitleBar({
 			title: 'Inventory',
 			type: TitleBar.TYPES.SUB_TITLE
@@ -20383,7 +21698,7 @@ module.exports = new transaction();
 	}
 
 	inventoryPage.prototype.showAddEditUI = function (contentDiv) {
-		AddEditItem.showInside(contentDiv, this.eventHandler);
+		AddEditItem.showInside(contentDiv, this.eventHandler, this.pendingData);
 	}
 
 	inventoryPage.prototype.showTransactionUI = function (contentDiv) {
@@ -20409,6 +21724,7 @@ module.exports = new transaction();
 			this.hideConvertCoinageUI();
 		}
 		this.currentUiState = uiStates.MAIN_UI;
+		delete this.pendingData;
 	}
 
 	inventoryPage.prototype.hideMainUI = function () {
@@ -20432,7 +21748,7 @@ module.exports = new transaction();
 
 	module.exports = new inventoryPage();
 })();
-},{"../Components/TitleBar":19,"../Constants":20,"../EventHandler":21,"../Managers/CharacterManager":22,"../Managers/CoinageManager":23,"../Managers/inventoryManager":24,"../Utils":26,"./InventoryPage/AddEditItem":27,"./InventoryPage/CoinageSection":28,"./InventoryPage/ConvertCoinageSection":29,"./InventoryPage/InventoryHeaderSection":30,"./InventoryPage/ItemListSection":31,"./InventoryPage/Transaction":32,"lodash":2}],35:[function(require,module,exports){
+},{"../Components/TitleBar":20,"../Constants":21,"../EventHandler":22,"../Managers/CharacterManager":23,"../Managers/CoinageManager":24,"../Managers/inventoryManager":25,"../Utils":28,"./InventoryPage/AddEditItem":29,"./InventoryPage/CoinageSection":30,"./InventoryPage/ConvertCoinageSection":31,"./InventoryPage/InventoryHeaderSection":32,"./InventoryPage/ItemListSection":33,"./InventoryPage/Transaction":34,"lodash":2}],37:[function(require,module,exports){
 (function () {
     var _ = require('lodash');
 
@@ -20476,7 +21792,7 @@ module.exports = new transaction();
 
     module.exports = new notesPage();
 })();
-},{"../Components/TitleBar":19,"../Utils":26,"lodash":2}],36:[function(require,module,exports){
+},{"../Components/TitleBar":20,"../Utils":28,"lodash":2}],38:[function(require,module,exports){
 (function () {
     var _ = require('lodash');
 
@@ -20504,7 +21820,7 @@ module.exports = new transaction();
 
     module.exports = new spellsPage();
 })();
-},{"../Components/TitleBar":19,"../Utils":26,"lodash":2}],37:[function(require,module,exports){
+},{"../Components/TitleBar":20,"../Utils":28,"lodash":2}],39:[function(require,module,exports){
 var _ = require('lodash');
 var pack = require('../package.json');
 
@@ -20516,7 +21832,7 @@ var spellsPage = require('./View/spellsPage');
 var Button = require('./Components/Button');
 var TitleBar = require('./Components/TitleBar');
 
-var DATABASE_VERSION = 1;
+var DATABASE_VERSION = 2;
 
 var main = {
 	layout: '<div class="icon-bar" id="tab-bar"></div>' +
@@ -20624,13 +21940,23 @@ var main = {
 	start: function () {
 		this.checkLocalStorageVersion();
 		this.tabBarClickMap = {};
-		var body = document.getElementById('body');
-		body.innerHTML = '';
-		body.appendChild(new TitleBar({
+		var main = document.getElementById('main');
+		main.innerHTML = '';
+
+		var popupMask = document.createElement('div');
+		popupMask.setAttribute('class', 'popupMask');
+		main.appendChild(popupMask);
+
+		var mainDiv = document.createElement('div');
+		mainDiv.setAttribute('class', 'background');
+		mainDiv.setAttribute('id', 'background');
+		main.appendChild(mainDiv);
+
+		mainDiv.appendChild(new TitleBar({
 			title: 'Inventory Manager',
 			subTitle: 'v' + pack.version
 		}).getElement());
-		body.insertAdjacentHTML('beforeend', this.layout);
+		mainDiv.insertAdjacentHTML('beforeend', this.layout);
 
 		this.setupInitListener();
 		var contentPages = [
@@ -20646,4 +21972,4 @@ var main = {
 onload = function () {
 	main.start();
 };
-},{"../package.json":13,"./Components/Button":14,"./Components/TitleBar":19,"./View/characterpage":33,"./View/inventoryPage":34,"./View/notesPage":35,"./View/spellsPage":36,"lodash":2}]},{},[13,1,37,24,25]);
+},{"../package.json":13,"./Components/Button":14,"./Components/TitleBar":20,"./View/characterpage":35,"./View/inventoryPage":36,"./View/notesPage":37,"./View/spellsPage":38,"lodash":2}]},{},[13,1,39,25,26]);

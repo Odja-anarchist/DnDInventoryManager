@@ -119,6 +119,7 @@ coinageSection.prototype.generateButtonTitles = function (title) {
         self = this;
     return _.map(titles, function (sectionTitle) {
         return {
+            icon: 'fa-retweet',
             title: 'Convert to / from ' + sectionTitle,
             listener: _.partial(self.onConvertTap, title, sectionTitle)
         };
